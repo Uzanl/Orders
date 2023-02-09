@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace Orders.Classes
 {
-    internal class Ingredienteprod
+    class ProdutosPedido
     {
-        int id_ingrediente;
-        int ingrediente;
+        int id_pedido;
         int id_produto;
 
-        public int Id_ingrediente { get => id_ingrediente; set => id_ingrediente = value; }
-        public int Ingrediente { get => ingrediente; set => ingrediente = value; }
         public int Id_produto { get => id_produto; set => id_produto = value; }
+        public int Id_pedido { get => id_pedido; set => id_pedido = value; }
     }
 }
