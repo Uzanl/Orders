@@ -1,0 +1,95 @@
+drop database pedido;
+
+create database pedido;
+
+use pedido;
+
+CREATE TABLE CLIENTE(
+id_cliente int not null auto_increment,
+nome text not null,
+primary key(id_cliente)
+);
+insert into cliente values(0,"lucas");
+insert into cliente values(0,"samuel");
+insert into cliente values(0,"matheus");
+insert into cliente values(0,"pedro");
+
+CREATE TABLE MARCA(
+id_marca int not null auto_increment,
+nome text not null,
+primary key(id_marca)
+);
+
+CREATE TABLE CATEGORIA(
+id_categoria int not null auto_increment,
+nome text not null,
+primary key(id_categoria)
+);
+insert into categoria values(0,"suco");
+insert into categoria values(0,"lanche");
+insert into categoria values(0,"cafe");
+insert into categoria values(0,"energetico");
+
+CREATE TABLE PRODUTO(
+id_produto int not null auto_increment,
+produto text not null,
+id_marca int,
+id_categoria int not null,
+primary key (id_produto),
+foreign key(id_marca) references marca(id_marca),
+foreign key(id_categoria) references categoria(id_categoria)
+);
+insert into produto values(0,"suco de melancia",null,1);
+insert into produto values(0,"suco de limão",null,1);
+insert into produto values(0,"suco de laranja",null,1);
+
+insert into produto values(0,"x salada",null,2);
+insert into produto values(0,"x bacon",null,2);
+insert into produto values(0,"x burguer",null,2);
+
+insert into produto values(0,"cafe",null,3);
+insert into produto values(0,"cafe com leite",null,3);
+insert into produto values(0,"cafe expresso",null,3);
+
+CREATE TABLE INGREDIENTES_PRODUTO(
+id_ingrediente int not null auto_increment,
+ingrediente text not null,
+id_produto int not null,
+primary key(id_ingrediente),
+foreign key(id_produto) references produto(id_produto)
+);
+
+
+CREATE TABLE PEDIDO(
+id_pedido int not null auto_increment,
+id_cliente int not null,
+data_pedido datetime not null,
+hora time not null,
+primary key(id_pedido),
+foreign key(id_cliente) references cliente(id_cliente)
+);
+insert into pedido values(0,1,'2023-02-09','09:41');
+insert into pedido values(0,1,'2023-02-10','08:00');
+insert into pedido values(0,2,'2023-02-10','10:00');
+
+
+CREATE TABLE PRODUTOS_PEDIDO(
+id_pedido int not null,
+id_produto int not null,
+primary key(id_pedido,id_produto),
+foreign key(id_pedido) references pedido(id_pedido),
+foreign key(id_produto) references produto(id_produto)
+);
+insert into produtos_pedido values(1,1);
+insert into produtos_pedido values(1,4);
+insert into produtos_pedido values(2,7);
+insert into produtos_pedido values(3,5);
+insert into produtos_pedido values(3,2);
+
+select c.nome,pr.produto,p.data_pedido,p.hora from pedido p inner join cliente c ON
+c.id_cliente = p.id_cliente inner join produtos_pedido pp on pp.id_pedido = p.id_pedido
+inner join produto pr on pr.id_produto = pp.id_produto;
+
+
+
+**adicionar tabela ingrediente para futuramente não ter que ficar digitando o mesmo ingrediente.
