@@ -26,7 +26,15 @@ namespace Orders
             //vScrollBar1.Maximum = flowLayoutPanel1.VerticalScroll.Maximum;
 
             var orientation = SystemInformation.ScreenOrientation;
-            label1.Text = orientation.ToString();
+            //label1.Text = orientation.ToString();
+
+            if (orientation.ToString() =="Angle0")
+            {
+                //this.Size = new Size(1920, 1080);
+                flowLayoutPanel1.Size = new Size(1510, 600);
+                flowLayoutPanel1.Location = new Point(210,240);
+                btnProvisorio.Location = new Point(200, 300);
+            }
 
 
         }
