@@ -39,11 +39,10 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1440, 810);
             this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // btnProvisorio
             // 
-            this.btnProvisorio.Location = new System.Drawing.Point(233, 1445);
+            this.btnProvisorio.Location = new System.Drawing.Point(240, 106);
             this.btnProvisorio.Name = "btnProvisorio";
             this.btnProvisorio.Size = new System.Drawing.Size(75, 23);
             this.btnProvisorio.TabIndex = 2;

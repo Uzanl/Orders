@@ -19,29 +19,20 @@ namespace Orders
         }
 
         private void Catalogo_Load(object sender, EventArgs e)
-        {         
+        {
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-            if (orientation.ToString() =="Angle0")
+            if (orientation.ToString() == "Angle0" || orientation.ToString() == "Angle90")
             {
                 int x = screenWidth - (screenWidth * 25 / 100), y = screenHeight - (screenHeight * 25 / 100);
-                flowLayoutPanel1.Size = new Size(x,y);
-                flowLayoutPanel1.Location = new Point((screenWidth/2) - (x/2),(screenHeight/2) - (y/2));
-                btnProvisorio.Location = new Point(200, 300);
-            }else if(orientation.ToString() == "Angle90")
-            {
-                // monitor no modo retrato
+                flowLayoutPanel1.Size = new Size(x, y);
+                flowLayoutPanel1.Location = new Point((screenWidth / 2) - (x / 2), (screenHeight / 2) - (y / 2));
+               // btnProvisorio.Location = new Point(200, 300);
             }
+            
         }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-     
 
         private void DynamicButton_Click(object sender, EventArgs e)
 
@@ -51,7 +42,7 @@ namespace Orders
             p.ShowDialog();
         }
 
-        
+
 
         private void btnProvisorio_Click_1(object sender, EventArgs e)
         {
@@ -60,7 +51,7 @@ namespace Orders
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-            
+
             // Create a Button object 
             Button dynamicButton = new Button();
 
@@ -68,8 +59,18 @@ namespace Orders
 
             // Set Button properties
             int x = screenWidth - (screenWidth * 25 / 100), y = screenHeight - (screenHeight * 25 / 100);
-            dynamicButton.Width = (x/ 5) - 10;
-            dynamicButton.Height = (y / 3);
+
+            if (orientation.ToString() == "Angle0")
+            {
+                dynamicButton.Width = (x / 5) - 10;
+                dynamicButton.Height = (y / 3);
+            }
+            else if (orientation.ToString() == "Angle90")
+            {
+                dynamicButton.Width = (x / 3) - 10;
+                dynamicButton.Height = (y / 5);
+            }
+            
 
             // dynamicButton.BackColor = Color.Red;
             //dynamicButton.ForeColor = Color.Blue;
@@ -90,7 +91,7 @@ namespace Orders
 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
-           // flowLayoutPanel1.VerticalScroll.Value = vScrollBar1.Value;
+            // flowLayoutPanel1.VerticalScroll.Value = vScrollBar1.Value;
         }
     }
 }
