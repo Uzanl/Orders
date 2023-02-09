@@ -30,6 +30,9 @@ namespace Orders
                 flowLayoutPanel1.Size = new Size(x,y);
                 flowLayoutPanel1.Location = new Point((screenWidth/2) - (x/2),(screenHeight/2) - (y/2));
                 btnProvisorio.Location = new Point(200, 300);
+            }else if(orientation.ToString() == "Angle90")
+            {
+                // monitor no modo retrato
             }
         }
 
@@ -48,10 +51,7 @@ namespace Orders
             p.ShowDialog();
         }
 
-        private void btnProvisorio_Click(object sender, EventArgs e)
-        {
-            flowLayoutPanel1.Controls.Add(new Button() { Text = "Button Name" });
-        }
+        
 
         private void btnProvisorio_Click_1(object sender, EventArgs e)
         {
