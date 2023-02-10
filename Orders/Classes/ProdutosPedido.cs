@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Orders.Classes
 {
-    class ProdutosPedido
+    class Produtospedido
     {
         int id_pedido;
         int id_produto;

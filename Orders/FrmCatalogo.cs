@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Orders.Classes;
+using Orders.ClassesDAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,8 @@ namespace Orders
 {
     public partial class FrmCatalogo : Form
     {
+        ClienteDAO cliDAO = new ClienteDAO();
+        CategoriaDAO catDAO = new CategoriaDAO();
         public FrmCatalogo()
         {
             InitializeComponent();
@@ -20,6 +24,7 @@ namespace Orders
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
+            Conexao.criar_Conexao();
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -29,65 +34,73 @@ namespace Orders
                 int x = screenWidth - (screenWidth * 25 / 100), y = screenHeight - (screenHeight * 25 / 100);
                 flowLayoutPanel1.Size = new Size(x, y);
                 flowLayoutPanel1.Location = new Point((screenWidth / 2) - (x / 2), (screenHeight / 2) - (y / 2));
-               // btnProvisorio.Location = new Point(200, 300);
+                // btnProvisorio.Location = new Point(200, 300);
             }
-            
+
+            catDAO.ListarCategorias();
+
+            //int qtdcategorias = cliDAO.Listacliente.Rows.Count;
+            AcrescentarButtons();
+
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
 
         {
-            FrmProduto p = new FrmProduto();
-            p.Owner = this;
-            p.ShowDialog();
+            //talvez dê para colocar os produtos na mesma tela do catalogo
+            // FrmProduto p = new FrmProduto();
+            //  p.Owner = this;
+            // p.ShowDialog();
         }
 
-
-
-        private void btnProvisorio_Click_1(object sender, EventArgs e)
+        public void AcrescentarButtons()
         {
-
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
 
-            // Create a Button object 
-            Button dynamicButton = new Button();
+            int qtdcategorias = catDAO.Listacategoria.Rows.Count;
 
-
-
-            // Set Button properties
-            int x = screenWidth - (screenWidth * 25 / 100), y = screenHeight - (screenHeight * 25 / 100);
-
-            if (orientation.ToString() == "Angle0")
+            for (int i = 0; i < qtdcategorias; i++)
             {
-                dynamicButton.Width = (x / 5) - 10;
-                dynamicButton.Height = (y / 3);
+                // Create a Button object 
+                Button dynamicButton = new Button();
+
+                // Set Button properties
+                int x = screenWidth - (screenWidth * 25 / 100), y = screenHeight - (screenHeight * 25 / 100);
+
+                if (orientation.ToString() == "Angle0")
+                {
+                    dynamicButton.Width = (x / 5) - 10;
+                    dynamicButton.Height = (y / 3);
+                }
+                else if (orientation.ToString() == "Angle90")
+                {
+                    dynamicButton.Width = (x / 3) - 10;
+                    dynamicButton.Height = (y / 5);
+                }
+
+
+                // dynamicButton.BackColor = Color.Red;
+                //dynamicButton.ForeColor = Color.Blue;
+                // dynamicButton.Location = new Point(20, 150);
+                dynamicButton.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString(); ;
+                // dynamicButton.Name = "DynamicButton";
+                // dynamicButton.Font = new Font("Georgia", 16);
+                // Add a Button Click Event handler
+                dynamicButton.Click += new EventHandler(DynamicButton_Click);
+                // Add Button to the Form. Placement of the Button
+
+                // will be based on the Location and Size of button
+
+                flowLayoutPanel1.Controls.Add(dynamicButton);
             }
-            else if (orientation.ToString() == "Angle90")
-            {
-                dynamicButton.Width = (x / 3) - 10;
-                dynamicButton.Height = (y / 5);
-            }
-            
-
-            // dynamicButton.BackColor = Color.Red;
-            //dynamicButton.ForeColor = Color.Blue;
-            // dynamicButton.Location = new Point(20, 150);
-            // dynamicButton.Text = "I am Dynamic Button";
-            // dynamicButton.Name = "DynamicButton";
-            // dynamicButton.Font = new Font("Georgia", 16);
-            // Add a Button Click Event handler
-            dynamicButton.Click += new EventHandler(DynamicButton_Click);
-            // Add Button to the Form. Placement of the Button
-
-            // will be based on the Location and Size of button
-
-            flowLayoutPanel1.Controls.Add(dynamicButton);
 
 
+           
         }
+
 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
