@@ -42,11 +42,16 @@ namespace Orders
                 // btnProvisorio.Location = new Point(200, 300);
             }
 
+            CarregarCategorias();
+
+        }
+
+        public void CarregarCategorias()
+        {
             catDAO.ListarCategorias();
 
             //int qtdcategorias = cliDAO.Listacliente.Rows.Count;
             AcrescentarButtons();
-
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
@@ -176,6 +181,13 @@ namespace Orders
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
             // flowLayoutPanel1.VerticalScroll.Value = vScrollBar1.Value;
+        }
+
+        private void btnteste_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            prodDAO.Listaproduto = null;
+            CarregarCategorias();
         }
     }
 }
