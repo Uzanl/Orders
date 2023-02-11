@@ -46,7 +46,7 @@ namespace Orders
 
         }
 
-        public void CarregarCategorias()
+        private void CarregarCategorias()
         {
             catDAO.ListarCategorias();
 
@@ -57,12 +57,12 @@ namespace Orders
         private void DynamicButton_Click(object sender, EventArgs e)
 
         {
-
+            
 
             Tuple<int, string> value;
             if (Params.TryGetValue(sender, out value))
             {
-               // MessageBox.Show(value.Item1.ToString() + ": " + value.Item2);
+                // MessageBox.Show(value.Item1.ToString() + ": " + value.Item2);
 
                 catDAO.Listacategoria = null;
                 prodDAO.VerificaNOMEPESQ(value.Item2);
@@ -73,20 +73,22 @@ namespace Orders
                 MessageBox.Show(sender.ToString() + " not found.");
             }
 
-            
+
             //talvez dê para colocar os produtos na mesma tela do catalogo
             // FrmProduto p = new FrmProduto();
             //  p.Owner = this;
             // p.ShowDialog();
         }
 
-        public void AcrescentarButtons()
+        private void AcrescentarButtons()
         {
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-            if (catDAO.Listacategoria!=null)
+            //fazer tratativa de erros caso não exista categoria cadastrada ainda
+
+            if (catDAO.Listacategoria != null)
             {
                 int qtdcategorias = catDAO.Listacategoria.Rows.Count;
 
@@ -128,53 +130,59 @@ namespace Orders
             }
             else
             {
-                flowLayoutPanel1.Controls.Clear();
 
                 //se uma categoria não tiver nenhum produto = não aparecer o botão
-                int qtdproduto = prodDAO.Listaproduto.Rows.Count;
-                
-                for (int i = 0; i < qtdproduto; i++)
+
+                int qtdproduto = 0;
+                if (prodDAO.Listaproduto != null)
                 {
-                    // Create a Button object 
-                    Button dynamicButton = new Button();
 
-                    // Set Button properties
-                    int x = screenWidth - (screenWidth * 25 / 100), y = screenHeight - (screenHeight * 25 / 100);
+                    flowLayoutPanel1.Controls.Clear();
+                    qtdproduto = prodDAO.Listaproduto.Rows.Count;
 
-                    if (orientation.ToString() == "Angle0")
+                    for (int i = 0; i < qtdproduto; i++)
                     {
-                        dynamicButton.Width = (x / 5) - 10;
-                        dynamicButton.Height = (y / 3);
+                        // Create a Button object 
+                        Button dynamicButton = new Button();
+
+                        // Set Button properties
+                        int x = screenWidth - (screenWidth * 25 / 100), y = screenHeight - (screenHeight * 25 / 100);
+
+                        if (orientation.ToString() == "Angle0")
+                        {
+                            dynamicButton.Width = (x / 5) - 10;
+                            dynamicButton.Height = (y / 3);
+                        }
+                        else if (orientation.ToString() == "Angle90")
+                        {
+                            dynamicButton.Width = (x / 3) - 10;
+                            dynamicButton.Height = (y / 5);
+                        }
+
+
+                        // dynamicButton.BackColor = Color.Red;
+                        //dynamicButton.ForeColor = Color.Blue;
+                        // dynamicButton.Location = new Point(20, 150);
+                        dynamicButton.Text = prodDAO.Listaproduto.Rows[i]["nome"].ToString();
+                        // dynamicButton.Name = "DynamicButton";
+                        // dynamicButton.Font = new Font("Georgia", 16);
+                        // Add a Button Click Event handler
+                        dynamicButton.Click += new EventHandler(DynamicButton_Click);
+                        // Add Button to the Form. Placement of the Button
+
+                        // will be based on the Location and Size of button
+
+                        flowLayoutPanel1.Controls.Add(dynamicButton);
                     }
-                    else if (orientation.ToString() == "Angle90")
-                    {
-                        dynamicButton.Width = (x / 3) - 10;
-                        dynamicButton.Height = (y / 5);
-                    }
-
-
-                    // dynamicButton.BackColor = Color.Red;
-                    //dynamicButton.ForeColor = Color.Blue;
-                    // dynamicButton.Location = new Point(20, 150);
-                    dynamicButton.Text = prodDAO.Listaproduto.Rows[i]["nome"].ToString();
-                    // dynamicButton.Name = "DynamicButton";
-                    // dynamicButton.Font = new Font("Georgia", 16);
-                    // Add a Button Click Event handler
-                    dynamicButton.Click += new EventHandler(DynamicButton_Click);
-                    // Add Button to the Form. Placement of the Button
-
-                    // will be based on the Location and Size of button
-
-                    flowLayoutPanel1.Controls.Add(dynamicButton);
+                    btnteste.Visible = true;
                 }
+                else
+                {
+                    MessageBox.Show("Não existe produtos cadastrados para essa categoria!");
+                }
+
             }
 
-
-
-            
-
-
-           
         }
 
 
@@ -188,6 +196,7 @@ namespace Orders
             flowLayoutPanel1.Controls.Clear();
             prodDAO.Listaproduto = null;
             CarregarCategorias();
+            btnteste.Visible = false;
         }
     }
 }

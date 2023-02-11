@@ -42,12 +42,13 @@
             // 
             // btnteste
             // 
-            this.btnteste.Location = new System.Drawing.Point(240, 106);
+            this.btnteste.Location = new System.Drawing.Point(242, 106);
             this.btnteste.Name = "btnteste";
             this.btnteste.Size = new System.Drawing.Size(75, 23);
             this.btnteste.TabIndex = 1;
             this.btnteste.Text = "Voltar";
             this.btnteste.UseVisualStyleBackColor = true;
+            this.btnteste.Visible = false;
             this.btnteste.Click += new System.EventHandler(this.btnteste_Click);
             // 
             // FrmCatalogo
