@@ -101,11 +101,11 @@
     <Compile Include="ClassesDAO\ProdutoDAO.cs" />
     <Compile Include="ClassesDAO\ProdutopedidoDAO.cs" />
     <Compile Include="Classes\Conexao.cs" />
-    <Compile Include="Classes\CustomControl1.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Classes\Itemcontrol.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Classes\CustomControl1.Designer.cs">
-      <DependentUpon>CustomControl1.cs</DependentUpon>
+    <Compile Include="Classes\Itemcontrol.Designer.cs">
+      <DependentUpon>Itemcontrol.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Produtospedido.cs" />
     <Compile Include="FrmCatalogo.cs">
@@ -122,8 +122,8 @@
     <Compile Include="Classes\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Classes\CustomControl1.resx">
-      <DependentUpon>CustomControl1.cs</DependentUpon>
+    <EmbeddedResource Include="Classes\Itemcontrol.resx">
+      <DependentUpon>Itemcontrol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCatalogo.resx">
       <DependentUpon>FrmCatalogo.cs</DependentUpon>

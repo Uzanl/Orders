@@ -29,23 +29,36 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnteste = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(240, 135);
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(288, 162);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1440, 810);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1344, 756);
+            this.flowLayoutPanel1.TabIndex = 7;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1638, 162);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(262, 756);
+            this.flowLayoutPanel2.TabIndex = 9;
             // 
             // btnteste
             // 
-            this.btnteste.Location = new System.Drawing.Point(242, 106);
+            this.btnteste.Location = new System.Drawing.Point(291, 123);
             this.btnteste.Name = "btnteste";
-            this.btnteste.Size = new System.Drawing.Size(75, 23);
-            this.btnteste.TabIndex = 1;
+            this.btnteste.Size = new System.Drawing.Size(94, 33);
+            this.btnteste.TabIndex = 8;
             this.btnteste.Text = "Voltar";
             this.btnteste.UseVisualStyleBackColor = true;
             this.btnteste.Visible = false;
@@ -57,6 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.btnteste);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCatalogo";
@@ -68,8 +82,8 @@
         }
 
         #endregion
-
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnteste;
     }
 }

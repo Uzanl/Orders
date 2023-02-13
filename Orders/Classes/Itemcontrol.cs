@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace Orders.Classes
 {
-    public partial class CustomControl1 : Control
+    public partial class Itemcontrol : UserControl
     {
-        public CustomControl1()
+        public Itemcontrol()
         {
             InitializeComponent();
         }
 
-        protected override void OnPaint(PaintEventArgs pe)
+        private void button1_Click(object sender, EventArgs e)
         {
-            base.OnPaint(pe);
+            this.Controls.Clear();
+            this.Dispose();
         }
     }
 }
