@@ -31,6 +31,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnteste = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -52,6 +53,7 @@
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(262, 756);
             this.flowLayoutPanel2.TabIndex = 9;
+            this.flowLayoutPanel2.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.flowLayoutPanel2_ControlRemoved);
             // 
             // btnteste
             // 
@@ -64,11 +66,23 @@
             this.btnteste.Visible = false;
             this.btnteste.Click += new System.EventHandler(this.btnteste_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1638, 924);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(272, 63);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Finalizar pedido";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnteste);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -85,6 +99,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnteste;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using Orders.Classes;
+﻿using Google.Protobuf.WellKnownTypes;
+using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
@@ -74,6 +75,7 @@ namespace Orders
                     Itemcontrol item = new Itemcontrol();
                     item.label1.Text = value.Item2.ToString();
                     flowLayoutPanel2.Controls.Add(item);
+                    button1.Visible = true;
                 }
 
                 //   for (int i = 0; i<prodDAO.Listaproduto.Rows.Count; i++)
@@ -205,6 +207,17 @@ namespace Orders
             btnteste.Visible = false;
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel2_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            if (flowLayoutPanel2.Controls.Count==0)
+            {
+                button1.Visible = false;
+            }
+        }
     }
 }
