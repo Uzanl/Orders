@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Orders.Classes;
 using Orders.ClassesDAO;
+using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +23,11 @@ namespace Orders
         ClienteDAO cliDAO = new ClienteDAO();
         CategoriaDAO catDAO = new CategoriaDAO();
         ProdutoDAO prodDAO = new ProdutoDAO();
+        // List<string> listaitens = new List<string>();
+        Listaitens lista = new Listaitens();
+
+
+        //   DataTable listaitens;
 
         public Dictionary<object, Tuple<int, string>> Params = new Dictionary<object, Tuple<int, string>>();
         public FrmCatalogo()
@@ -30,24 +37,26 @@ namespace Orders
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
-            Conexao.criar_Conexao();
+
+
+                   Conexao.criar_Conexao();
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
-           
 
 
-            if (orientation.ToString() == "Angle0" || orientation.ToString() == "Angle90")
-            {
-                int x = screenWidth - (screenWidth * 30 / 100), y = screenHeight - (screenHeight * 30 / 100);
-                flowLayoutPanel1.Size = new Size(x, y);
-                flowLayoutPanel1.Location = new Point((screenWidth / 2) - (x / 2), (screenHeight / 2) - (y / 2));
 
-                flowLayoutPanel2.Location = new Point(Convert.ToInt32(flowLayoutPanel1.Size.Width *  21.785/100 + flowLayoutPanel1.Size.Width), flowLayoutPanel1.Location.Y);
-                flowLayoutPanel2.Width =  (screenWidth * 30 / 100)/2 - 16;
-                flowLayoutPanel2.Height = y;
-                // btnProvisorio.Location = new Point(200, 300);
-            }
+            //  if (orientation.ToString() == "Angle0" || orientation.ToString() == "Angle90")
+            // {
+            //     int x = screenWidth - (screenWidth * 30 / 100), y = screenHeight - (screenHeight * 30 / 100);
+            //   flowLayoutPanel1.Size = new Size(x, y);
+            //   flowLayoutPanel1.Location = new Point((screenWidth / 2) - (x / 2), (screenHeight / 2) - (y / 2));
+
+            //   flowLayoutPanel2.Location = new Point(Convert.ToInt32(flowLayoutPanel1.Size.Width *  21.785/100 + flowLayoutPanel1.Size.Width), flowLayoutPanel1.Location.Y);
+            //    flowLayoutPanel2.Width =  (screenWidth * 30 / 100)/2 - 16;
+            //    flowLayoutPanel2.Height = y;
+            // btnProvisorio.Location = new Point(200, 300);
+            //   }
             CarregarCategorias();
         }
 
@@ -59,6 +68,8 @@ namespace Orders
 
         private void DynamicButton_Click(object sender, EventArgs e)
         {
+            //var listaitens = new List<string> { };
+
             Tuple<int, string> value;
             if (Params.TryGetValue(sender, out value))
             {
@@ -72,20 +83,16 @@ namespace Orders
                 }
                 else
                 {
-                    Itemcontrol item = new Itemcontrol();
-                    item.label1.Text = value.Item2.ToString();
-                    flowLayoutPanel2.Controls.Add(item);
-                    button1.Visible = true;
+                    if (!lista.Lista.Contains(value.Item2.ToString()))
+                    {
+                        Itemcontrol item = new Itemcontrol();
+                        item.label1.Text = value.Item2.ToString();                 
+                        flowLayoutPanel2.Controls.Add(item);
+                        button1.Visible = true;
+                        lista.Lista.Add(value.Item2.ToString());
+                      //  flowLayoutPanel2.Controls.IndexOf(item.label1);
+                    }
                 }
-
-                //   for (int i = 0; i<prodDAO.Listaproduto.Rows.Count; i++)
-                // {
-
-                //}
-                
-                 
-                
-               
 
             }
             else
@@ -203,6 +210,7 @@ namespace Orders
         {
             flowLayoutPanel1.Controls.Clear();
             prodDAO.Listaproduto = null;
+           // lista.Lista.Clear();
             CarregarCategorias();
             btnteste.Visible = false;
         }
@@ -214,10 +222,25 @@ namespace Orders
 
         private void flowLayoutPanel2_ControlRemoved(object sender, ControlEventArgs e)
         {
-            if (flowLayoutPanel2.Controls.Count==0)
+            if (flowLayoutPanel2.Controls.Count == 0)
             {
                 button1.Visible = false;
             }
+        }
+
+        private void flowLayoutPanel2_ControlAdded(object sender, ControlEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          //  lista.Lista.Remove("suco de melancia");
+        }
+
+        public void Excluiritem(string nome)
+        {
+            lista.Lista.Remove(nome);
         }
     }
 }

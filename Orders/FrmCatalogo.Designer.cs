@@ -53,6 +53,7 @@
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(262, 756);
             this.flowLayoutPanel2.TabIndex = 9;
+            this.flowLayoutPanel2.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.flowLayoutPanel2_ControlAdded);
             this.flowLayoutPanel2.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.flowLayoutPanel2_ControlRemoved);
             // 
             // btnteste
@@ -70,7 +71,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(1638, 924);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(272, 63);
+            this.button1.Size = new System.Drawing.Size(262, 63);
             this.button1.TabIndex = 10;
             this.button1.Text = "Finalizar pedido";
             this.button1.UseVisualStyleBackColor = true;
