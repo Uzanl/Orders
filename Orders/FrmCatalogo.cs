@@ -23,11 +23,7 @@ namespace Orders
         ClienteDAO cliDAO = new ClienteDAO();
         CategoriaDAO catDAO = new CategoriaDAO();
         ProdutoDAO prodDAO = new ProdutoDAO();
-        // List<string> listaitens = new List<string>();
-        Listaitens lista = new Listaitens();
-
-
-        //   DataTable listaitens;
+        List<string> listaitens = new List<string>();
 
         public Dictionary<object, Tuple<int, string>> Params = new Dictionary<object, Tuple<int, string>>();
         public FrmCatalogo()
@@ -39,7 +35,7 @@ namespace Orders
         {
 
 
-                   Conexao.criar_Conexao();
+            Conexao.criar_Conexao();
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -68,8 +64,7 @@ namespace Orders
 
         private void DynamicButton_Click(object sender, EventArgs e)
         {
-            //var listaitens = new List<string> { };
-
+           
             Tuple<int, string> value;
             if (Params.TryGetValue(sender, out value))
             {
@@ -83,14 +78,14 @@ namespace Orders
                 }
                 else
                 {
-                    if (!lista.Lista.Contains(value.Item2.ToString()))
+                    if (!listaitens.Contains(value.Item2.ToString()))
                     {
                         Itemcontrol item = new Itemcontrol();
-                        item.label1.Text = value.Item2.ToString();                 
-                        flowLayoutPanel2.Controls.Add(item);
-                        button1.Visible = true;
-                        lista.Lista.Add(value.Item2.ToString());
-                      //  flowLayoutPanel2.Controls.IndexOf(item.label1);
+                        item.label1.Text = value.Item2.ToString();
+                        FlpItens.Controls.Add(item);
+                        BtnFinalizarpedido.Visible = true;
+                        listaitens.Add(value.Item2.ToString());
+                        //  flowLayoutPanel2.Controls.IndexOf(item.label1);
                     }
                 }
 
@@ -148,7 +143,7 @@ namespace Orders
 
                     // will be based on the Location and Size of button
 
-                    flowLayoutPanel1.Controls.Add(dynamicButton);
+                    FlpCategorias.Controls.Add(dynamicButton);
                 }
             }
             else
@@ -160,7 +155,7 @@ namespace Orders
                 if (prodDAO.Listaproduto != null)
                 {
 
-                    flowLayoutPanel1.Controls.Clear();
+                    FlpCategorias.Controls.Clear();
                     qtdproduto = prodDAO.Listaproduto.Rows.Count;
 
                     for (int i = 0; i < qtdproduto; i++)
@@ -196,9 +191,9 @@ namespace Orders
 
                         // will be based on the Location and Size of button
 
-                        flowLayoutPanel1.Controls.Add(dynamicButton);
+                        FlpCategorias.Controls.Add(dynamicButton);
                     }
-                    btnteste.Visible = true;
+                    BtnVoltar.Visible = true;
                 }
                 else
                 {
@@ -206,41 +201,26 @@ namespace Orders
                 }
             }
         }
-        private void btnteste_Click(object sender, EventArgs e)
-        {
-            flowLayoutPanel1.Controls.Clear();
-            prodDAO.Listaproduto = null;
-           // lista.Lista.Clear();
-            CarregarCategorias();
-            btnteste.Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel2_ControlRemoved(object sender, ControlEventArgs e)
-        {
-            if (flowLayoutPanel2.Controls.Count == 0)
-            {
-                button1.Visible = false;
-            }
-        }
-
-        private void flowLayoutPanel2_ControlAdded(object sender, ControlEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-          //  lista.Lista.Remove("suco de melancia");
-        }
-
+    
         public void Excluiritem(string nome)
         {
-            lista.Lista.Remove(nome);
+            listaitens.Remove(nome);
+        }
+
+        private void BtnVoltar_Click(object sender, EventArgs e)
+        {
+            FlpCategorias.Controls.Clear();
+            prodDAO.Listaproduto = null;
+            CarregarCategorias();
+            BtnVoltar.Visible = false;
+        }
+
+        private void FlpItens_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            if (FlpItens.Controls.Count == 0)
+            {
+                BtnFinalizarpedido.Visible = false;
+            }
         }
     }
 }

@@ -107,7 +107,6 @@
     <Compile Include="Classes\Itemcontrol.Designer.cs">
       <DependentUpon>Itemcontrol.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Listaitens.cs" />
     <Compile Include="Classes\Produtospedido.cs" />
     <Compile Include="FrmCatalogo.cs">
       <SubType>Form</SubType>
