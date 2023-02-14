@@ -81,7 +81,7 @@ namespace Orders
                     if (!listaitens.Contains(value.Item2.ToString()))
                     {
                         Itemcontrol item = new Itemcontrol();
-                        item.label1.Text = value.Item2.ToString();
+                        item.LblItem.Text = value.Item2.ToString();
                         FlpItens.Controls.Add(item);
                         BtnFinalizarpedido.Visible = true;
                         listaitens.Add(value.Item2.ToString());

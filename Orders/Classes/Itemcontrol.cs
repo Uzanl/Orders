@@ -12,26 +12,18 @@ namespace Orders.Classes
 {
     public partial class Itemcontrol : UserControl
     {
-        //Itemcontrol lista = new Itemcontrol(Listaitens);
-
-        //  Listaitens lista = new Listaitens();
         public Itemcontrol()
         {
             InitializeComponent();
 
            
         }
-       // FrmCatalogo frm1 = new FrmCatalogo();
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            FrmCatalogo MAIN = this.ParentForm as FrmCatalogo;          
-            MAIN.Excluiritem(label1.Text);          
+            FrmCatalogo MAIN = this.ParentForm as FrmCatalogo;
+            MAIN.Excluiritem(LblItem.Text);
             this.Controls.Clear();
             this.Dispose();
-
-
         }
-
-     
     }
 }
