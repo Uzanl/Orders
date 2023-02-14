@@ -36,9 +36,9 @@ namespace Orders
 
 
             Conexao.criar_Conexao();
-            var orientation = SystemInformation.ScreenOrientation;
-            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+           // var orientation = SystemInformation.ScreenOrientation;
+            //int screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            //int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
 
 
@@ -134,6 +134,21 @@ namespace Orders
                     //dynamicButton.ForeColor = Color.Blue;
                     // dynamicButton.Location = new Point(20, 150);
                     dynamicButton.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
+
+                    try
+                    {
+                        dynamicButton.BackgroundImage = System.Drawing.Image.FromFile(catDAO.Listacategoria.Rows[i]["imagem"].ToString());
+                        dynamicButton.BackgroundImageLayout = ImageLayout.Stretch;
+                    }
+                    catch
+                    {
+
+                    }
+                    // dynamicButton.BackgroundImage = System.Drawing.Image.FromFile("C:\\Users\\Uzann\\Pictures\\v54.png");
+
+                    
+
+
                     // dynamicButton.Name = "DynamicButton";
                     // dynamicButton.Font = new Font("Georgia", 16);
                     // Add a Button Click Event handler

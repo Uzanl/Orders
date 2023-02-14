@@ -29,13 +29,14 @@ namespace Orders.ClassesDAO
         public DataTable ListarCategorias()
         {
             DataTable listaDescripto;
-            executarComando("SELECT nome as NOME FROM CATEGORIA;");
+            executarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA;");
             listaDescripto = tabela_memoria.Clone();
 
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)
             {
                 DataRow linha = listaDescripto.NewRow();
                 linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
+                linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString().Replace("/","\\");
                 listaDescripto.Rows.Add(linha);
             }
             listacategoria = listaDescripto;
