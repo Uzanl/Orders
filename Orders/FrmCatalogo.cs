@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -36,7 +37,7 @@ namespace Orders
 
 
             Conexao.criar_Conexao();
-           // var orientation = SystemInformation.ScreenOrientation;
+            // var orientation = SystemInformation.ScreenOrientation;
             //int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             //int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
@@ -64,7 +65,7 @@ namespace Orders
 
         private void DynamicButton_Click(object sender, EventArgs e)
         {
-           
+
             Tuple<int, string> value;
             if (Params.TryGetValue(sender, out value))
             {
@@ -135,22 +136,19 @@ namespace Orders
                     // dynamicButton.Location = new Point(20, 150);
                     dynamicButton.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
 
-                    try
+                    string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
+
+                    if (File.Exists(path))
                     {
-                        dynamicButton.BackgroundImage = System.Drawing.Image.FromFile(catDAO.Listacategoria.Rows[i]["imagem"].ToString());
+                        dynamicButton.BackgroundImage = System.Drawing.Image.FromFile(path);
                         dynamicButton.BackgroundImageLayout = ImageLayout.Stretch;
                     }
-                    catch
-                    {
-
-                    }
-                    // dynamicButton.BackgroundImage = System.Drawing.Image.FromFile("C:\\Users\\Uzann\\Pictures\\v54.png");
-
-                    
-
-
+                                                   
+                    dynamicButton.Font = new Font("Georgia", 16);
+                    dynamicButton.TextAlign = ContentAlignment.TopCenter;
+                   
                     // dynamicButton.Name = "DynamicButton";
-                    // dynamicButton.Font = new Font("Georgia", 16);
+                    
                     // Add a Button Click Event handler
                     Params.Add(dynamicButton, new Tuple<int, string>(1, dynamicButton.Text));
                     dynamicButton.Click += DynamicButton_Click;
@@ -216,7 +214,7 @@ namespace Orders
                 }
             }
         }
-    
+
         public void Excluiritem(string nome)
         {
             listaitens.Remove(nome);

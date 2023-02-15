@@ -154,7 +154,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\cafe.png" />
     <Content Include="Resources\hamburger2.png" />
+    <Content Include="Resources\suco.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

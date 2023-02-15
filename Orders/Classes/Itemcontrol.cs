@@ -15,8 +15,6 @@ namespace Orders.Classes
         public Itemcontrol()
         {
             InitializeComponent();
-
-           
         }
         private void BtnExcluir_Click(object sender, EventArgs e)
         {

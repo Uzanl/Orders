@@ -38,7 +38,6 @@
             // 
             this.FlpCategorias.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FlpCategorias.AutoScroll = true;
-            this.FlpCategorias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlpCategorias.Location = new System.Drawing.Point(288, 162);
             this.FlpCategorias.Name = "FlpCategorias";
             this.FlpCategorias.Size = new System.Drawing.Size(1344, 756);
