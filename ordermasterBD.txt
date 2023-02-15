@@ -23,16 +23,18 @@ primary key(id_marca)
 CREATE TABLE CATEGORIA(
 id_categoria int not null auto_increment,
 nome text not null,
+imagem text,
 primary key(id_categoria)
 );
-insert into categoria values(0,"suco");
-insert into categoria values(0,"lanche");
-insert into categoria values(0,"cafe");
-insert into categoria values(0,"energetico");
+insert into categoria values(0,"sucos","C:/Users/Uzann/source/repos/Orders/Orders/Resources/suco.png");
+insert into categoria values(0,"lanches","C:/Users/Uzann/source/repos/Orders/Orders/Resources/hamburger2.png");
+insert into categoria values(0,"cafés","C:/Users/Uzann/source/repos/Orders/Orders/Resources/cafe.png");
+insert into categoria values(0,"energéticos",null);
+
 
 CREATE TABLE PRODUTO(
 id_produto int not null auto_increment,
-produto text not null,
+nome text not null,
 id_marca int,
 id_categoria int not null,
 primary key (id_produto),
@@ -51,12 +53,18 @@ insert into produto values(0,"cafe",null,3);
 insert into produto values(0,"cafe com leite",null,3);
 insert into produto values(0,"cafe expresso",null,3);
 
-CREATE TABLE INGREDIENTES_PRODUTO(
+CREATE TABLE INGREDIENTE(
 id_ingrediente int not null auto_increment,
-ingrediente text not null,
+nome text not null,
+primary key(id_ingrediente)
+);
+
+CREATE TABLE INGREDIENTES_PRODUTO(
+id_ingrediente int not null,
 id_produto int not null,
-primary key(id_ingrediente),
-foreign key(id_produto) references produto(id_produto)
+primary key(id_ingrediente,id_produto),
+foreign key(id_produto) references produto(id_produto),
+foreign key(id_ingrediente) references ingrediente(id_ingrediente)
 );
 
 
@@ -86,10 +94,21 @@ insert into produtos_pedido values(2,7);
 insert into produtos_pedido values(3,5);
 insert into produtos_pedido values(3,2);
 
-select c.nome,pr.produto,p.data_pedido,p.hora from pedido p inner join cliente c ON
+select c.nome,pr.nome,p.data_pedido,p.hora from pedido p inner join cliente c ON
 c.id_cliente = p.id_cliente inner join produtos_pedido pp on pp.id_pedido = p.id_pedido
 inner join produto pr on pr.id_produto = pp.id_produto;
 
+select p.nome as NOME from produto p inner join categoria c ON
+c.id_categoria = p.id_categoria
+WHERE c.nome = "suco";
 
 
 **adicionar tabela ingrediente para futuramente não ter que ficar digitando o mesmo ingrediente.
+** adicionar tamanho do copo na bebida
+** adicionar combos
+** adicionar status do produto ex indisponivel
+** adicionar campo de preços ao produto
+** adicionar tabela usuarios. tipos: adm, cozinha, garçom, editor etc
+
+
+C:/Users/Uzann/source/repos/Orders/Orders/Resources/hamburger2.png
