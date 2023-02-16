@@ -34,10 +34,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtCategoria = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BtnCadastrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtCadNome = new System.Windows.Forms.TextBox();
+            this.BtnAdicionarImagem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -89,49 +89,50 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.BtnCadastrar);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.txtCadNome);
+            this.panel2.Controls.Add(this.BtnAdicionarImagem);
             this.panel2.Location = new System.Drawing.Point(12, 83);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(403, 153);
             this.panel2.TabIndex = 11;
             this.panel2.Visible = false;
             // 
-            // button3
+            // BtnCadastrar
             // 
-            this.button3.Location = new System.Drawing.Point(32, 94);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Salvar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BtnCadastrar.Location = new System.Drawing.Point(29, 82);
+            this.BtnCadastrar.Name = "BtnCadastrar";
+            this.BtnCadastrar.Size = new System.Drawing.Size(75, 23);
+            this.BtnCadastrar.TabIndex = 20;
+            this.BtnCadastrar.Text = "Salvar";
+            this.BtnCadastrar.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 11);
+            this.label2.Location = new System.Drawing.Point(29, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 19;
             this.label2.Text = "Nome:";
             // 
-            // textBox2
+            // txtCadNome
             // 
-            this.textBox2.Location = new System.Drawing.Point(32, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 18;
+            this.txtCadNome.Location = new System.Drawing.Point(29, 27);
+            this.txtCadNome.Name = "txtCadNome";
+            this.txtCadNome.Size = new System.Drawing.Size(100, 20);
+            this.txtCadNome.TabIndex = 18;
             // 
-            // button1
+            // BtnAdicionarImagem
             // 
-            this.button1.Location = new System.Drawing.Point(32, 53);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Adicionar imagem";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnAdicionarImagem.Location = new System.Drawing.Point(29, 53);
+            this.BtnAdicionarImagem.Name = "BtnAdicionarImagem";
+            this.BtnAdicionarImagem.Size = new System.Drawing.Size(100, 23);
+            this.BtnAdicionarImagem.TabIndex = 17;
+            this.BtnAdicionarImagem.Text = "Adicionar imagem";
+            this.BtnAdicionarImagem.UseVisualStyleBackColor = true;
+            this.BtnAdicionarImagem.Click += new System.EventHandler(this.BtnAdicionarImagem_Click);
             // 
             // FrmCategoria
             // 
@@ -160,9 +161,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtCategoria;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BtnCadastrar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtCadNome;
+        private System.Windows.Forms.Button BtnAdicionarImagem;
     }
 }

@@ -140,5 +140,12 @@ namespace Orders
         {
             listacategorias.Remove(nome);
         }
+
+        private void BtnAdicionarImagem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }

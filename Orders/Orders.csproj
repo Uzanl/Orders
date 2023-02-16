@@ -213,7 +213,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Scripts\metisMenu.js.map" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -231,14 +230,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\metisMenu.css" />
-    <Content Include="Content\metisMenu.min.css" />
     <Content Include="Resources\cafe.png" />
     <Content Include="Resources\hamburger2.png" />
     <Content Include="Resources\lixo.png" />
     <Content Include="Resources\suco.png" />
-    <Content Include="Scripts\metisMenu.js" />
-    <Content Include="Scripts\metisMenu.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
