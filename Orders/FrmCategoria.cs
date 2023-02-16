@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -46,6 +47,15 @@ namespace Orders
                     {
                         Cat cat = new Cat();
                         cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
+
+                        string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
+
+                        if (File.Exists(path))
+                        {
+                            cat.Pctcategoria.BackgroundImage = System.Drawing.Image.FromFile(path);
+                            cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                        }
+
                         FlpCat.Controls.Add(cat);
                         listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
 
@@ -92,6 +102,15 @@ namespace Orders
                         {
                             Cat cat = new Cat();
                             cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
+
+                            string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
+
+                            if (File.Exists(path))
+                            {
+                                cat.Pctcategoria.BackgroundImage = System.Drawing.Image.FromFile(path);
+                                cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                            }
+
                             FlpCat.Controls.Add(cat);
                             listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
                             
@@ -123,6 +142,15 @@ namespace Orders
                         {
                             Cat cat = new Cat();
                             cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
+
+                            string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
+
+                            if (File.Exists(path))
+                            {
+                                cat.Pctcategoria.BackgroundImage = System.Drawing.Image.FromFile(path);
+                                cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                            }
+
                             FlpCat.Controls.Add(cat);
                             listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
 

@@ -143,6 +143,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.FlpCat);
             this.Name = "FrmCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastrarCategoria";
             this.Load += new System.EventHandler(this.FrmCadCategoria_Load);
             this.panel1.ResumeLayout(false);
