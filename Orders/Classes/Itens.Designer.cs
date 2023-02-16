@@ -1,6 +1,6 @@
 ﻿namespace Orders.Classes
 {
-    partial class Itemcontrol
+    partial class Itens
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -36,12 +36,13 @@
             // 
             // BtnExcluir
             // 
+            this.BtnExcluir.BackgroundImage = global::Orders.Properties.Resources.lixo;
+            this.BtnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnExcluir.Dock = System.Windows.Forms.DockStyle.Left;
             this.BtnExcluir.Location = new System.Drawing.Point(0, 0);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(75, 65);
             this.BtnExcluir.TabIndex = 0;
-            this.BtnExcluir.Text = "Excluir";
             this.BtnExcluir.UseVisualStyleBackColor = true;
             this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
@@ -62,13 +63,13 @@
             this.LblItem.TabIndex = 0;
             this.LblItem.Text = "Suco de melancia";
             // 
-            // Itemcontrol
+            // Itens
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BtnExcluir);
-            this.Name = "Itemcontrol";
+            this.Name = "Itens";
             this.Size = new System.Drawing.Size(260, 65);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

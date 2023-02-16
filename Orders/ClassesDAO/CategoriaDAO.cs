@@ -1,7 +1,6 @@
-﻿using System;
-using System.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Orders.Classes;
+using System.Data;
 
 namespace Orders.ClassesDAO
 {
@@ -36,7 +35,25 @@ namespace Orders.ClassesDAO
             {
                 DataRow linha = listaDescripto.NewRow();
                 linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
-                linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString().Replace("/","\\");
+                linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString().Replace("/", "\\");
+                listaDescripto.Rows.Add(linha);
+            }
+            listacategoria = listaDescripto;
+            return listaDescripto;
+        }
+        #endregion
+
+        #region LISTA CATEGORIA POR NOME
+        public DataTable ListarCatLike(string categoria)
+        {
+            DataTable listaDescripto;
+            executarComando("SELECT nome as NOME FROM CATEGORIA WHERE NOME LIKE '" + categoria + "%';");
+            listaDescripto = tabela_memoria.Clone();
+
+            for (int i = 0; i < tabela_memoria.Rows.Count; i++)
+            {
+                DataRow linha = listaDescripto.NewRow();
+                linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
                 listaDescripto.Rows.Add(linha);
             }
             listacategoria = listaDescripto;

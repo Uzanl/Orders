@@ -1,20 +1,11 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Orders.Classes;
+﻿using Orders.Classes;
 using Orders.ClassesDAO;
-using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
+
 
 
 namespace Orders
@@ -54,6 +45,8 @@ namespace Orders
             //    flowLayoutPanel2.Height = y;
             // btnProvisorio.Location = new Point(200, 300);
             //   }
+
+          
             CarregarCategorias();
         }
 
@@ -81,7 +74,7 @@ namespace Orders
                 {
                     if (!listaitens.Contains(value.Item2.ToString()))
                     {
-                        Itemcontrol item = new Itemcontrol();
+                        Itens item = new Itens();                      
                         item.LblItem.Text = value.Item2.ToString();
                         FlpItens.Controls.Add(item);
                         BtnFinalizarpedido.Visible = true;
@@ -143,12 +136,12 @@ namespace Orders
                         dynamicButton.BackgroundImage = System.Drawing.Image.FromFile(path);
                         dynamicButton.BackgroundImageLayout = ImageLayout.Stretch;
                     }
-                                                   
-                    dynamicButton.Font = new Font("Georgia", 16);
+
+                    dynamicButton.Font = new Font("Arial", 12);
                     dynamicButton.TextAlign = ContentAlignment.TopCenter;
-                   
+                    // dynamicButton.FlatStyle = FlatStyle.Flat;
                     // dynamicButton.Name = "DynamicButton";
-                    
+
                     // Add a Button Click Event handler
                     Params.Add(dynamicButton, new Tuple<int, string>(1, dynamicButton.Text));
                     dynamicButton.Click += DynamicButton_Click;
@@ -234,6 +227,13 @@ namespace Orders
             {
                 BtnFinalizarpedido.Visible = false;
             }
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            FrmCategoria i = new FrmCategoria();
+            i.ShowDialog();
         }
     }
 }

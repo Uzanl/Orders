@@ -1,7 +1,7 @@
-﻿using System;
-using System.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Orders.Classes;
+using System;
+using System.Data;
 
 
 namespace Orders.ClassesDAO
@@ -15,7 +15,7 @@ namespace Orders.ClassesDAO
         Produto prod = new Produto();
         internal Produto Prod { get => prod; set => prod = value; }
         public DataTable Listaproduto { get => listaproduto; set => listaproduto = value; }
-    
+
         DataTable listaproduto;
 
         private void executarComando(string comando)
@@ -35,7 +35,7 @@ namespace Orders.ClassesDAO
                 //pes.Id_pessoa = Convert.ToInt32(tabela_memoria.Rows[0]["ID"]);
 
                 prod.Nome = tabela_memoria.Rows[0]["NOME"].ToString();
-             
+
 
 
                 if (tabela_memoria.Rows.Count > 1)

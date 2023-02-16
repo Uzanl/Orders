@@ -1,7 +1,6 @@
-﻿using System;
-using System.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Orders.Classes;
+using System.Data;
 
 namespace Orders.ClassesDAO
 {
@@ -13,8 +12,8 @@ namespace Orders.ClassesDAO
         Cliente cli = new Cliente();
 
         internal Cliente Cli { get => cli; set => cli = value; }
-       
-        DataTable listacliente;     
+
+        DataTable listacliente;
         public DataTable Listacliente { get => listacliente; set => listacliente = value; }
 
         private void executarComando(string comando)

@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Orders
+namespace Teste
 {
     internal static class Program
     {
@@ -13,7 +16,7 @@ namespace Orders
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCatalogo());
+            Application.Run(new Form1());
         }
     }
 }

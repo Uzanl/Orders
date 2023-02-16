@@ -1,7 +1,5 @@
-﻿using System;
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace Orders.Classes
 {
