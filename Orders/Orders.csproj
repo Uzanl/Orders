@@ -232,7 +232,9 @@
   <ItemGroup>
     <Content Include="Resources\cafe.png" />
     <Content Include="Resources\hamburger2.png" />
+    <None Include="Resources\kisspng-fizzy-drinks-computer-icons-meal-food-lunch-food-icon-5ac500dca48218.0420167015228602526738.png" />
     <Content Include="Resources\lixo.png" />
+    <None Include="Resources\monster.png" />
     <Content Include="Resources\suco.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

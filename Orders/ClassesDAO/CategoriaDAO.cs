@@ -61,5 +61,12 @@ namespace Orders.ClassesDAO
             return listaDescripto;
         }
         #endregion
+
+        #region INSERIR NOVA CATEGORIA
+        public void Inserir(Categoria cat)
+        {
+            executarComando("INSERT INTO CATEGORIA VALUES(0,'" + cat.Nome + "','" + cat.Imagem.Replace("\\","/") + "');");
+        }
+        #endregion
     }
 }

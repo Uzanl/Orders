@@ -38,8 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCadNome = new System.Windows.Forms.TextBox();
             this.BtnAdicionarImagem = new System.Windows.Forms.Button();
+            this.PctCadCat = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctCadCat)).BeginInit();
             this.SuspendLayout();
             // 
             // FlpCat
@@ -47,7 +49,7 @@
             this.FlpCat.AutoScroll = true;
             this.FlpCat.Location = new System.Drawing.Point(12, 242);
             this.FlpCat.Name = "FlpCat";
-            this.FlpCat.Size = new System.Drawing.Size(403, 282);
+            this.FlpCat.Size = new System.Drawing.Size(403, 462);
             this.FlpCat.TabIndex = 1;
             // 
             // panel1
@@ -89,6 +91,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.PctCadCat);
             this.panel2.Controls.Add(this.BtnCadastrar);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtCadNome);
@@ -107,6 +110,7 @@
             this.BtnCadastrar.TabIndex = 20;
             this.BtnCadastrar.Text = "Salvar";
             this.BtnCadastrar.UseVisualStyleBackColor = true;
+            this.BtnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
             // 
             // label2
             // 
@@ -134,11 +138,21 @@
             this.BtnAdicionarImagem.UseVisualStyleBackColor = true;
             this.BtnAdicionarImagem.Click += new System.EventHandler(this.BtnAdicionarImagem_Click);
             // 
+            // PctCadCat
+            // 
+            this.PctCadCat.BackColor = System.Drawing.Color.Transparent;
+            this.PctCadCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PctCadCat.Location = new System.Drawing.Point(135, 9);
+            this.PctCadCat.Name = "PctCadCat";
+            this.PctCadCat.Size = new System.Drawing.Size(132, 112);
+            this.PctCadCat.TabIndex = 21;
+            this.PctCadCat.TabStop = false;
+            // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 536);
+            this.ClientSize = new System.Drawing.Size(430, 716);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.FlpCat);
@@ -150,6 +164,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctCadCat)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,5 +181,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCadNome;
         private System.Windows.Forms.Button BtnAdicionarImagem;
+        private System.Windows.Forms.PictureBox PctCadCat;
     }
 }

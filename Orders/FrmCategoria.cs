@@ -1,27 +1,18 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Newtonsoft.Json.Linq;
-using Orders.Classes;
+﻿using Orders.Classes;
 using Orders.ClassesDAO;
-using Org.BouncyCastle.Asn1.Pkcs;
-using Org.BouncyCastle.Crypto.Engines;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
+
 
 namespace Orders
 {
     public partial class FrmCategoria : Form
     {
         CategoriaDAO catDAO = new CategoriaDAO();
+        Categoria cat = new Categoria();
         List<string> listacategorias = new List<string>();
 
 
@@ -52,7 +43,7 @@ namespace Orders
 
                         if (File.Exists(path))
                         {
-                            cat.Pctcategoria.BackgroundImage = System.Drawing.Image.FromFile(path);
+                            cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
                             cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
                         }
 
@@ -107,7 +98,7 @@ namespace Orders
 
                             if (File.Exists(path))
                             {
-                                cat.Pctcategoria.BackgroundImage = System.Drawing.Image.FromFile(path);
+                                cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
                                 cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
                             }
 
@@ -147,7 +138,7 @@ namespace Orders
 
                             if (File.Exists(path))
                             {
-                                cat.Pctcategoria.BackgroundImage = System.Drawing.Image.FromFile(path);
+                                cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
                                 cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
                             }
 
@@ -171,9 +162,83 @@ namespace Orders
 
         private void BtnAdicionarImagem_Click(object sender, EventArgs e)
         {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Selecionar Arquivo";
+            op.InitialDirectory = @"C:\";
+            op.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+            op.FilterIndex = 1;
+            op.ShowDialog();
+            if (File.Exists(op.FileName))
+            {
+               
+                PctCadCat.BackgroundImage = Image.FromFile(op.FileName);
+                PctCadCat.BackgroundImageLayout = ImageLayout.Stretch;
+                cat.Imagem = op.FileName;
 
+            }
         }
 
-      
+        private void BtnCadastrar_Click(object sender, EventArgs e)
+        {
+
+            if (txtCadNome.Text== string.Empty||PctCadCat.ImageLocation==string.Empty)
+            {
+                if (txtCadNome.Text == string.Empty)
+                    txtCadNome.BackColor = Color.Red;
+
+                MessageBox.Show("Favor preencher as informações");
+            }
+            else
+            {
+                try
+                {
+                    cat.Nome = txtCadNome.Text;
+
+                    
+                    catDAO.Inserir(cat);
+                    PctCadCat.Image = null;
+                    catDAO.ListarCategorias();
+
+                    if (catDAO.Listacategoria.Rows.Count != 0)
+                    {
+
+                        int qtdcategorias = catDAO.Listacategoria.Rows.Count;
+
+                        for (int i = 0; i < qtdcategorias; i++)
+                        {
+                            if (!listacategorias.Contains(catDAO.Listacategoria.Rows[i]["nome"].ToString()))
+                            {
+                                Cat cat = new Cat();
+                                cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
+
+                                string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
+
+                                if (File.Exists(path))
+                                {
+                                    cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
+                                    cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                                }
+
+                                FlpCat.Controls.Add(cat);
+                                listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        listacategorias.Clear();
+                        FlpCat.Controls.Clear();
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Favor verificar as informações digitadas !!!");
+                }
+            }
+
+          
+        }
     }
 }
