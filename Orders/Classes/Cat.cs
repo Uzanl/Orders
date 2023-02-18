@@ -29,5 +29,33 @@ namespace Orders.Classes
             this.Controls.Clear();
             this.Dispose();
         }
+
+        private void BtnExpandir_Click(object sender, EventArgs e)
+        {
+           
+
+            if (this.Height < 410)
+            {
+                this.Height = 410;
+                ProdutoControl pc = new ProdutoControl();
+                FlpProduto.Controls.Add(pc);
+                BtnExpandir.Text = "-";
+
+            }
+            else
+            {
+                BtnExpandir.Text = "+";
+                this.Height = 122;
+                FlpProduto.Controls.Clear();
+            }
+
+
+
+
+
+
+            // FrmCategoria MAIN = this.ParentForm as FrmCategoria;
+            // MAIN.Excluiritem(LblCategorias.Text);
+        }
     }
 }

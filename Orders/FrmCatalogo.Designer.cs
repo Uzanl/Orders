@@ -71,14 +71,14 @@
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // pesquisarToolStripMenuItem
@@ -134,7 +134,7 @@
             this.FlpItens.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FlpItens.AutoScroll = true;
             this.FlpItens.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlpItens.Location = new System.Drawing.Point(1638, 147);
+            this.FlpItens.Location = new System.Drawing.Point(1638, 137);
             this.FlpItens.Name = "FlpItens";
             this.FlpItens.Size = new System.Drawing.Size(262, 756);
             this.FlpItens.TabIndex = 17;
@@ -144,7 +144,7 @@
             this.FlpCategorias.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FlpCategorias.AutoScroll = true;
             this.FlpCategorias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlpCategorias.Location = new System.Drawing.Point(288, 147);
+            this.FlpCategorias.Location = new System.Drawing.Point(288, 137);
             this.FlpCategorias.Name = "FlpCategorias";
             this.FlpCategorias.Size = new System.Drawing.Size(1344, 756);
             this.FlpCategorias.TabIndex = 15;
@@ -153,13 +153,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.BtnFinalizarpedido);
             this.Controls.Add(this.BtnVoltar);
             this.Controls.Add(this.FlpItens);
             this.Controls.Add(this.FlpCategorias);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

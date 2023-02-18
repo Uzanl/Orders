@@ -2,6 +2,7 @@
 using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -21,43 +22,15 @@ namespace Orders
             InitializeComponent();
         }
 
-        private void FrmCadCategoria_Load(object sender, EventArgs e)
+        private void FrmCategoria_Load(object sender, EventArgs e)
         {
-            // catDAO.Listacategoria = null;
+            FrmRefresh();
+        }
 
-            catDAO.ListarCategorias();
-
-            if (catDAO.Listacategoria.Rows.Count != 0)
-            {
-
-                int qtdcategorias = catDAO.Listacategoria.Rows.Count;
-
-                for (int i = 0; i < qtdcategorias; i++)
-                {
-                    if (!listacategorias.Contains(catDAO.Listacategoria.Rows[i]["nome"].ToString()))
-                    {
-                        Cat cat = new Cat();
-                        cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
-
-                        string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
-
-                        if (File.Exists(path))
-                        {
-                            cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
-                            cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
-                        }
-
-                        FlpCat.Controls.Add(cat);
-                        listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
-
-                    }
-                }
-            }
-            else
-            {
-                listacategorias.Clear();
-                FlpCat.Controls.Clear();
-            }
+        private void FrmRefresh()
+        {
+            DataTable lista = catDAO.ListarCategorias();
+            CarregarCat(lista);
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -76,83 +49,17 @@ namespace Orders
         {
             listacategorias.Clear();
             FlpCat.Controls.Clear();
-            //pra cadastrar no banco vai precisar usar a listacategorias
             if (TxtCategoria.Text != string.Empty)
             {
-                   
-                    catDAO.ListarCatLike(TxtCategoria.Text);
-               
-                if (catDAO.Listacategoria.Rows.Count != 0)
-                {
-                    
-                    int qtdcategorias = catDAO.Listacategoria.Rows.Count;
-
-                    for (int i = 0; i < qtdcategorias; i++)
-                    {                       
-                        if (!listacategorias.Contains(catDAO.Listacategoria.Rows[i]["nome"].ToString()))
-                        {
-                            Cat cat = new Cat();
-                            cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
-
-                            string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
-
-                            if (File.Exists(path))
-                            {
-                                cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
-                                cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
-                            }
-
-                            FlpCat.Controls.Add(cat);
-                            listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
-                            
-                        }
-                    }
-                }
-                else
-                {
-                    listacategorias.Clear();
-                    FlpCat.Controls.Clear();
-                }
+                DataTable lista = catDAO.ListarCatLike(TxtCategoria.Text);
+                CarregarCat(lista);
             }
             else
             {
-                //catDAO.Listacategoria.Clear();
                 listacategorias.Clear();
                 FlpCat.Controls.Clear();
-
                 catDAO.ListarCategorias();
-
-                if (catDAO.Listacategoria.Rows.Count != 0)
-                {
-
-                    int qtdcategorias = catDAO.Listacategoria.Rows.Count;
-
-                    for (int i = 0; i < qtdcategorias; i++)
-                    {
-                        if (!listacategorias.Contains(catDAO.Listacategoria.Rows[i]["nome"].ToString()))
-                        {
-                            Cat cat = new Cat();
-                            cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
-
-                            string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
-
-                            if (File.Exists(path))
-                            {
-                                cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
-                                cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
-                            }
-
-                            FlpCat.Controls.Add(cat);
-                            listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
-
-                        }
-                    }
-                }
-                else
-                {
-                    listacategorias.Clear();
-                    FlpCat.Controls.Clear();
-                }
+                FrmRefresh();
             }
         }
         public void Excluiritem(string nome)
@@ -170,75 +77,69 @@ namespace Orders
             op.ShowDialog();
             if (File.Exists(op.FileName))
             {
-               
                 PctCadCat.BackgroundImage = Image.FromFile(op.FileName);
                 PctCadCat.BackgroundImageLayout = ImageLayout.Stretch;
                 cat.Imagem = op.FileName;
-
             }
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
         {
-
-            if (txtCadNome.Text== string.Empty||PctCadCat.ImageLocation==string.Empty)
+            if (txtCadNome.Text == string.Empty || PctCadCat.ImageLocation == string.Empty)
             {
                 if (txtCadNome.Text == string.Empty)
                     txtCadNome.BackColor = Color.Red;
-
-                MessageBox.Show("Favor preencher as informações");
+                    MessageBox.Show("Favor preencher as informações");
             }
             else
             {
                 try
                 {
                     cat.Nome = txtCadNome.Text;
-
-                    
                     catDAO.Inserir(cat);
-                    PctCadCat.Image = null;
-                    catDAO.ListarCategorias();
-
-                    if (catDAO.Listacategoria.Rows.Count != 0)
-                    {
-
-                        int qtdcategorias = catDAO.Listacategoria.Rows.Count;
-
-                        for (int i = 0; i < qtdcategorias; i++)
-                        {
-                            if (!listacategorias.Contains(catDAO.Listacategoria.Rows[i]["nome"].ToString()))
-                            {
-                                Cat cat = new Cat();
-                                cat.LblCategorias.Text = catDAO.Listacategoria.Rows[i]["nome"].ToString();
-
-                                string path = catDAO.Listacategoria.Rows[i]["imagem"].ToString();
-
-                                if (File.Exists(path))
-                                {
-                                    cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
-                                    cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
-                                }
-
-                                FlpCat.Controls.Add(cat);
-                                listacategorias.Add(catDAO.Listacategoria.Rows[i]["nome"].ToString());
-
-                            }
-                        }
-                    }
-                    else
-                    {
-                        listacategorias.Clear();
-                        FlpCat.Controls.Clear();
-                    }
-
+                    FrmRefresh();
                 }
                 catch (FormatException)
                 {
                     MessageBox.Show("Favor verificar as informações digitadas !!!");
                 }
-            }
 
-          
+                PctCadCat.Image = null;
+                txtCadNome.Text = string.Empty;
+            }
+        }
+
+        private void CarregarCat(DataTable lista)
+        {
+            if (lista.Rows.Count != 0)
+            {
+                int qtdcategorias = lista.Rows.Count;
+
+                for (int i = 0; i < qtdcategorias; i++)
+                {
+                    if (!listacategorias.Contains(lista.Rows[i]["nome"].ToString()))
+                    {
+                        Cat cat = new Cat();
+                        cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
+
+                        string path = lista.Rows[i]["imagem"].ToString();
+
+                        if (File.Exists(path))
+                        {
+                            cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
+                            cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                        }
+
+                        FlpCat.Controls.Add(cat);
+                        listacategorias.Add(lista.Rows[i]["nome"].ToString());
+                    }
+                }
+            }
+            else
+            {
+                listacategorias.Clear();
+                FlpCat.Controls.Clear();
+            }
         }
     }
 }

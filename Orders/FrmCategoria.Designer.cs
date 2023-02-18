@@ -34,11 +34,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtCategoria = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.PctCadCat = new System.Windows.Forms.PictureBox();
             this.BtnCadastrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCadNome = new System.Windows.Forms.TextBox();
             this.BtnAdicionarImagem = new System.Windows.Forms.Button();
-            this.PctCadCat = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctCadCat)).BeginInit();
@@ -47,9 +47,9 @@
             // FlpCat
             // 
             this.FlpCat.AutoScroll = true;
-            this.FlpCat.Location = new System.Drawing.Point(12, 242);
+            this.FlpCat.Location = new System.Drawing.Point(12, 180);
             this.FlpCat.Name = "FlpCat";
-            this.FlpCat.Size = new System.Drawing.Size(403, 462);
+            this.FlpCat.Size = new System.Drawing.Size(760, 369);
             this.FlpCat.TabIndex = 1;
             // 
             // panel1
@@ -59,12 +59,12 @@
             this.panel1.Controls.Add(this.TxtCategoria);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(403, 65);
+            this.panel1.Size = new System.Drawing.Size(250, 162);
             this.panel1.TabIndex = 10;
             // 
             // BtnNovo
             // 
-            this.BtnNovo.Location = new System.Drawing.Point(135, 25);
+            this.BtnNovo.Location = new System.Drawing.Point(164, 42);
             this.BtnNovo.Name = "BtnNovo";
             this.BtnNovo.Size = new System.Drawing.Size(75, 24);
             this.BtnNovo.TabIndex = 13;
@@ -75,17 +75,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 12);
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(75, 30);
             this.label1.TabIndex = 12;
             this.label1.Text = "Nome:";
             // 
             // TxtCategoria
             // 
-            this.TxtCategoria.Location = new System.Drawing.Point(29, 28);
+            this.TxtCategoria.Location = new System.Drawing.Point(8, 45);
             this.TxtCategoria.Name = "TxtCategoria";
-            this.TxtCategoria.Size = new System.Drawing.Size(100, 20);
+            this.TxtCategoria.Size = new System.Drawing.Size(150, 20);
             this.TxtCategoria.TabIndex = 11;
             this.TxtCategoria.TextChanged += new System.EventHandler(this.TxtCategoria_TextChanged);
             // 
@@ -96,11 +97,21 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtCadNome);
             this.panel2.Controls.Add(this.BtnAdicionarImagem);
-            this.panel2.Location = new System.Drawing.Point(12, 83);
+            this.panel2.Location = new System.Drawing.Point(268, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(403, 153);
+            this.panel2.Size = new System.Drawing.Size(504, 162);
             this.panel2.TabIndex = 11;
             this.panel2.Visible = false;
+            // 
+            // PctCadCat
+            // 
+            this.PctCadCat.BackColor = System.Drawing.Color.Transparent;
+            this.PctCadCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PctCadCat.Location = new System.Drawing.Point(135, 9);
+            this.PctCadCat.Name = "PctCadCat";
+            this.PctCadCat.Size = new System.Drawing.Size(132, 112);
+            this.PctCadCat.TabIndex = 21;
+            this.PctCadCat.TabStop = false;
             // 
             // BtnCadastrar
             // 
@@ -138,28 +149,19 @@
             this.BtnAdicionarImagem.UseVisualStyleBackColor = true;
             this.BtnAdicionarImagem.Click += new System.EventHandler(this.BtnAdicionarImagem_Click);
             // 
-            // PctCadCat
-            // 
-            this.PctCadCat.BackColor = System.Drawing.Color.Transparent;
-            this.PctCadCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PctCadCat.Location = new System.Drawing.Point(135, 9);
-            this.PctCadCat.Name = "PctCadCat";
-            this.PctCadCat.Size = new System.Drawing.Size(132, 112);
-            this.PctCadCat.TabIndex = 21;
-            this.PctCadCat.TabStop = false;
-            // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 716);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.FlpCat);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastrarCategoria";
-            this.Load += new System.EventHandler(this.FrmCadCategoria_Load);
+            this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
