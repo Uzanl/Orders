@@ -12,9 +12,7 @@ namespace Orders.ClassesDAO
 
         Categoria cat = new Categoria();
         internal Categoria Cat { get => cat; set => cat = value; }
-        public DataTable Listacategoria { get => listacategoria; set => listacategoria = value; }
-
-        DataTable listacategoria;
+      
 
         private void executarComando(string comando)
         {
@@ -38,7 +36,6 @@ namespace Orders.ClassesDAO
                 linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString().Replace("/", "\\");
                 listaDescripto.Rows.Add(linha);
             }
-            listacategoria = listaDescripto;
             return listaDescripto;
         }
         #endregion
@@ -57,7 +54,6 @@ namespace Orders.ClassesDAO
                 linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString().Replace("/", "\\");
                 listaDescripto.Rows.Add(linha);
             }
-            listacategoria = listaDescripto;
             return listaDescripto;
         }
         #endregion

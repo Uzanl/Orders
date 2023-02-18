@@ -110,7 +110,7 @@
             // 
             // BtnFinalizarpedido
             // 
-            this.BtnFinalizarpedido.Location = new System.Drawing.Point(1638, 909);
+            this.BtnFinalizarpedido.Location = new System.Drawing.Point(1638, 899);
             this.BtnFinalizarpedido.Name = "BtnFinalizarpedido";
             this.BtnFinalizarpedido.Size = new System.Drawing.Size(262, 63);
             this.BtnFinalizarpedido.TabIndex = 18;
@@ -120,7 +120,7 @@
             // 
             // BtnVoltar
             // 
-            this.BtnVoltar.Location = new System.Drawing.Point(288, 108);
+            this.BtnVoltar.Location = new System.Drawing.Point(288, 98);
             this.BtnVoltar.Name = "BtnVoltar";
             this.BtnVoltar.Size = new System.Drawing.Size(94, 33);
             this.BtnVoltar.TabIndex = 16;

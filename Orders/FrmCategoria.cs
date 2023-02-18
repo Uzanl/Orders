@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
 
@@ -15,7 +16,7 @@ namespace Orders
         CategoriaDAO catDAO = new CategoriaDAO();
         Categoria cat = new Categoria();
         List<string> listacategorias = new List<string>();
-
+        // criar um void que retorna essa lista e tem como parametro de entrado a outra lista
 
         public FrmCategoria()
         {
@@ -32,6 +33,8 @@ namespace Orders
             DataTable lista = catDAO.ListarCategorias();
             CarregarCat(lista);
         }
+
+
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
@@ -89,7 +92,7 @@ namespace Orders
             {
                 if (txtCadNome.Text == string.Empty)
                     txtCadNome.BackColor = Color.Red;
-                    MessageBox.Show("Favor preencher as informações");
+                MessageBox.Show("Favor preencher as informações");
             }
             else
             {

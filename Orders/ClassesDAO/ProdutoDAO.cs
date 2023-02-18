@@ -14,9 +14,6 @@ namespace Orders.ClassesDAO
 
         Produto prod = new Produto();
         internal Produto Prod { get => prod; set => prod = value; }
-        public DataTable Listaproduto { get => listaproduto; set => listaproduto = value; }
-
-        DataTable listaproduto;
 
         private void executarComando(string comando)
         {
@@ -27,32 +24,20 @@ namespace Orders.ClassesDAO
         }
 
         #region VERIFICA NOMEPESQ
-        public Boolean VerificaNOMEPESQ(string nome)
+        public DataTable VerificaNOMEPESQ(string nome)
         {
+            DataTable listaDescripto;
             executarComando("select p.nome as NOME from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome='" + nome + "';");
-            try
+            listaDescripto = tabela_memoria.Clone();
+
+            for (int i = 0; i < tabela_memoria.Rows.Count; i++)
             {
-                //pes.Id_pessoa = Convert.ToInt32(tabela_memoria.Rows[0]["ID"]);
-
-                prod.Nome = tabela_memoria.Rows[0]["NOME"].ToString();
-
-
-
-                if (tabela_memoria.Rows.Count > 1)
-                {
-                    listaproduto = tabela_memoria;
-                }
-                else
-                {
-                    listaproduto = null;
-                }
-
-                return true;
+                DataRow linha = listaDescripto.NewRow();
+                linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
+               
+                listaDescripto.Rows.Add(linha);
             }
-            catch
-            {
-                return false;
-            }
+            return listaDescripto;
         }
         #endregion
 
