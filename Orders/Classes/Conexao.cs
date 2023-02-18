@@ -13,7 +13,7 @@ namespace Orders.Classes
             set { Conexao.conectar = value; }
         }
 
-        public static String criar_Conexao()
+        public static String Criar_Conexao()
         {
             if (conectar != null)
             {

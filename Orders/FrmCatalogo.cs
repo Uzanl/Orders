@@ -11,9 +11,9 @@ namespace Orders
 {
     public partial class FrmCatalogo : Form
     {
-        CategoriaDAO catDAO = new CategoriaDAO();
-        ProdutoDAO prodDAO = new ProdutoDAO();
-        List<string> listaitens = new List<string>();
+        readonly CategoriaDAO catDAO = new CategoriaDAO();
+        readonly ProdutoDAO prodDAO = new ProdutoDAO();
+        readonly List<string> listaitens = new List<string>();
 
         public Dictionary<object, Tuple<int, string>> Params = new Dictionary<object, Tuple<int, string>>();
         public FrmCatalogo()
@@ -23,26 +23,25 @@ namespace Orders
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
-            Conexao.criar_Conexao();
+            Conexao.Criar_Conexao();
             CarregarCategorias();
         }
 
         private void CarregarCategorias()
         {
-            DataTable lista = catDAO.ListarCategorias();
-            AcrescentarButtons(lista, false);
+             
+            AcrescentarButtons(catDAO.ListarCategorias(), false);
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
         {
-            Tuple<int, string> value;
-            if (Params.TryGetValue(sender, out value))
+            ;
+            if (Params.TryGetValue(sender, out Tuple<int, string> value))
             {
            
                 if (value.Item1 != 0)
                 {
-                    DataTable lista = prodDAO.VerificaNOMEPESQ(value.Item2);
-                    AcrescentarButtons(lista, true);
+                    AcrescentarButtons(prodDAO.VerificaNOMEPESQ(value.Item2), true);
                 }
                 else
                 {
@@ -82,7 +81,7 @@ namespace Orders
             }
         }
 
-        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CategoriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCategoria i = new FrmCategoria();
             i.ShowDialog();

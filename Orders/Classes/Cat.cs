@@ -26,8 +26,8 @@ namespace Orders.Classes
         {
             FrmCategoria MAIN = this.ParentForm as FrmCategoria;
             MAIN.Excluiritem(LblCategorias.Text);
-            this.Controls.Clear();
-            this.Dispose();
+            Controls.Clear();
+            Dispose();
         }
 
         private void BtnExpandir_Click(object sender, EventArgs e)

@@ -4,18 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
-
 
 namespace Orders
 {
     public partial class FrmCategoria : Form
     {
-        CategoriaDAO catDAO = new CategoriaDAO();
-        Categoria cat = new Categoria();
-        List<string> listacategorias = new List<string>();
+        readonly CategoriaDAO catDAO = new CategoriaDAO();
+        readonly Categoria cat = new Categoria();
+        readonly List<string> listacategorias = new List<string>();
         // criar um void que retorna essa lista e tem como parametro de entrado a outra lista
 
         public FrmCategoria()
@@ -30,11 +28,8 @@ namespace Orders
 
         private void FrmRefresh()
         {
-            DataTable lista = catDAO.ListarCategorias();
-            CarregarCat(lista);
+            CarregarCat(catDAO.ListarCategorias());
         }
-
-
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
@@ -53,15 +48,13 @@ namespace Orders
             listacategorias.Clear();
             FlpCat.Controls.Clear();
             if (TxtCategoria.Text != string.Empty)
-            {
-                DataTable lista = catDAO.ListarCatLike(TxtCategoria.Text);
-                CarregarCat(lista);
+            {              
+                CarregarCat(catDAO.ListarCatLike(TxtCategoria.Text));
             }
             else
             {
                 listacategorias.Clear();
                 FlpCat.Controls.Clear();
-                catDAO.ListarCategorias();
                 FrmRefresh();
             }
         }
@@ -72,11 +65,12 @@ namespace Orders
 
         private void BtnAdicionarImagem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Selecionar Arquivo";
-            op.InitialDirectory = @"C:\";
-            op.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-            op.FilterIndex = 1;
+            OpenFileDialog op = new OpenFileDialog() { 
+                Title = "Selecionar Arquivo", 
+                InitialDirectory = @"C:\", 
+                Filter = "Image Files|*.jpg;*.jpeg;*.png", 
+                FilterIndex = 1 
+            };
             op.ShowDialog();
             if (File.Exists(op.FileName))
             {
@@ -114,11 +108,8 @@ namespace Orders
 
         private void CarregarCat(DataTable lista)
         {
-            if (lista.Rows.Count != 0)
-            {
-                int qtdcategorias = lista.Rows.Count;
-
-                for (int i = 0; i < qtdcategorias; i++)
+            //colocar try catch aqui ou lista.rows.count!= 0           
+                for (int i = 0; i < lista.Rows.Count; i++)
                 {
                     if (!listacategorias.Contains(lista.Rows[i]["nome"].ToString()))
                     {
@@ -136,13 +127,7 @@ namespace Orders
                         FlpCat.Controls.Add(cat);
                         listacategorias.Add(lista.Rows[i]["nome"].ToString());
                     }
-                }
-            }
-            else
-            {
-                listacategorias.Clear();
-                FlpCat.Controls.Clear();
-            }
+                }           
         }
     }
 }
