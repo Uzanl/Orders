@@ -30,21 +30,28 @@ namespace Orders
         private void CarregarCategorias()
         {
 
-            AcrescentarButtons(catDAO.ListarCat(string.Empty), false);
+            AcrescentarButtons(catDAO.ListarCat(string.Empty));
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
         {
-            ;
+
             if (Params.TryGetValue(sender, out Tuple<int, string> value))
             {
-                if (value.Item1 != 0)
+                //chama novamente o void de acrescentar os botões caso clique no botão de categoria
+
+
+                //vai ter que ter um void que retorna true ou false
+                if (prodDAO.VerificaNOMEPESQ(value.Item2).Rows.Count != 0)
                 {
-                    AcrescentarButtons(prodDAO.VerificaNOMEPESQ(value.Item2), true);
+                    BtnVoltar.Visible = true;
+                    // só preciso saber se retorna true
+                    AcrescentarButtons(prodDAO.VerificaNOMEPESQ(value.Item2));
                 }
-                else
+                else 
                 {
-                    if (!listaitens.Contains(value.Item2.ToString()))
+                    //se fosse produto
+                    if (!listaitens.Contains(value.Item2.ToString()) )
                     {
                         Itens item = new Itens();
                         item.LblItem.Text = value.Item2.ToString();
@@ -86,85 +93,56 @@ namespace Orders
             i.ShowDialog();
         }
 
-        private void AcrescentarButtons(DataTable lista, Boolean produto)
+        private void AcrescentarButtons(DataTable lista)
         {
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-            if (produto == false)
+            int i = 0;
+            FlpCategorias.Controls.Clear();
+            while (FlpCategorias.Controls.Count < lista.Rows.Count)
             {
-                int qtdcategorias = lista.Rows.Count;
+                Button dynamicButton = new Button();
+                int x = screenWidth - (screenWidth * 30 / 100), y = screenHeight - (screenHeight * 30 / 100);
 
-                for (int i = 0; i < qtdcategorias; i++)
+                if (orientation.ToString() == "Angle0")
                 {
+                    dynamicButton.Width = (x / 5) - 10;
+                    dynamicButton.Height = (y / 3);
+                }
+                else if (orientation.ToString() == "Angle90")
+                {
+                    dynamicButton.Width = (x / 3) - 10;
+                    dynamicButton.Height = (y / 5);
+                }
 
-                    Button dynamicButton = new Button();
-                    int x = screenWidth - (screenWidth * 30 / 100), y = screenHeight - (screenHeight * 30 / 100);
-
-                    if (orientation.ToString() == "Angle0")
-                    {
-                        dynamicButton.Width = (x / 5) - 10;
-                        dynamicButton.Height = (y / 3);
-                    }
-                    else if (orientation.ToString() == "Angle90")
-                    {
-                        dynamicButton.Width = (x / 3) - 10;
-                        dynamicButton.Height = (y / 5);
-                    }
-
-                    dynamicButton.Text = lista.Rows[i]["nome"].ToString();
-                    string path = lista.Rows[i]["imagem"].ToString();
+                dynamicButton.Text = lista.Rows[i]["nome"].ToString();
+                //try catch provisóirio
+                try
+                {
+                     string path = lista.Rows[i]["imagem"].ToString();
 
                     if (File.Exists(path))
-                    {
-                        dynamicButton.BackgroundImage = Image.FromFile(path);
-                        dynamicButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    }
-
-                    dynamicButton.Font = new Font("Arial", 12);
-                    dynamicButton.TextAlign = ContentAlignment.TopCenter;
-                    Params.Add(dynamicButton, new Tuple<int, string>(1, dynamicButton.Text));
-                    dynamicButton.Click += DynamicButton_Click;
-                    FlpCategorias.Controls.Add(dynamicButton);
+                     {
+                          dynamicButton.BackgroundImage = Image.FromFile(path);
+                         dynamicButton.BackgroundImageLayout = ImageLayout.Stretch;
+                      }
                 }
-            }
-            else
-            {
-                //int qtdproduto = 0;
-                if (produto == true)
+                catch
                 {
-                    FlpCategorias.Controls.Clear();
-                    int qtdproduto = lista.Rows.Count;
 
-                    for (int i = 0; i < qtdproduto; i++)
-                    {
-                        Button dynamicButton = new Button();
-                        int x = screenWidth - (screenWidth * 30 / 100), y = screenHeight - (screenHeight * 30 / 100);
-
-                        if (orientation.ToString() == "Angle0")
-                        {
-                            dynamicButton.Width = (x / 5) - 10;
-                            dynamicButton.Height = (y / 3);
-                        }
-                        else if (orientation.ToString() == "Angle90")
-                        {
-                            dynamicButton.Width = (x / 3) - 10;
-                            dynamicButton.Height = (y / 5);
-                        }
-
-                        dynamicButton.Text = lista.Rows[i]["nome"].ToString();
-                        Params.Add(dynamicButton, new Tuple<int, string>(0, dynamicButton.Text));
-                        dynamicButton.Click += DynamicButton_Click;
-                        FlpCategorias.Controls.Add(dynamicButton);
-                    }
-                    BtnVoltar.Visible = true;
                 }
-                else
-                {
-                    MessageBox.Show("Não existe produtos cadastrados para essa categoria!");
-                }
+               
+                dynamicButton.Font = new Font("Arial", 12);
+                dynamicButton.TextAlign = ContentAlignment.TopCenter;
+                Params.Add(dynamicButton, new Tuple<int, string>(1, dynamicButton.Text));
+                dynamicButton.Click += DynamicButton_Click;
+                FlpCategorias.Controls.Add(dynamicButton);
+
+                i++;
             }
+            
         }
     }
 }

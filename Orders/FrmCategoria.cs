@@ -100,14 +100,16 @@ namespace Orders
 
         private void CarregarCat(DataTable lista)
         {
+            FlpCat.Controls.Clear();
             int i = 0;
             while (FlpCat.Controls.Count < lista.Rows.Count)
             {
                 Cat cat = new Cat();
                 cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
-                if (File.Exists(lista.Rows[i]["imagem"].ToString()))
+                string caminho = lista.Rows[i]["imagem"].ToString();
+                if (File.Exists(caminho))
                 {
-                    cat.Pctcategoria.BackgroundImage = Image.FromFile(lista.Rows[i]["imagem"].ToString());
+                    cat.Pctcategoria.BackgroundImage = Image.FromFile(caminho);
                     cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
                 }
                 FlpCat.Controls.Add(cat);
