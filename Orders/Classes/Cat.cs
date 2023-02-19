@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Orders.Classes
@@ -32,8 +25,6 @@ namespace Orders.Classes
 
         private void BtnExpandir_Click(object sender, EventArgs e)
         {
-           
-
             if (this.Height < 410)
             {
                 this.Height = 410;
@@ -48,14 +39,6 @@ namespace Orders.Classes
                 this.Height = 122;
                 FlpProduto.Controls.Clear();
             }
-
-
-
-
-
-
-            // FrmCategoria MAIN = this.ParentForm as FrmCategoria;
-            // MAIN.Excluiritem(LblCategorias.Text);
         }
     }
 }

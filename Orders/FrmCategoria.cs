@@ -28,7 +28,7 @@ namespace Orders
 
         private void FrmRefresh()
         {
-            CarregarCat(catDAO.ListarCategorias());
+            CarregarCat(catDAO.ListarCat(string.Empty));
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -48,8 +48,8 @@ namespace Orders
             listacategorias.Clear();
             FlpCat.Controls.Clear();
             if (TxtCategoria.Text != string.Empty)
-            {              
-                CarregarCat(catDAO.ListarCatLike(TxtCategoria.Text));
+            {
+                CarregarCat(catDAO.ListarCat(TxtCategoria.Text));
             }
             else
             {
@@ -65,11 +65,12 @@ namespace Orders
 
         private void BtnAdicionarImagem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog() { 
-                Title = "Selecionar Arquivo", 
-                InitialDirectory = @"C:\", 
-                Filter = "Image Files|*.jpg;*.jpeg;*.png", 
-                FilterIndex = 1 
+            OpenFileDialog op = new OpenFileDialog()
+            {
+                Title = "Selecionar Arquivo",
+                InitialDirectory = @"C:\",
+                Filter = "Image Files|*.jpg;*.jpeg;*.png",
+                FilterIndex = 1
             };
             op.ShowDialog();
             if (File.Exists(op.FileName))
@@ -109,25 +110,25 @@ namespace Orders
         private void CarregarCat(DataTable lista)
         {
             //colocar try catch aqui ou lista.rows.count!= 0           
-                for (int i = 0; i < lista.Rows.Count; i++)
+            for (int i = 0; i < lista.Rows.Count; i++)
+            {
+                if (!listacategorias.Contains(lista.Rows[i]["nome"].ToString()))
                 {
-                    if (!listacategorias.Contains(lista.Rows[i]["nome"].ToString()))
+                    Cat cat = new Cat();
+                    cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
+
+                    string path = lista.Rows[i]["imagem"].ToString();
+
+                    if (File.Exists(path))
                     {
-                        Cat cat = new Cat();
-                        cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
-
-                        string path = lista.Rows[i]["imagem"].ToString();
-
-                        if (File.Exists(path))
-                        {
-                            cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
-                            cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
-                        }
-
-                        FlpCat.Controls.Add(cat);
-                        listacategorias.Add(lista.Rows[i]["nome"].ToString());
+                        cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
+                        cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
                     }
-                }           
+
+                    FlpCat.Controls.Add(cat);
+                    listacategorias.Add(lista.Rows[i]["nome"].ToString());
+                }
+            }
         }
     }
 }

@@ -29,8 +29,8 @@ namespace Orders
 
         private void CarregarCategorias()
         {
-             
-            AcrescentarButtons(catDAO.ListarCategorias(), false);
+
+            AcrescentarButtons(catDAO.ListarCat(string.Empty), false);
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
@@ -38,7 +38,6 @@ namespace Orders
             ;
             if (Params.TryGetValue(sender, out Tuple<int, string> value))
             {
-           
                 if (value.Item1 != 0)
                 {
                     AcrescentarButtons(prodDAO.VerificaNOMEPESQ(value.Item2), true);

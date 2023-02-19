@@ -1,12 +1,11 @@
-﻿using Orders.ClassesDAO;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Orders.Classes
 {
     public partial class Itens : UserControl
     {
-      //  CategoriaDAO catDAO = new CategoriaDAO();
+        //  CategoriaDAO catDAO = new CategoriaDAO();
         public Itens()
         {
             InitializeComponent();

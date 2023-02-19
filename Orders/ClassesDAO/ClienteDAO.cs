@@ -7,7 +7,6 @@ namespace Orders.ClassesDAO
     class ClienteDAO
     {
         MySqlDataAdapter comando_sql;
-       // MySqlCommandBuilder executar_comando;
         DataTable tabela_memoria;
         Cliente cli = new Cliente();
 
@@ -17,7 +16,6 @@ namespace Orders.ClassesDAO
         {
             tabela_memoria = new DataTable();
             comando_sql = new MySqlDataAdapter(comando, Conexao.Conectar);
-         //   executar_comando = new MySqlCommandBuilder(comando_sql);
             comando_sql.Fill(tabela_memoria);
         }
 

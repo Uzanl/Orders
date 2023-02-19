@@ -8,7 +8,6 @@ namespace Orders.ClassesDAO
     class ProdutoDAO
     {
         MySqlDataAdapter comando_sql;
-        //MySqlCommandBuilder executar_comando;
         DataTable tabela_memoria;
 
         Produto prod = new Produto();
@@ -18,7 +17,6 @@ namespace Orders.ClassesDAO
         {
             tabela_memoria = new DataTable();
             comando_sql = new MySqlDataAdapter(comando, Conexao.Conectar);
-            //executar_comando = new MySqlCommandBuilder(comando_sql);
             comando_sql.Fill(tabela_memoria);
         }
 
@@ -39,6 +37,5 @@ namespace Orders.ClassesDAO
             return listaDescripto;
         }
         #endregion
-
     }
 }
