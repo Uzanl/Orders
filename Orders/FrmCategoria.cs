@@ -1,7 +1,6 @@
 ﻿using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -13,8 +12,6 @@ namespace Orders
     {
         readonly CategoriaDAO catDAO = new CategoriaDAO();
         readonly Categoria cat = new Categoria();
-        readonly List<string> listacategorias = new List<string>();
-        // criar um void que retorna essa lista e tem como parametro de entrado a outra lista
 
         public FrmCategoria()
         {
@@ -45,7 +42,6 @@ namespace Orders
 
         private void TxtCategoria_TextChanged(object sender, EventArgs e)
         {
-            listacategorias.Clear();
             FlpCat.Controls.Clear();
             if (TxtCategoria.Text != string.Empty)
             {
@@ -53,14 +49,9 @@ namespace Orders
             }
             else
             {
-                listacategorias.Clear();
                 FlpCat.Controls.Clear();
                 FrmRefresh();
             }
-        }
-        public void Excluiritem(string nome)
-        {
-            listacategorias.Remove(nome);
         }
 
         private void BtnAdicionarImagem_Click(object sender, EventArgs e)
@@ -109,25 +100,18 @@ namespace Orders
 
         private void CarregarCat(DataTable lista)
         {
-            //colocar try catch aqui ou lista.rows.count!= 0           
-            for (int i = 0; i < lista.Rows.Count; i++)
+            int i = 0;
+            while (FlpCat.Controls.Count < lista.Rows.Count)
             {
-                if (!listacategorias.Contains(lista.Rows[i]["nome"].ToString()))
+                Cat cat = new Cat();
+                cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
+                if (File.Exists(lista.Rows[i]["imagem"].ToString()))
                 {
-                    Cat cat = new Cat();
-                    cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
-
-                    string path = lista.Rows[i]["imagem"].ToString();
-
-                    if (File.Exists(path))
-                    {
-                        cat.Pctcategoria.BackgroundImage = Image.FromFile(path);
-                        cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
-                    }
-
-                    FlpCat.Controls.Add(cat);
-                    listacategorias.Add(lista.Rows[i]["nome"].ToString());
+                    cat.Pctcategoria.BackgroundImage = Image.FromFile(lista.Rows[i]["imagem"].ToString());
+                    cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
                 }
+                FlpCat.Controls.Add(cat);
+                i++;
             }
         }
     }

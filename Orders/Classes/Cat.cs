@@ -17,8 +17,8 @@ namespace Orders.Classes
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            FrmCategoria MAIN = this.ParentForm as FrmCategoria;
-            MAIN.Excluiritem(LblCategorias.Text);
+           // FrmCategoria MAIN = this.ParentForm as FrmCategoria;
+           // MAIN.Excluiritem(LblCategorias.Text);
             Controls.Clear();
             Dispose();
         }
