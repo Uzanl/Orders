@@ -20,8 +20,8 @@ namespace Orders.ClassesDAO
             comando_sql.Fill(tabela_memoria);
         }
 
-        #region VERIFICA NOMEPESQ
-        public DataTable VerificaNOMEPESQ(string nome)
+        #region LISTA PRODUTO POR CATEGORIA
+        public DataTable ListaProdCat(string nome)
         {
             DataTable listaDescripto;
             ExecutarComando("select p.nome as NOME from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome='" + nome + "';");

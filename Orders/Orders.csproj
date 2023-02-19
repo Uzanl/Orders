@@ -232,6 +232,8 @@
   <ItemGroup>
     <None Include="Resources\40px-OOjs_UI_icon_expand.svg.png" />
     <Content Include="Resources\cafe.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\download %281%29.png" />
     <Content Include="Resources\hamburger2.png" />
     <None Include="Resources\kisspng-fizzy-drinks-computer-icons-meal-food-lunch-food-icon-5ac500dca48218.0420167015228602526738.png" />
     <Content Include="Resources\lixo.png" />

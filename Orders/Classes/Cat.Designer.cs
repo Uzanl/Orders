@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BtnExpandir = new System.Windows.Forms.Button();
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.LblCategorias = new System.Windows.Forms.Label();
-            this.Pctcategoria = new System.Windows.Forms.PictureBox();
             this.FlpProduto = new System.Windows.Forms.FlowLayoutPanel();
+            this.BtnExpandir = new System.Windows.Forms.Button();
+            this.Pctcategoria = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pctcategoria)).BeginInit();
             this.SuspendLayout();
@@ -48,17 +48,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(754, 116);
             this.panel1.TabIndex = 0;
-            // 
-            // BtnExpandir
-            // 
-            this.BtnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnExpandir.Location = new System.Drawing.Point(10, 88);
-            this.BtnExpandir.Name = "BtnExpandir";
-            this.BtnExpandir.Size = new System.Drawing.Size(24, 23);
-            this.BtnExpandir.TabIndex = 9;
-            this.BtnExpandir.Text = "+";
-            this.BtnExpandir.UseVisualStyleBackColor = true;
-            this.BtnExpandir.Click += new System.EventHandler(this.BtnExpandir_Click);
             // 
             // BtnExcluir
             // 
@@ -79,15 +68,6 @@
             this.LblCategorias.TabIndex = 7;
             this.LblCategorias.Text = "Nome categoria";
             // 
-            // Pctcategoria
-            // 
-            this.Pctcategoria.BackColor = System.Drawing.SystemColors.Window;
-            this.Pctcategoria.Location = new System.Drawing.Point(10, 12);
-            this.Pctcategoria.Name = "Pctcategoria";
-            this.Pctcategoria.Size = new System.Drawing.Size(70, 70);
-            this.Pctcategoria.TabIndex = 6;
-            this.Pctcategoria.TabStop = false;
-            // 
             // FlpProduto
             // 
             this.FlpProduto.AutoScroll = true;
@@ -95,6 +75,26 @@
             this.FlpProduto.Name = "FlpProduto";
             this.FlpProduto.Size = new System.Drawing.Size(386, 184);
             this.FlpProduto.TabIndex = 1;
+            // 
+            // BtnExpandir
+            // 
+            this.BtnExpandir.BackgroundImage = global::Orders.Properties.Resources.download;
+            this.BtnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnExpandir.Location = new System.Drawing.Point(3, 43);
+            this.BtnExpandir.Name = "BtnExpandir";
+            this.BtnExpandir.Size = new System.Drawing.Size(40, 40);
+            this.BtnExpandir.TabIndex = 9;
+            this.BtnExpandir.UseVisualStyleBackColor = true;
+            this.BtnExpandir.Click += new System.EventHandler(this.BtnExpandir_Click);
+            // 
+            // Pctcategoria
+            // 
+            this.Pctcategoria.BackColor = System.Drawing.SystemColors.Window;
+            this.Pctcategoria.Location = new System.Drawing.Point(54, 29);
+            this.Pctcategoria.Name = "Pctcategoria";
+            this.Pctcategoria.Size = new System.Drawing.Size(84, 70);
+            this.Pctcategoria.TabIndex = 6;
+            this.Pctcategoria.TabStop = false;
             // 
             // Cat
             // 

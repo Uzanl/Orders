@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Orders.Classes
@@ -17,27 +18,30 @@ namespace Orders.Classes
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            // FrmCategoria MAIN = this.ParentForm as FrmCategoria;
-            // MAIN.Excluiritem(LblCategorias.Text);
             Controls.Clear();
             Dispose();
         }
 
         private void BtnExpandir_Click(object sender, EventArgs e)
         {
-            if (this.Height < 410)
+            if (Height < 410)
             {
-                this.Height = 410;
+                Height = 410;
                 ProdutoControl pc = new ProdutoControl();
-                FlpProduto.Controls.Add(pc);
-                BtnExpandir.Text = "-";
+                //FlpProduto.Controls.Add(pc);
+                //BtnExpandir.Text = "Menos detalhes";
+                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\mais.png");
+                BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
+                
 
             }
             else
             {
-                BtnExpandir.Text = "+";
-                this.Height = 122;
-                FlpProduto.Controls.Clear();
+               // BtnExpandir.Text = "Mais detalhes";
+                Height = 122;
+              
+                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\menos.png");
+                BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
             }
         }
     }

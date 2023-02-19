@@ -25,7 +25,7 @@ namespace Orders
 
         private void FrmRefresh()
         {
-            CarregarCat(catDAO.ListarCat(string.Empty));
+            CarregarCat(catDAO.ListarCat(string.Empty,false));
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Orders
             FlpCat.Controls.Clear();
             if (TxtCategoria.Text != string.Empty)
             {
-                CarregarCat(catDAO.ListarCat(TxtCategoria.Text));
+                CarregarCat(catDAO.ListarCat(TxtCategoria.Text,false));
             }
             else
             {

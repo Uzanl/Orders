@@ -30,7 +30,7 @@ namespace Orders
         private void CarregarCategorias()
         {
 
-            AcrescentarButtons(catDAO.ListarCat(string.Empty));
+            AcrescentarButtons(catDAO.ListarCat(string.Empty,false));
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
@@ -42,16 +42,21 @@ namespace Orders
 
 
                 //vai ter que ter um void que retorna true ou false
-                if (prodDAO.VerificaNOMEPESQ(value.Item2).Rows.Count != 0)
+                if (prodDAO.ListaProdCat(value.Item2).Rows.Count != 0)
                 {
                     BtnVoltar.Visible = true;
                     // só preciso saber se retorna true
-                    AcrescentarButtons(prodDAO.VerificaNOMEPESQ(value.Item2));
+                    AcrescentarButtons(prodDAO.ListaProdCat(value.Item2));
                 }
-                else 
+                else if (catDAO.ListarCat(value.Item2,true).Rows.Count != 0)
                 {
-                    //se fosse produto
-                    if (!listaitens.Contains(value.Item2.ToString()) )
+                    MessageBox.Show("Não existem produtos Cadastrados para essa categoria");
+                }
+                else
+                {
+
+                    //pensar em criar um void que retorna uma datatable em acrescentarbuttons e depois comparar aqui com flpintens.controls, tirando assim, a necessidade de uma variavel global de lista
+                    if (!listaitens.Contains(value.Item2.ToString()))
                     {
                         Itens item = new Itens();
                         item.LblItem.Text = value.Item2.ToString();
@@ -93,14 +98,16 @@ namespace Orders
             i.ShowDialog();
         }
 
-        private void AcrescentarButtons(DataTable lista)
+        public void AcrescentarButtons(DataTable lista)
         {
+
             var orientation = SystemInformation.ScreenOrientation;
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
             int i = 0;
             FlpCategorias.Controls.Clear();
+            //  DataTable listaDescripto;
             while (FlpCategorias.Controls.Count < lista.Rows.Count)
             {
                 Button dynamicButton = new Button();
@@ -121,19 +128,19 @@ namespace Orders
                 //try catch provisóirio
                 try
                 {
-                     string path = lista.Rows[i]["imagem"].ToString();
+                    string path = lista.Rows[i]["imagem"].ToString();
 
                     if (File.Exists(path))
-                     {
-                          dynamicButton.BackgroundImage = Image.FromFile(path);
-                         dynamicButton.BackgroundImageLayout = ImageLayout.Stretch;
-                      }
+                    {
+                        dynamicButton.BackgroundImage = Image.FromFile(path);
+                        dynamicButton.BackgroundImageLayout = ImageLayout.Stretch;
+                    }
                 }
                 catch
                 {
 
                 }
-               
+
                 dynamicButton.Font = new Font("Arial", 12);
                 dynamicButton.TextAlign = ContentAlignment.TopCenter;
                 Params.Add(dynamicButton, new Tuple<int, string>(1, dynamicButton.Text));
@@ -142,7 +149,6 @@ namespace Orders
 
                 i++;
             }
-            
         }
     }
 }

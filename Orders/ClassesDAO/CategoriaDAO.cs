@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Orders.Classes;
+using System;
 using System.Data;
 
 namespace Orders.ClassesDAO
@@ -21,21 +22,29 @@ namespace Orders.ClassesDAO
         }
 
         #region LISTA CATEGORIAS E LIKE
-        public DataTable ListarCat(string categoria)
+        public DataTable ListarCat(string categoria, bool produto)
         {
+
+            // talvez usar uma strig no lugar do where nome like, where nome e categoria para evitar repetição de código
             DataTable listaDescripto;
             if (categoria == string.Empty)
             {
-
+                
                 ExecutarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA;");
+                listaDescripto = tabela_memoria.Clone();
+            }
+            else if (produto == false && categoria != string.Empty)
+            {
+                
+                ExecutarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA WHERE NOME LIKE '" + categoria + "%';");
                 listaDescripto = tabela_memoria.Clone();
             }
             else
             {
-                ExecutarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA WHERE NOME LIKE '" + categoria + "%';");
+              
+                ExecutarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA WHERE NOME = '" + categoria + "%';");
                 listaDescripto = tabela_memoria.Clone();
             }
-
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)
             {
                 DataRow linha = listaDescripto.NewRow();
