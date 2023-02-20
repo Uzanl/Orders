@@ -1,14 +1,10 @@
-﻿using MySqlX.XDevAPI.Common;
-using MySqlX.XDevAPI.Relational;
-using Orders.Classes;
+﻿using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace Orders
@@ -170,18 +166,12 @@ namespace Orders
                 pedDao.Ultimopedido();
 
                 string teste = " produto \r\n";
-                // você confirma?
-                Itenspedido last = listaitens.Last();
                 foreach (Itenspedido aItenspedido in listaitens)
                 {
-                    prodped.Id_pedido = pedDao.Ped.Id_pedido;
-                    prodped.Id_produto = aItenspedido.Id_produto;
                     teste += aItenspedido.Nome + "\r\n";
 
                     if (listaitens.IndexOf(aItenspedido) == listaitens.Count - 1)
                     {
-                       
-
                         DialogResult op;
 
                         op = MessageBox.Show("Você tem certeza dessas informações?\r\n" + teste,
@@ -192,8 +182,10 @@ namespace Orders
                         {
                             try
                             {
-                                prodpedDAO.Inserir(prodped);
-                                MessageBox.Show("Pedido confirmado com sucesso!!!");
+                                Teste();
+                                //prodpedDAO.Inserir(prodped);
+
+                                //  MessageBox.Show("Pedido confirmado com sucesso!!!");
                             }
                             catch (FormatException)
                             {
@@ -204,6 +196,19 @@ namespace Orders
                     }
 
                 }
+            }
+        }
+
+        private void Teste()
+        {
+
+            string teste = " produto \r\n";
+            foreach (Itenspedido aItenspedido in listaitens)
+            {
+                prodped.Id_pedido = pedDao.Ped.Id_pedido;
+                prodped.Id_produto = aItenspedido.Id_produto;
+                teste += aItenspedido.Nome + "\r\n";
+                prodpedDAO.Inserir(prodped);
             }
         }
     }

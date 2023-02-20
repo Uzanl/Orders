@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Orders.Classes
 {
-    public class Itenspedido: IEquatable<Itenspedido>
+    public class Itenspedido : IEquatable<Itenspedido>
     {
 
         int id_produto;
@@ -14,9 +10,9 @@ namespace Orders.Classes
 
         public Itenspedido(int p, string n)
         {
-                 Id_produto = p;
-                 Nome = n;
-                
+            Id_produto = p;
+            Nome = n;
+
         }
 
         public int Id_produto { get => id_produto; set => id_produto = value; }

@@ -24,7 +24,7 @@ namespace Orders.ClassesDAO
         #region INSERIR NOVO PEDIDO
         public void Inserir(Pedido ped)
         {
-            ExecutarComando("INSERT INTO PEDIDO VALUES(0,'" + ped.Id_cliente + "','" + ped.Data_pedido.ToString("yyyy/MM/dd") + "','"+ped.Hora.ToString("HH:mm")+"');");
+            ExecutarComando("INSERT INTO PEDIDO VALUES(0,'" + ped.Id_cliente + "','" + ped.Data_pedido.ToString("yyyy/MM/dd") + "','" + ped.Hora.ToString("HH:mm") + "');");
         }
         #endregion
 
@@ -35,7 +35,7 @@ namespace Orders.ClassesDAO
             try
             {
                 Ped.Id_pedido = Convert.ToInt32(tabela_memoria.Rows[0]["MAX(id_pedido)"].ToString());
-               
+
                 return true;
             }
             catch
