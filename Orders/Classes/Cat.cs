@@ -28,8 +28,8 @@ namespace Orders.Classes
             {
                 Height = 410;
                 ProdutoControl pc = new ProdutoControl();
-                //FlpProduto.Controls.Add(pc);
-                //BtnExpandir.Text = "Menos detalhes";
+                FlpProduto.Controls.Add(pc);
+                BtnExpandir.Text = "Menos detalhes";
                 BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\mais.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
                 

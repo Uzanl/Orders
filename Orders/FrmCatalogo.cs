@@ -1,4 +1,6 @@
-﻿using Orders.Classes;
+﻿using MySqlX.XDevAPI.Common;
+using MySqlX.XDevAPI.Relational;
+using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace Orders
@@ -14,7 +17,7 @@ namespace Orders
     {
         readonly CategoriaDAO catDAO = new CategoriaDAO();
         readonly ProdutoDAO prodDAO = new ProdutoDAO();
-        List<Itenspedido> listaitens = new List<Itenspedido>();
+        readonly List<Itenspedido> listaitens = new List<Itenspedido>();
         readonly Pedido ped = new Pedido();
         readonly Produtospedido prodped = new Produtospedido();
         readonly ProdutospedidoDAO prodpedDAO = new ProdutospedidoDAO();
@@ -59,7 +62,7 @@ namespace Orders
                 }
                 else
                 {
-                    if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(value.Item1))))
+                    if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(value.Item1), value.Item2)))
                     {
                         Itens item = new Itens();
                         item.LblItem.Text = value.Item2.ToString();
@@ -67,7 +70,7 @@ namespace Orders
                         FlpItens.Controls.Add(item);
                         BtnFinalizarpedido.Visible = true;
 
-                        listaitens.Add(new Itenspedido(Convert.ToInt32(value.Item1)));
+                        listaitens.Add(new Itenspedido(Convert.ToInt32(value.Item1), value.Item2));
                     }
                 }
             }
@@ -77,9 +80,9 @@ namespace Orders
             }
         }
 
-        public void Excluiritem(int id)
+        public void Excluiritem(int id, string nome)
         {
-            listaitens.Remove(new Itenspedido(id));
+            listaitens.Remove(new Itenspedido(id, nome));
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
@@ -157,25 +160,51 @@ namespace Orders
 
         private void BtnFinalizarpedido_Click(object sender, EventArgs e)
         {
-
-            DateTime data_hora = DateTime.Now;
-            ped.Id_cliente = 1;
-            ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
-            ped.Data_pedido = data_hora;
-            pedDao.Inserir(ped);
-            pedDao.Ultimopedido();
-
-            foreach (Itenspedido aItenspedido in listaitens)
+            if (FlpItens.Controls.Count > 0)
             {
-                prodped.Id_pedido = pedDao.Ped.Id_pedido;
-                prodped.Id_produto = aItenspedido.Id_produto;
-                prodpedDAO.Inserir(prodped);
+                DateTime data_hora = DateTime.Now;
+                ped.Id_cliente = 1;
+                ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
+                ped.Data_pedido = data_hora;
+                pedDao.Inserir(ped);
+                pedDao.Ultimopedido();
+
+                string teste = " produto \r\n";
+                // você confirma?
+                Itenspedido last = listaitens.Last();
+                foreach (Itenspedido aItenspedido in listaitens)
+                {
+                    prodped.Id_pedido = pedDao.Ped.Id_pedido;
+                    prodped.Id_produto = aItenspedido.Id_produto;
+                    teste += aItenspedido.Nome + "\r\n";
+
+                    if (listaitens.IndexOf(aItenspedido) == listaitens.Count - 1)
+                    {
+                       
+
+                        DialogResult op;
+
+                        op = MessageBox.Show("Você tem certeza dessas informações?\r\n" + teste,
+                            "Salvando!", MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+
+                        if (op == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                prodpedDAO.Inserir(prodped);
+                                MessageBox.Show("Pedido confirmado com sucesso!!!");
+                            }
+                            catch (FormatException)
+                            {
+                                MessageBox.Show("Favor verificar as informações digitadas !!!");
+                            }
+                        }
+
+                    }
+
+                }
             }
-            MessageBox.Show("Pedido confirmado com sucesso!!!");
-
-
-
-
         }
     }
 }
