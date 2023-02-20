@@ -131,6 +131,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassesDAO\PedidoDAO.cs" />
+    <Compile Include="Classes\Itenspedido.cs" />
+    <Compile Include="Classes\Pedido.cs" />
     <Compile Include="FrmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,7 +146,7 @@
     <Compile Include="ClassesDAO\IngredienteprodDAO.cs" />
     <Compile Include="ClassesDAO\MarcaDAO.cs" />
     <Compile Include="ClassesDAO\ProdutoDAO.cs" />
-    <Compile Include="ClassesDAO\ProdutopedidoDAO.cs" />
+    <Compile Include="ClassesDAO\ProdutospedidoDAO.cs" />
     <Compile Include="Classes\Cat.cs">
       <SubType>UserControl</SubType>
     </Compile>

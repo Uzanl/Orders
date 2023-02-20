@@ -30,24 +30,25 @@ namespace Orders.ClassesDAO
             if (categoria == string.Empty)
             {
                 
-                ExecutarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA;");
+                ExecutarComando("SELECT id_categoria as ID,nome as NOME, imagem as IMAGEM FROM CATEGORIA;");
                 listaDescripto = tabela_memoria.Clone();
             }
             else if (produto == false && categoria != string.Empty)
             {
                 
-                ExecutarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA WHERE NOME LIKE '" + categoria + "%';");
+                ExecutarComando("SELECT  id_categoria as ID, nome as NOME, imagem as IMAGEM FROM CATEGORIA WHERE NOME LIKE '" + categoria + "%';");
                 listaDescripto = tabela_memoria.Clone();
             }
             else
             {
               
-                ExecutarComando("SELECT nome as NOME, imagem as IMAGEM FROM CATEGORIA WHERE NOME = '" + categoria + "%';");
+                ExecutarComando("SELECT  id_categoria as ID, nome as NOME, imagem as IMAGEM FROM CATEGORIA WHERE NOME = '" + categoria + "%';");
                 listaDescripto = tabela_memoria.Clone();
             }
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)
             {
                 DataRow linha = listaDescripto.NewRow();
+                linha["ID"] = tabela_memoria.Rows[i]["ID"].ToString();
                 linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
                 linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString().Replace("/", "\\");
                 listaDescripto.Rows.Add(linha);

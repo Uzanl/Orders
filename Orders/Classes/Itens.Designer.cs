@@ -30,6 +30,7 @@
         {
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Lblid = new System.Windows.Forms.Label();
             this.LblItem = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -48,11 +49,21 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Lblid);
             this.panel1.Controls.Add(this.LblItem);
             this.panel1.Location = new System.Drawing.Point(81, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(176, 59);
             this.panel1.TabIndex = 1;
+            // 
+            // Lblid
+            // 
+            this.Lblid.AutoSize = true;
+            this.Lblid.Location = new System.Drawing.Point(16, 23);
+            this.Lblid.Name = "Lblid";
+            this.Lblid.Size = new System.Drawing.Size(0, 13);
+            this.Lblid.TabIndex = 1;
+            this.Lblid.Visible = false;
             // 
             // LblItem
             // 
@@ -82,5 +93,6 @@
         private System.Windows.Forms.Button BtnExcluir;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label LblItem;
+        public System.Windows.Forms.Label Lblid;
     }
 }

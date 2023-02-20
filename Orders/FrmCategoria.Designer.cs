@@ -160,7 +160,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CadastrarCategoria";
+            this.Text = "Cadastrar Categoria";
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

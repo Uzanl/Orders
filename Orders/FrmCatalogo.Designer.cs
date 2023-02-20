@@ -117,6 +117,7 @@
             this.BtnFinalizarpedido.Text = "Finalizar pedido";
             this.BtnFinalizarpedido.UseVisualStyleBackColor = true;
             this.BtnFinalizarpedido.Visible = false;
+            this.BtnFinalizarpedido.Click += new System.EventHandler(this.BtnFinalizarpedido_Click);
             // 
             // BtnVoltar
             // 
@@ -138,6 +139,7 @@
             this.FlpItens.Name = "FlpItens";
             this.FlpItens.Size = new System.Drawing.Size(262, 756);
             this.FlpItens.TabIndex = 17;
+            this.FlpItens.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FlpItens_ControlRemoved);
             // 
             // FlpCategorias
             // 

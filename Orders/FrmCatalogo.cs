@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Orders
@@ -13,7 +14,11 @@ namespace Orders
     {
         readonly CategoriaDAO catDAO = new CategoriaDAO();
         readonly ProdutoDAO prodDAO = new ProdutoDAO();
-        readonly List<string> listaitens = new List<string>();
+        List<Itenspedido> listaitens = new List<Itenspedido>();
+        readonly Pedido ped = new Pedido();
+        readonly Produtospedido prodped = new Produtospedido();
+        readonly ProdutospedidoDAO prodpedDAO = new ProdutospedidoDAO();
+        readonly PedidoDAO pedDao = new PedidoDAO();
 
         public Dictionary<object, Tuple<int, string>> Params = new Dictionary<object, Tuple<int, string>>();
         public FrmCatalogo()
@@ -30,7 +35,7 @@ namespace Orders
         private void CarregarCategorias()
         {
 
-            AcrescentarButtons(catDAO.ListarCat(string.Empty,false));
+            AcrescentarButtons(catDAO.ListarCat(string.Empty, false));
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
@@ -48,21 +53,21 @@ namespace Orders
                     // só preciso saber se retorna true
                     AcrescentarButtons(prodDAO.ListaProdCat(value.Item2));
                 }
-                else if (catDAO.ListarCat(value.Item2,true).Rows.Count != 0)
+                else if (catDAO.ListarCat(value.Item2, true).Rows.Count != 0)
                 {
                     MessageBox.Show("Não existem produtos Cadastrados para essa categoria");
                 }
                 else
                 {
-
-                    //pensar em criar um void que retorna uma datatable em acrescentarbuttons e depois comparar aqui com flpintens.controls, tirando assim, a necessidade de uma variavel global de lista
-                    if (!listaitens.Contains(value.Item2.ToString()))
+                    if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(value.Item1))))
                     {
                         Itens item = new Itens();
                         item.LblItem.Text = value.Item2.ToString();
+                        item.Lblid.Text = value.Item1.ToString();
                         FlpItens.Controls.Add(item);
                         BtnFinalizarpedido.Visible = true;
-                        listaitens.Add(value.Item2.ToString());
+
+                        listaitens.Add(new Itenspedido(Convert.ToInt32(value.Item1)));
                     }
                 }
             }
@@ -72,9 +77,9 @@ namespace Orders
             }
         }
 
-        public void Excluiritem(string nome)
+        public void Excluiritem(int id)
         {
-            listaitens.Remove(nome);
+            listaitens.Remove(new Itenspedido(id));
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
@@ -107,7 +112,6 @@ namespace Orders
 
             int i = 0;
             FlpCategorias.Controls.Clear();
-            //  DataTable listaDescripto;
             while (FlpCategorias.Controls.Count < lista.Rows.Count)
             {
                 Button dynamicButton = new Button();
@@ -143,12 +147,35 @@ namespace Orders
 
                 dynamicButton.Font = new Font("Arial", 12);
                 dynamicButton.TextAlign = ContentAlignment.TopCenter;
-                Params.Add(dynamicButton, new Tuple<int, string>(1, dynamicButton.Text));
+                Params.Add(dynamicButton, new Tuple<int, string>(Convert.ToInt32(lista.Rows[i]["ID"].ToString()), dynamicButton.Text));
                 dynamicButton.Click += DynamicButton_Click;
                 FlpCategorias.Controls.Add(dynamicButton);
 
                 i++;
             }
+        }
+
+        private void BtnFinalizarpedido_Click(object sender, EventArgs e)
+        {
+
+            DateTime data_hora = DateTime.Now;
+            ped.Id_cliente = 1;
+            ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
+            ped.Data_pedido = data_hora;
+            pedDao.Inserir(ped);
+            pedDao.Ultimopedido();
+
+            foreach (Itenspedido aItenspedido in listaitens)
+            {
+                prodped.Id_pedido = pedDao.Ped.Id_pedido;
+                prodped.Id_produto = aItenspedido.Id_produto;
+                prodpedDAO.Inserir(prodped);
+            }
+            MessageBox.Show("Pedido confirmado com sucesso!!!");
+
+
+
+
         }
     }
 }
