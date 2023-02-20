@@ -201,7 +201,6 @@ namespace Orders
 
         private void Teste()
         {
-
             string teste = " produto \r\n";
             foreach (Itenspedido aItenspedido in listaitens)
             {
