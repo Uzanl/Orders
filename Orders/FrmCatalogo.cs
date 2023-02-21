@@ -42,23 +42,21 @@ namespace Orders
 
             if (Params.TryGetValue(sender, out Tuple<int, string> value))
             {
-                //chama novamente o void de acrescentar os botões caso clique no botão de categoria
+               
 
+                //primeiro prreciso verificar se é um produto... se não for continua
 
-                //vai ter que ter um void que retorna true ou false
-                if (prodDAO.ListaProdCat(value.Item2).Rows.Count != 0)
+                //verifica se tem algum produto cadastrado em uma categoria x
+                if (prodDAO.ListaProdCat(value.Item2).Rows.Count > 0)
                 {
                     BtnVoltar.Visible = true;
                     // só preciso saber se retorna true
                     AcrescentarButtons(prodDAO.ListaProdCat(value.Item2));
+
                 }
-                else if (catDAO.ListarCat(value.Item2, true).Rows.Count != 0)
+                else 
                 {
-                    MessageBox.Show("Não existem produtos Cadastrados para essa categoria");
-                }
-                else
-                {
-                    if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(value.Item1), value.Item2)))
+                    if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(value.Item1), value.Item2)) && catDAO.ListarCat(value.Item2, true).Rows.Count == 0)
                     {
                         Itens item = new Itens();
                         item.LblItem.Text = value.Item2.ToString();
@@ -68,7 +66,22 @@ namespace Orders
 
                         listaitens.Add(new Itenspedido(Convert.ToInt32(value.Item1), value.Item2));
                     }
+                    else
+                    {
+                        MessageBox.Show("Não existe nenhum produto cadastrado nessa categoria!");
+                    }
+
                 }
+
+
+               
+
+
+
+
+
+
+
             }
             else
             {
@@ -118,7 +131,7 @@ namespace Orders
 
                 if (orientation.ToString() == "Angle0")
                 {
-                    dynamicButton.Width = (x / 5) - 10;
+                    dynamicButton.Width = (x / 5) - 5;
                     dynamicButton.Height = (y / 3);
                 }
                 else if (orientation.ToString() == "Angle90")
@@ -180,12 +193,12 @@ namespace Orders
 
                         if (op == DialogResult.Yes)
                         {
+                           
                             try
                             {
-                                Teste();
-                                //prodpedDAO.Inserir(prodped);
-
-                                //  MessageBox.Show("Pedido confirmado com sucesso!!!");
+                                Pedido();
+                                MessageBox.Show("Pedido confirmado com sucesso!!!");
+                                FlpItens.Controls.Clear();
                             }
                             catch (FormatException)
                             {
@@ -194,12 +207,11 @@ namespace Orders
                         }
 
                     }
-
                 }
             }
         }
 
-        private void Teste()
+        private void Pedido()
         {
             string teste = " produto \r\n";
             foreach (Itenspedido aItenspedido in listaitens)
