@@ -38,12 +38,30 @@ namespace Orders.ClassesDAO
         }
         #endregion
 
-
         #region LISTA PRODUTO POR CATEGORIA
         public DataTable ListaProdCat(string nome)
         {
             DataTable listaDescripto;
             ExecutarComando("select p.id_produto as ID,p.nome as NOME from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome='" + nome + "';");
+            listaDescripto = tabela_memoria.Clone();
+
+            for (int i = 0; i < tabela_memoria.Rows.Count; i++)
+            {
+                DataRow linha = listaDescripto.NewRow();
+                linha["ID"] = tabela_memoria.Rows[i]["ID"].ToString();
+                linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
+
+                listaDescripto.Rows.Add(linha);
+            }
+            return listaDescripto;
+        }
+        #endregion
+
+        #region LISTA PRODUTO LIKE POR CATEGORIA 
+        public DataTable ListaProdCatLike(string categoria, string produto)
+        {
+            DataTable listaDescripto;
+            ExecutarComando("select p.id_produto as ID,p.nome as NOME from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome ='"+categoria+"' AND p.nome LIKE'" + produto + "%';");
             listaDescripto = tabela_memoria.Clone();
 
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)

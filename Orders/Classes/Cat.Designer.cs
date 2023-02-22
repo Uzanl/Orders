@@ -92,6 +92,7 @@
             this.TxtProduto.Size = new System.Drawing.Size(210, 20);
             this.TxtProduto.TabIndex = 14;
             this.TxtProduto.Visible = false;
+            this.TxtProduto.TextChanged += new System.EventHandler(this.TxtProduto_TextChanged);
             // 
             // lblProduto
             // 

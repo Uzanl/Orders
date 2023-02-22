@@ -77,5 +77,22 @@ namespace Orders.Classes
                 i++;
             }
         }
+
+        private void TxtProduto_TextChanged(object sender, EventArgs e)
+        {
+            FlpProduto.Controls.Clear();
+            if (lblProduto.Text != string.Empty)
+            {
+                Carregarprodutos(prodDAO.ListaProdCatLike(LblCategorias.Text, TxtProduto.Text));
+
+                //prodDAO.ListaProdCatLike(LblCategorias.Text,TxtProduto.Text);
+
+            }
+            else
+            {
+                FlpProduto.Controls.Clear();
+                Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
+            }
+        }
     }
 }
