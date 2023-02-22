@@ -71,7 +71,7 @@ namespace Orders.ClassesDAO
                 }
                 return listaDescripto;
             }
-         
+
         }
         #endregion
 

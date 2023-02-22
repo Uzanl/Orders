@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Orders.ClassesDAO;
+using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-
 namespace Orders.Classes
 {
     public partial class Cat : UserControl
     {
+        ProdutoDAO prodDAO = new ProdutoDAO();
         public Cat()
         {
             InitializeComponent();
@@ -24,12 +26,17 @@ namespace Orders.Classes
 
         private void BtnExpandir_Click(object sender, EventArgs e)
         {
+
             if (Height < 410)
             {
-                Height = 410;
-                ProdutoControl pc = new ProdutoControl();
-             //   FlpProduto.Controls.Add(pc);
-                //BtnExpandir.Text = "Menos detalhes";
+
+                //verificar se existe algum produto na categoria
+
+                Height = 500;
+                FlpProduto.Height = 380;
+                Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
+                lblProduto.Visible = true;
+                TxtProduto.Visible = true;
                 BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\mais.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
 
@@ -37,11 +44,30 @@ namespace Orders.Classes
             }
             else
             {
-                // BtnExpandir.Text = "Mais detalhes";
+                FlpProduto.Controls.Clear();
                 Height = 122;
-
+                lblProduto.Visible = false;
+                TxtProduto.Visible = false;
                 BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\menos.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+        }
+
+        private void Carregarprodutos(DataTable lista)
+        {
+            int i = 0;
+            while (FlpProduto.Controls.Count < lista.Rows.Count)
+            {
+                ProdutoControl prod = new ProdutoControl();
+                prod.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
+                //string caminho = lista.Rows[i]["imagem"].ToString();
+                //if (File.Exists(caminho))
+                // {
+                //     prod.Pctproduto.BackgroundImage = Image.FromFile(caminho);
+                //     prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
+                //  }
+                FlpProduto.Controls.Add(prod);
+                i++;
             }
         }
     }

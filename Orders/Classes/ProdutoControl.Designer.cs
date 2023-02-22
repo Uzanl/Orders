@@ -28,69 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Pctproduto = new System.Windows.Forms.PictureBox();
-            this.LblCategorias = new System.Windows.Forms.Label();
             this.BtnExcluir = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.LblCategorias = new System.Windows.Forms.Label();
+            this.Pctproduto = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Pctproduto)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // BtnExcluir
             // 
-            this.panel1.Controls.Add(this.BtnExcluir);
-            this.panel1.Controls.Add(this.LblCategorias);
-            this.panel1.Controls.Add(this.Pctproduto);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(386, 94);
-            this.panel1.TabIndex = 0;
-            // 
-            // Pctproduto
-            // 
-            this.Pctproduto.BackColor = System.Drawing.SystemColors.Window;
-            this.Pctproduto.Location = new System.Drawing.Point(10, 12);
-            this.Pctproduto.Name = "Pctproduto";
-            this.Pctproduto.Size = new System.Drawing.Size(70, 70);
-            this.Pctproduto.TabIndex = 9;
-            this.Pctproduto.TabStop = false;
+            this.BtnExcluir.Location = new System.Drawing.Point(550, 56);
+            this.BtnExcluir.Name = "BtnExcluir";
+            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.BtnExcluir.TabIndex = 14;
+            this.BtnExcluir.Text = "Remover";
+            this.BtnExcluir.UseVisualStyleBackColor = true;
             // 
             // LblCategorias
             // 
             this.LblCategorias.AutoSize = true;
-            this.LblCategorias.Location = new System.Drawing.Point(156, 43);
+            this.LblCategorias.Location = new System.Drawing.Point(89, 61);
             this.LblCategorias.Name = "LblCategorias";
             this.LblCategorias.Size = new System.Drawing.Size(74, 13);
-            this.LblCategorias.TabIndex = 10;
+            this.LblCategorias.TabIndex = 13;
             this.LblCategorias.Text = "Nome produto";
-       
             // 
-            // BtnExcluir
+            // Pctproduto
             // 
-            this.BtnExcluir.Location = new System.Drawing.Point(301, 38);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 11;
-            this.BtnExcluir.Text = "Remover";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.Pctproduto.BackColor = System.Drawing.SystemColors.Window;
+            this.Pctproduto.Location = new System.Drawing.Point(3, 23);
+            this.Pctproduto.Name = "Pctproduto";
+            this.Pctproduto.Size = new System.Drawing.Size(80, 80);
+            this.Pctproduto.TabIndex = 12;
+            this.Pctproduto.TabStop = false;
             // 
             // ProdutoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.BtnExcluir);
+            this.Controls.Add(this.LblCategorias);
+            this.Controls.Add(this.Pctproduto);
             this.Name = "ProdutoControl";
-            this.Size = new System.Drawing.Size(392, 100);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Size = new System.Drawing.Size(628, 122);
             ((System.ComponentModel.ISupportInitialize)(this.Pctproduto)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button BtnExcluir;
         public System.Windows.Forms.Label LblCategorias;
         public System.Windows.Forms.PictureBox Pctproduto;

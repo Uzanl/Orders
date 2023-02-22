@@ -49,7 +49,7 @@
             this.FlpCat.AutoScroll = true;
             this.FlpCat.Location = new System.Drawing.Point(12, 180);
             this.FlpCat.Name = "FlpCat";
-            this.FlpCat.Size = new System.Drawing.Size(760, 369);
+            this.FlpCat.Size = new System.Drawing.Size(1560, 669);
             this.FlpCat.TabIndex = 1;
             // 
             // panel1
@@ -99,7 +99,7 @@
             this.panel2.Controls.Add(this.BtnAdicionarImagem);
             this.panel2.Location = new System.Drawing.Point(268, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(504, 162);
+            this.panel2.Size = new System.Drawing.Size(1304, 162);
             this.panel2.TabIndex = 11;
             this.panel2.Visible = false;
             // 
@@ -153,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.FlpCat);

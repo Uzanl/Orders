@@ -42,19 +42,15 @@ namespace Orders
 
             if (Params.TryGetValue(sender, out Tuple<int, string> value))
             {
-               
 
-                //primeiro prreciso verificar se é um produto... se não for continua
+                //esse código é passível de melhorias
 
-                //verifica se tem algum produto cadastrado em uma categoria x
                 if (prodDAO.ListaProdCat(value.Item2).Rows.Count > 0)
                 {
                     BtnVoltar.Visible = true;
-                    // só preciso saber se retorna true
                     AcrescentarButtons(prodDAO.ListaProdCat(value.Item2));
-
                 }
-                else 
+                else
                 {
                     if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(value.Item1), value.Item2)) && catDAO.ListarCat(value.Item2, true).Rows.Count == 0)
                     {
@@ -70,18 +66,7 @@ namespace Orders
                     {
                         MessageBox.Show("Não existe nenhum produto cadastrado nessa categoria!");
                     }
-
                 }
-
-
-               
-
-
-
-
-
-
-
             }
             else
             {
@@ -193,7 +178,7 @@ namespace Orders
 
                         if (op == DialogResult.Yes)
                         {
-                           
+
                             try
                             {
                                 Pedido();
@@ -205,7 +190,6 @@ namespace Orders
                                 MessageBox.Show("Favor verificar as informações digitadas !!!");
                             }
                         }
-
                     }
                 }
             }
