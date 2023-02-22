@@ -15,7 +15,8 @@ namespace Orders.Classes
 
         private void Catcontrol_Load(object sender, EventArgs e)
         {
-
+         
+            
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
@@ -34,7 +35,13 @@ namespace Orders.Classes
 
                 Height = 500;
                 FlpProduto.Height = 380;
-                Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
+
+                
+                
+                    
+                    Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
+              
+                
                 lblProduto.Visible = true;
                 TxtProduto.Visible = true;
                 BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\mais.png");

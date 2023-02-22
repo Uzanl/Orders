@@ -42,6 +42,7 @@
             // 
             this.BtnExpandir.BackgroundImage = global::Orders.Properties.Resources.download;
             this.BtnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnExpandir.Enabled = false;
             this.BtnExpandir.Location = new System.Drawing.Point(4, 42);
             this.BtnExpandir.Name = "BtnExpandir";
             this.BtnExpandir.Size = new System.Drawing.Size(40, 38);
@@ -107,7 +108,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblProduto);
             this.Controls.Add(this.TxtProduto);
             this.Controls.Add(this.BtnExpandir);
@@ -116,7 +116,7 @@
             this.Controls.Add(this.Pctcategoria);
             this.Controls.Add(this.FlpProduto);
             this.Name = "Cat";
-            this.Size = new System.Drawing.Size(758, 122);
+            this.Size = new System.Drawing.Size(760, 124);
             this.Load += new System.EventHandler(this.Catcontrol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Pctcategoria)).EndInit();
             this.ResumeLayout(false);

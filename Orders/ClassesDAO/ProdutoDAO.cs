@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Orders.Classes;
+using System;
 using System.Data;
 
 
@@ -19,6 +20,24 @@ namespace Orders.ClassesDAO
             comando_sql = new MySqlDataAdapter(comando, Conexao.Conectar);
             comando_sql.Fill(tabela_memoria);
         }
+
+
+        #region VERIFICA SE A CATEGORIA TEM ALGUM PRODUTO
+        public bool VerificaCategoria(string categoria)
+        {
+            ExecutarComando("select p.id_produto as ID from produto p inner join categoria c on c.id_categoria= p.id_categoria WHERE c.nome ='" + categoria + "';");
+            try
+            {
+                Prod.Id_produto =Convert.ToInt32(tabela_memoria.Rows[0]["ID"]);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
 
         #region LISTA PRODUTO POR CATEGORIA
         public DataTable ListaProdCat(string nome)

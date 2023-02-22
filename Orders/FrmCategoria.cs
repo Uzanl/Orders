@@ -12,6 +12,7 @@ namespace Orders
     {
         readonly CategoriaDAO catDAO = new CategoriaDAO();
         readonly Categoria cat = new Categoria();
+        readonly ProdutoDAO prodDAO = new ProdutoDAO();
 
         public FrmCategoria()
         {
@@ -106,6 +107,11 @@ namespace Orders
             {
                 Cat cat = new Cat();
                 cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
+
+                if (prodDAO.VerificaCategoria(cat.LblCategorias.Text) == true)
+                {
+                    cat.BtnExpandir.Enabled = true;
+                }              
                 string caminho = lista.Rows[i]["imagem"].ToString();
                 if (File.Exists(caminho))
                 {
@@ -115,6 +121,8 @@ namespace Orders
                 FlpCat.Controls.Add(cat);
                 i++;
             }
+
+            
         }
     }
 }
