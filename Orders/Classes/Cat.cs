@@ -27,25 +27,18 @@ namespace Orders.Classes
 
         private void BtnExpandir_Click(object sender, EventArgs e)
         {
-
+              
             if (Height < 410)
             {
-
-                //verificar se existe algum produto na categoria
-
                 Height = 500;
                 FlpProduto.Height = 380;
-
-                
-                
-                    
-                    Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
-              
-                
-                lblProduto.Visible = true;
-                TxtProduto.Visible = true;
                 BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\mais.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
+                Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
+                BtnNovoProd.Visible = true;
+                lblProduto.Visible = true;
+                TxtProduto.Visible = true;
+              
 
 
             }
@@ -55,6 +48,7 @@ namespace Orders.Classes
                 Height = 122;
                 lblProduto.Visible = false;
                 TxtProduto.Visible = false;
+                BtnNovoProd.Visible = false;
                 BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\menos.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
             }
@@ -93,6 +87,41 @@ namespace Orders.Classes
                 FlpProduto.Controls.Clear();
                 Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
             }
+        }
+
+        private void BtnNovoProd_Click(object sender, EventArgs e)
+        {
+            
+            if (LblNomeProd.Visible ==false && LblPreco.Visible ==false && txtCadProd.Visible ==false && TxtPrecoProd.Visible ==false && BtnCadProd.Visible==false && BtnImgProd.Visible == false && PctCadProd.Visible == false)
+            {
+                LblNomeProd.Visible = true;
+                LblPreco.Visible = true;
+                txtCadProd.Visible = true;
+                TxtPrecoProd.Visible = true;
+                BtnCadProd.Visible = true;
+                BtnImgProd.Visible = true;
+                PctCadProd.Visible = true;
+                BtnNovoProd.Text = "Cancelar";
+            }
+            else
+            {
+                BtnNovoProd.Text = "Novo";
+                LblNomeProd.Visible = false;
+                LblPreco.Visible = false;
+                txtCadProd.Visible = false;
+                TxtPrecoProd.Visible = false;
+                BtnCadProd.Visible = false;
+                BtnImgProd.Visible = false;
+                PctCadProd.Visible = false;
+
+            }
+            
+         
+
+            
+
+
+          
         }
     }
 }

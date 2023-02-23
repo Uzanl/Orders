@@ -111,6 +111,14 @@ namespace Orders
                 if (prodDAO.VerificaCategoria(cat.LblCategorias.Text) == true)
                 {
                     cat.BtnExpandir.Enabled = true;
+
+                }
+                else
+                {
+                    cat.BtnNovoProd.Visible = true;
+                    cat.BtnNovoProd.Text = "Adicione um produto";
+                    cat.BtnNovoProd.Width = 200;
+                    cat.BtnNovoProd.Location = new Point(405, 50);
                 }              
                 string caminho = lista.Rows[i]["imagem"].ToString();
                 if (File.Exists(caminho))
@@ -120,9 +128,7 @@ namespace Orders
                 }
                 FlpCat.Controls.Add(cat);
                 i++;
-            }
-
-            
+            }    
         }
     }
 }
