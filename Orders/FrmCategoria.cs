@@ -107,7 +107,7 @@ namespace Orders
             {
                 Cat cat = new Cat();
                 cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
-
+                cat.Tag = lista.Rows[i]["ID"].ToString();
                 if (prodDAO.VerificaCategoria(cat.LblCategorias.Text) == true)
                 {
                     cat.BtnExpandir.Enabled = true;
@@ -119,6 +119,7 @@ namespace Orders
                     cat.BtnNovoProd.Text = "Adicione um produto";
                     cat.BtnNovoProd.Width = 200;
                     cat.BtnNovoProd.Location = new Point(405, 50);
+                    
                 }              
                 string caminho = lista.Rows[i]["imagem"].ToString();
                 if (File.Exists(caminho))

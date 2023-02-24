@@ -75,5 +75,12 @@ namespace Orders.ClassesDAO
             return listaDescripto;
         }
         #endregion
+
+        #region INSERIR NOVO PRODUTO EM UMA CATEGORIA
+        public void Inserir(Produto produto)
+        {
+            ExecutarComando("INSERT INTO PRODUTO VALUES(0,'" + produto.Nome + "','" + produto.Preco + "',null,'"+produto.Id_categoria+"');");
+        }
+        #endregion
     }
 }

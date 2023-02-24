@@ -2,12 +2,14 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 namespace Orders.Classes
 {
     public partial class Cat : UserControl
     {
         ProdutoDAO prodDAO = new ProdutoDAO();
+        Produto prod = new Produto();
         public Cat()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace Orders.Classes
                 lblProduto.Visible = true;
                 TxtProduto.Visible = true;
               
-
+                
 
             }
             else
@@ -114,14 +116,66 @@ namespace Orders.Classes
                 BtnImgProd.Visible = false;
                 PctCadProd.Visible = false;
 
+            }     
+        }
+
+        private void BtnImgProd_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog()
+            {
+                Title = "Selecionar Arquivo",
+                InitialDirectory = @"C:\",
+                Filter = "Image Files|*.jpg;*.jpeg;*.png",
+                FilterIndex = 1
+            };
+            op.ShowDialog();
+            if (File.Exists(op.FileName))
+            {
+                PctCadProd.BackgroundImage = Image.FromFile(op.FileName);
+                PctCadProd.BackgroundImageLayout = ImageLayout.Stretch;
+                prod.Imagem = op.FileName;
             }
-            
-         
+        }
 
-            
+        private void BtnCadProd_Click(object sender, EventArgs e)
+        {
+            if (TxtPrecoProd.Text == string.Empty || PctCadProd.ImageLocation == string.Empty || txtCadProd.Text == string.Empty)
+            {
+                if (txtCadProd.Text == string.Empty)
+                    txtCadProd.BackColor = Color.Red;
+                MessageBox.Show("Favor preencher as informações");
+            }
+            else
+            {
+                try
+                {
+                    prod.Nome = txtCadProd.Text;
+                    prod.Preco = TxtPrecoProd.Text;
+                  //  prod.Id_marca = 0;
+                    prod.Id_categoria =Convert.ToInt32(Tag);
+                    prodDAO.Inserir(prod);
+                    // FrmRefresh();
+                    FlpProduto.Controls.Clear();
+                    //CarregarCat(catDAO.ListarCat(string.Empty, false));
+                    Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
+                    if (BtnExpandir.Enabled == false)
+                    {
+                        BtnNovoProd.Visible = false;
+                    }
+                    BtnExpandir.Enabled = true;
+                    BtnNovoProd.Size = new Size(75, 23);
+                    BtnNovoProd.Text = "Novo";
+                    BtnNovoProd.Location = new Point(405, 95);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Favor verificar as informações digitadas !!!");
+                }
 
-
-          
+                PctCadProd.Image = null;
+                txtCadProd.Text = string.Empty;
+                TxtPrecoProd.Text = string.Empty;
+            }
         }
     }
 }

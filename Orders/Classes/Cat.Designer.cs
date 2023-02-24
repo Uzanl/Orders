@@ -144,6 +144,7 @@
             this.BtnCadProd.Text = "Salvar";
             this.BtnCadProd.UseVisualStyleBackColor = true;
             this.BtnCadProd.Visible = false;
+            this.BtnCadProd.Click += new System.EventHandler(this.BtnCadProd_Click);
             // 
             // LblNomeProd
             // 
@@ -172,6 +173,7 @@
             this.BtnImgProd.Text = "Adicionar imagem";
             this.BtnImgProd.UseVisualStyleBackColor = true;
             this.BtnImgProd.Visible = false;
+            this.BtnImgProd.Click += new System.EventHandler(this.BtnImgProd_Click);
             // 
             // LblPreco
             // 

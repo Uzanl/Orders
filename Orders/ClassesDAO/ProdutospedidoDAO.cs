@@ -20,7 +20,7 @@ namespace Orders.ClassesDAO
             comando_sql.Fill(tabela_memoria);
         }
 
-        #region INSERIR NOVA CATEGORIA
+        #region INSERIR NOVO PEDIDO
         public void Inserir(Produtospedido prodped)
         {
             ExecutarComando("INSERT INTO PRODUTOS_PEDIDO VALUES('" + prodped.Id_pedido + "','" + prodped.Id_produto + "');");
