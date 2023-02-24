@@ -63,12 +63,13 @@ namespace Orders.Classes
             {
                 ProdutoControl prod = new ProdutoControl();
                 prod.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
-                //string caminho = lista.Rows[i]["imagem"].ToString();
-                //if (File.Exists(caminho))
-                // {
-                //     prod.Pctproduto.BackgroundImage = Image.FromFile(caminho);
-                //     prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
-                //  }
+               
+                string caminho = lista.Rows[i]["imagem"].ToString();
+                if (File.Exists(caminho))
+                 {
+                     prod.Pctproduto.BackgroundImage = Image.FromFile(caminho);
+                     prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
+                  }
                 FlpProduto.Controls.Add(prod);
                 i++;
             }

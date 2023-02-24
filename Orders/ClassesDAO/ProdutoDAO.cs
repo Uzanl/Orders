@@ -42,7 +42,7 @@ namespace Orders.ClassesDAO
         public DataTable ListaProdCat(string nome)
         {
             DataTable listaDescripto;
-            ExecutarComando("select p.id_produto as ID,p.nome as NOME from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome='" + nome + "';");
+            ExecutarComando("select p.id_produto as ID,p.nome as NOME, p.imagem as IMAGEM from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome='" + nome + "';");
             listaDescripto = tabela_memoria.Clone();
 
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)
@@ -50,6 +50,7 @@ namespace Orders.ClassesDAO
                 DataRow linha = listaDescripto.NewRow();
                 linha["ID"] = tabela_memoria.Rows[i]["ID"].ToString();
                 linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
+                linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString();
 
                 listaDescripto.Rows.Add(linha);
             }
@@ -61,7 +62,7 @@ namespace Orders.ClassesDAO
         public DataTable ListaProdCatLike(string categoria, string produto)
         {
             DataTable listaDescripto;
-            ExecutarComando("select p.id_produto as ID,p.nome as NOME from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome ='"+categoria+"' AND p.nome LIKE'" + produto + "%';");
+            ExecutarComando("select p.id_produto as ID,p.nome as NOME, p.imagem as IMAGEM from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome ='" + categoria+"' AND p.nome LIKE'" + produto + "%';");
             listaDescripto = tabela_memoria.Clone();
 
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)
@@ -69,6 +70,7 @@ namespace Orders.ClassesDAO
                 DataRow linha = listaDescripto.NewRow();
                 linha["ID"] = tabela_memoria.Rows[i]["ID"].ToString();
                 linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
+                linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString();
 
                 listaDescripto.Rows.Add(linha);
             }
@@ -79,7 +81,7 @@ namespace Orders.ClassesDAO
         #region INSERIR NOVO PRODUTO EM UMA CATEGORIA
         public void Inserir(Produto produto)
         {
-            ExecutarComando("INSERT INTO PRODUTO VALUES(0,'" + produto.Nome + "','" + produto.Preco + "',null,'"+produto.Id_categoria+"');");
+            ExecutarComando("INSERT INTO PRODUTO VALUES(0,'" + produto.Nome + "','" + produto.Preco + "','"+produto.Imagem.Replace("\\", "/") + "',null,'"+produto.Id_categoria+"');");
         }
         #endregion
     }
