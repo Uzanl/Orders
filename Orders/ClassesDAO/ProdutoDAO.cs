@@ -38,7 +38,7 @@ namespace Orders.ClassesDAO
         }
         #endregion
 
-        #region VERIFICA SE A CATEGORIA TEM ALGUM PRODUTO
+        #region VERIFICA SE A CATEGORIA TEM ALGUM PRODUTO POR ID
         public bool VerificaCategoriaId(int id_categoria)
         {
             ExecutarComando("select p.id_produto as ID from produto p inner join categoria c on c.id_categoria= p.id_categoria WHERE c.id_categoria ='" +id_categoria  + "';");

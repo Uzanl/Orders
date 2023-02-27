@@ -43,7 +43,6 @@ namespace Orders
             {
                 Itens item = new Itens();
                 item.LblItem.Text = nome.ToString();
-                // item.Lblid.Text = value.Item1.ToString();
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
@@ -162,6 +161,12 @@ namespace Orders
                 teste += aItenspedido.Nome + "\r\n";
                 prodpedDAO.Inserir(prodped);
             }
+        }
+
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPedido i = new FrmPedido();
+            i.ShowDialog();
         }
     }
 }

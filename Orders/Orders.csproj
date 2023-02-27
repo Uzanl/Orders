@@ -140,6 +140,12 @@
     </Compile>
     <Compile Include="Classes\Itenspedido.cs" />
     <Compile Include="Classes\Pedido.cs" />
+    <Compile Include="Classes\PedidoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\PedidoControl.Designer.cs">
+      <DependentUpon>PedidoControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\ProdCatalogo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -191,6 +197,12 @@
     <Compile Include="Classes\Ingredienteprod.cs" />
     <Compile Include="Classes\Marca.cs" />
     <Compile Include="Classes\Produto.cs" />
+    <Compile Include="FrmPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedido.Designer.cs">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Classes\Cat.resx">
@@ -201,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Classes\Itens.resx">
       <DependentUpon>Itens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\PedidoControl.resx">
+      <DependentUpon>PedidoControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Classes\ProdCatalogo.resx">
       <DependentUpon>ProdCatalogo.cs</DependentUpon>
@@ -213,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCatalogo.resx">
       <DependentUpon>FrmCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedido.resx">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

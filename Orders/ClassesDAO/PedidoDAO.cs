@@ -43,5 +43,25 @@ namespace Orders.ClassesDAO
                 return false;
             }
         }
+
+        #region LISTA PEDIDOS NA DATA CORRENTE
+        public DataTable ListaPedData(DateTime data)
+        {
+            DataTable listaDescripto;
+            ExecutarComando("select p.id_pedido as ID, c.nome as CLIENTE, p.hora as HORA, p.hora as HORA from pedido p inner join cliente c on c.id_cliente = p .id_cliente WHERE p.data_pedido ='" + data.ToString("yyyy/MM/dd") + "';");
+            listaDescripto = tabela_memoria.Clone();
+
+            for (int i = 0; i < tabela_memoria.Rows.Count; i++)
+            {
+                DataRow linha = listaDescripto.NewRow();
+                linha["ID"] = tabela_memoria.Rows[i]["ID"].ToString();
+                linha["CLIENTE"] = tabela_memoria.Rows[i]["CLIENTE"].ToString();
+                linha["HORA"] = tabela_memoria.Rows[i]["HORA"].ToString();
+
+                listaDescripto.Rows.Add(linha);
+            }
+            return listaDescripto;
+        }
+        #endregion
     }
 }
