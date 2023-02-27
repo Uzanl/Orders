@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Lblid = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.Lblhora = new System.Windows.Forms.Label();
             this.BtnExpandir = new System.Windows.Forms.Button();
             this.FlpProdutos = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Lbltimer = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Lblid
@@ -80,17 +84,42 @@
             this.FlpProdutos.Size = new System.Drawing.Size(726, 216);
             this.FlpProdutos.TabIndex = 4;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(517, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Status";
+            // 
+            // Lbltimer
+            // 
+            this.Lbltimer.AutoSize = true;
+            this.Lbltimer.Location = new System.Drawing.Point(653, 68);
+            this.Lbltimer.Name = "Lbltimer";
+            this.Lbltimer.Size = new System.Drawing.Size(34, 13);
+            this.Lbltimer.TabIndex = 6;
+            this.Lbltimer.Text = "00:00";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // PedidoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Lbltimer);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.FlpProdutos);
             this.Controls.Add(this.BtnExpandir);
             this.Controls.Add(this.Lblhora);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.Lblid);
             this.Name = "PedidoControl";
-            this.Size = new System.Drawing.Size(1556, 350);
+            this.Size = new System.Drawing.Size(1556, 122);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +131,8 @@
         public System.Windows.Forms.Label lblNome;
         public System.Windows.Forms.Label Lblhora;
         private System.Windows.Forms.FlowLayoutPanel FlpProdutos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Lbltimer;
+        private System.Windows.Forms.Timer timer1;
     }
 }

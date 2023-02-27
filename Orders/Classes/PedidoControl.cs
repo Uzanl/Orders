@@ -1,13 +1,9 @@
 ﻿using Orders.ClassesDAO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace Orders.Classes
@@ -22,7 +18,16 @@ namespace Orders.Classes
 
         private void BtnExpandir_Click(object sender, EventArgs e)
         {
-            CarregarProd(ppDAO.ListaProdPed(Convert.ToInt32(Tag)));
+            if (Height < 350)
+            {
+                CarregarProd(ppDAO.ListaProdPed(Convert.ToInt32(Tag)));
+                Height = 350;
+            }
+            else
+            {
+                FlpProdutos.Controls.Clear();
+                Height = 122;
+            }
         }
 
         private void CarregarProd(DataTable lista)
@@ -45,6 +50,14 @@ namespace Orders.Classes
                 FlpProdutos.Controls.Add(prod);
                 i++;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {           
+            DateTime horainicio = Convert.ToDateTime(Lblhora.Text);
+            DateTime horafinal = DateTime.Now;
+            TimeSpan span = horafinal.Subtract(horainicio);
+            Lbltimer.Text = span.ToString(@"hh\:mm\:ss");
         }
     }
 }
