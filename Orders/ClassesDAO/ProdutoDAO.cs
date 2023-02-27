@@ -38,6 +38,22 @@ namespace Orders.ClassesDAO
         }
         #endregion
 
+        #region VERIFICA SE A CATEGORIA TEM ALGUM PRODUTO
+        public bool VerificaCategoriaId(int id_categoria)
+        {
+            ExecutarComando("select p.id_produto as ID from produto p inner join categoria c on c.id_categoria= p.id_categoria WHERE c.id_categoria ='" +id_categoria  + "';");
+            try
+            {
+                Prod.Id_produto = Convert.ToInt32(tabela_memoria.Rows[0]["ID"]);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
         #region LISTA PRODUTO POR CATEGORIA
         public DataTable ListaProdCat(string nome)
         {

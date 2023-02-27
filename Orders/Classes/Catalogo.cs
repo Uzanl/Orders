@@ -24,9 +24,20 @@ namespace Orders.Classes
 
             ProdutoDAO prodDAO = new ProdutoDAO();
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
-            MAIN.AcrescentarProdutos(prodDAO.ListaProdCatId(Convert.ToInt32(Tag)));
-            Controls.Clear();
-            Dispose();
+            prodDAO.VerificaCategoriaId(Convert.ToInt32(Tag));
+
+            if (prodDAO.VerificaCategoriaId(Convert.ToInt32(Tag))==true)
+            {
+                MAIN.AcrescentarProdutos(prodDAO.ListaProdCatId(Convert.ToInt32(Tag)));
+                Controls.Clear();
+                Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Não existem produtos cadastrados nessa categoria!");
+            }
+          
+          
         }
     }
 }

@@ -99,6 +99,8 @@ namespace Orders
 
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
+            ProdCatalogo pc = new ProdCatalogo();
+            pc.Dispose();
             FlpCategorias.Controls.Clear();
             CarregarCategorias();
             BtnVoltar.Visible = false;
