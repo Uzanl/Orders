@@ -31,7 +31,8 @@
             this.Lblid = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.Lblhora = new System.Windows.Forms.Label();
-            this.BtnProdutos = new System.Windows.Forms.Button();
+            this.BtnExpandir = new System.Windows.Forms.Button();
+            this.FlpProdutos = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // Lblid
@@ -61,34 +62,45 @@
             this.Lblhora.TabIndex = 2;
             this.Lblhora.Text = "hh:mm";
             // 
-            // BtnProdutos
+            // BtnExpandir
             // 
-            this.BtnProdutos.Location = new System.Drawing.Point(29, 96);
-            this.BtnProdutos.Name = "BtnProdutos";
-            this.BtnProdutos.Size = new System.Drawing.Size(75, 23);
-            this.BtnProdutos.TabIndex = 3;
-            this.BtnProdutos.Text = "Expandir";
-            this.BtnProdutos.UseVisualStyleBackColor = true;
+            this.BtnExpandir.Location = new System.Drawing.Point(29, 96);
+            this.BtnExpandir.Name = "BtnExpandir";
+            this.BtnExpandir.Size = new System.Drawing.Size(75, 23);
+            this.BtnExpandir.TabIndex = 3;
+            this.BtnExpandir.Text = "Expandir";
+            this.BtnExpandir.UseVisualStyleBackColor = true;
+            this.BtnExpandir.Click += new System.EventHandler(this.BtnExpandir_Click);
+            // 
+            // FlpProdutos
+            // 
+            this.FlpProdutos.AutoScroll = true;
+            this.FlpProdutos.Location = new System.Drawing.Point(29, 125);
+            this.FlpProdutos.Name = "FlpProdutos";
+            this.FlpProdutos.Size = new System.Drawing.Size(726, 216);
+            this.FlpProdutos.TabIndex = 4;
             // 
             // PedidoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.BtnProdutos);
+            this.Controls.Add(this.FlpProdutos);
+            this.Controls.Add(this.BtnExpandir);
             this.Controls.Add(this.Lblhora);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.Lblid);
             this.Name = "PedidoControl";
-            this.Size = new System.Drawing.Size(1556, 122);
+            this.Size = new System.Drawing.Size(1556, 350);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button BtnProdutos;
+        private System.Windows.Forms.Button BtnExpandir;
         public System.Windows.Forms.Label Lblid;
         public System.Windows.Forms.Label lblNome;
         public System.Windows.Forms.Label Lblhora;
+        private System.Windows.Forms.FlowLayoutPanel FlpProdutos;
     }
 }

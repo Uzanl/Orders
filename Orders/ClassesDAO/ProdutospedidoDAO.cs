@@ -26,5 +26,25 @@ namespace Orders.ClassesDAO
             ExecutarComando("INSERT INTO PRODUTOS_PEDIDO VALUES('" + prodped.Id_pedido + "','" + prodped.Id_produto + "');");
         }
         #endregion
+
+        #region LISTA PRODUTO POR PEDIDO
+        public DataTable ListaProdPed(int id)
+        {
+            DataTable listaDescripto;
+            ExecutarComando("select p.id_produto as ID,p.nome AS PRODUTO,P.imagem as IMAGEM from produtos_pedido pp inner join produto p on p.id_produto = pp.id_produto inner join pedido pe on pe.id_pedido = pp.id_pedido WHERE pp.id_pedido ='" + id + "';");
+            listaDescripto = tabela_memoria.Clone();
+
+            for (int i = 0; i < tabela_memoria.Rows.Count; i++)
+            {
+                DataRow linha = listaDescripto.NewRow();
+                linha["ID"] = tabela_memoria.Rows[i]["ID"].ToString();
+                linha["PRODUTO"] = tabela_memoria.Rows[i]["PRODUTO"].ToString();
+                linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString();
+
+                listaDescripto.Rows.Add(linha);
+            }
+            return listaDescripto;
+        }
+        #endregion
     }
 }
