@@ -132,8 +132,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassesDAO\PedidoDAO.cs" />
+    <Compile Include="Classes\Catalogo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\Catalogo.Designer.cs">
+      <DependentUpon>Catalogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Itenspedido.cs" />
     <Compile Include="Classes\Pedido.cs" />
+    <Compile Include="Classes\ProdCatalogo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\ProdCatalogo.Designer.cs">
+      <DependentUpon>ProdCatalogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,8 +196,14 @@
     <EmbeddedResource Include="Classes\Cat.resx">
       <DependentUpon>Cat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Classes\Catalogo.resx">
+      <DependentUpon>Catalogo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Classes\Itens.resx">
       <DependentUpon>Itens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\ProdCatalogo.resx">
+      <DependentUpon>ProdCatalogo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Classes\ProdutoControl.resx">
       <DependentUpon>ProdutoControl.cs</DependentUpon>

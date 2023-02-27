@@ -1,4 +1,5 @@
-﻿using Orders.Classes;
+﻿using Google.Protobuf.WellKnownTypes;
+using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ namespace Orders
         {
 
             AcrescentarButtons(catDAO.ListarCat(string.Empty, false));
+
+            
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
@@ -74,6 +77,21 @@ namespace Orders
             }
         }
 
+        public void AcrescentarItens(int id, string nome)
+        {
+            if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(id),nome)))
+            {
+                Itens item = new Itens();
+                item.LblItem.Text = nome.ToString();
+                // item.Lblid.Text = value.Item1.ToString();
+                item.Tag = id;
+                FlpItens.Controls.Add(item);
+                BtnFinalizarpedido.Visible = true;
+                listaitens.Add(new Itenspedido(Convert.ToInt32(id),nome));
+            }
+        }
+
+
         public void Excluiritem(int id, string nome)
         {
             listaitens.Remove(new Itenspedido(id, nome));
@@ -107,11 +125,13 @@ namespace Orders
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-            int i = 0;
+         
             FlpCategorias.Controls.Clear();
+            int i = 0;
             while (FlpCategorias.Controls.Count < lista.Rows.Count)
             {
                 Button dynamicButton = new Button();
+                Catalogo catal = new Catalogo();
                 int x = screenWidth - (screenWidth * 30 / 100), y = screenHeight - (screenHeight * 30 / 100);
 
                 if (orientation.ToString() == "Angle0")
@@ -126,6 +146,8 @@ namespace Orders
                 }
 
                 dynamicButton.Text = lista.Rows[i]["nome"].ToString();
+
+              //  catal.Btncategoria.Text = lista.Rows[i]["nome"].ToString();
                 //try catch provisóirio
                 try
                 {
@@ -141,15 +163,46 @@ namespace Orders
                 {
 
                 }
-
+              
                 dynamicButton.Font = new Font("Arial", 12);
                 dynamicButton.TextAlign = ContentAlignment.TopCenter;
                 Params.Add(dynamicButton, new Tuple<int, string>(Convert.ToInt32(lista.Rows[i]["ID"].ToString()), dynamicButton.Text));
                 dynamicButton.Click += DynamicButton_Click;
                 FlpCategorias.Controls.Add(dynamicButton);
+             //   FlpCategorias.Controls.Add(catal);
 
                 i++;
             }
+
+
+           // testando nova forma de aparecer as categorias
+           FlpCategorias.Controls.Clear();
+           int j = 0;
+           while (FlpCategorias.Controls.Count < lista.Rows.Count)
+           {          
+               Catalogo catal = new Catalogo();            
+                catal.Btncategoria.Text = lista.Rows[j]["nome"].ToString();
+               catal.Tag = Convert.ToInt32(lista.Rows[j]["ID"].ToString());
+               FlpCategorias.Controls.Add(catal);
+               j++;
+           }
+
+
+        }
+
+        public void AcrescentarProdutos(DataTable lista)
+        {
+            FlpCategorias.Controls.Clear();
+            int i = 0;
+            while (FlpCategorias.Controls.Count < lista.Rows.Count)
+            {
+                ProdCatalogo pcatal = new ProdCatalogo();
+                pcatal.BtnProduto.Text = lista.Rows[i]["nome"].ToString();
+                pcatal.Tag = Convert.ToInt32(lista.Rows[i]["ID"].ToString());
+                FlpCategorias.Controls.Add(pcatal);
+                i++;
+            }
+            BtnVoltar.Visible = true;
         }
 
         private void BtnFinalizarpedido_Click(object sender, EventArgs e)
