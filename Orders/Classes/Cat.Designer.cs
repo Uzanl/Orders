@@ -192,6 +192,7 @@
             this.TxtPrecoProd.Size = new System.Drawing.Size(75, 20);
             this.TxtPrecoProd.TabIndex = 28;
             this.TxtPrecoProd.Visible = false;
+            this.TxtPrecoProd.TextChanged += new System.EventHandler(this.TxtPrecoProd_TextChanged);
             // 
             // Cat
             // 

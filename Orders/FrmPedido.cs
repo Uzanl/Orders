@@ -37,6 +37,7 @@ namespace Orders
                 pc.Lblid.Text = lista.Rows[i]["ID"].ToString();
                 pc.lblNome.Text = lista.Rows[i]["CLIENTE"].ToString();
                 pc.Lblhora.Text = lista.Rows[i]["HORA"].ToString();
+                pc.LblStatus.Text = lista.Rows[i]["STATUS"].ToString();
                 FlpPedidos.Controls.Add(pc);
                 i++;
             }

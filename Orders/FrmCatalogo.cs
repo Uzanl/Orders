@@ -116,6 +116,7 @@ namespace Orders
                 ped.Id_cliente = 1;
                 ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
                 ped.Data_pedido = data_hora;
+                ped.Status = "Em aberto";
                 pedDao.Inserir(ped);
                 pedDao.Ultimopedido();
 

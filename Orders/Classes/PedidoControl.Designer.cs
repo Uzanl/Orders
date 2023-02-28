@@ -34,9 +34,10 @@
             this.Lblhora = new System.Windows.Forms.Label();
             this.BtnExpandir = new System.Windows.Forms.Button();
             this.FlpProdutos = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblStatus = new System.Windows.Forms.Label();
             this.Lbltimer = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.BtnFinalizar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Lblid
@@ -84,14 +85,14 @@
             this.FlpProdutos.Size = new System.Drawing.Size(726, 216);
             this.FlpProdutos.TabIndex = 4;
             // 
-            // label1
+            // LblStatus
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(517, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Status";
+            this.LblStatus.AutoSize = true;
+            this.LblStatus.Location = new System.Drawing.Point(517, 68);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(37, 13);
+            this.LblStatus.TabIndex = 5;
+            this.LblStatus.Text = "Status";
             // 
             // Lbltimer
             // 
@@ -107,12 +108,23 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // BtnFinalizar
+            // 
+            this.BtnFinalizar.Location = new System.Drawing.Point(758, 63);
+            this.BtnFinalizar.Name = "BtnFinalizar";
+            this.BtnFinalizar.Size = new System.Drawing.Size(101, 23);
+            this.BtnFinalizar.TabIndex = 7;
+            this.BtnFinalizar.Text = "Finalizar Pedido";
+            this.BtnFinalizar.UseVisualStyleBackColor = true;
+            this.BtnFinalizar.Click += new System.EventHandler(this.BtnFinalizar_Click);
+            // 
             // PedidoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BtnFinalizar);
             this.Controls.Add(this.Lbltimer);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblStatus);
             this.Controls.Add(this.FlpProdutos);
             this.Controls.Add(this.BtnExpandir);
             this.Controls.Add(this.Lblhora);
@@ -131,8 +143,9 @@
         public System.Windows.Forms.Label lblNome;
         public System.Windows.Forms.Label Lblhora;
         private System.Windows.Forms.FlowLayoutPanel FlpProdutos;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Lbltimer;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Label LblStatus;
+        private System.Windows.Forms.Button BtnFinalizar;
     }
 }
