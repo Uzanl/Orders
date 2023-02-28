@@ -8,7 +8,7 @@ namespace Orders.Classes
         int id_produto;
         string nome;
 
-        public Itenspedido(int p, string n)
+        public Itenspedido(int p,string n)
         {
             Id_produto = p;
             Nome = n;

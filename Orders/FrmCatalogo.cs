@@ -2,10 +2,12 @@
 using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Orders
@@ -39,20 +41,20 @@ namespace Orders
 
         public void AcrescentarItens(int id, string nome)
         {
-            if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(id), nome)))
+            if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(id),nome)))
             {
                 Itens item = new Itens();
                 item.LblItem.Text = nome.ToString();
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
-                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+                listaitens.Add(new Itenspedido(Convert.ToInt32(id),nome));
             }
         }
 
         public void Excluiritem(int id, string nome)
         {
-            listaitens.Remove(new Itenspedido(id, nome));
+            listaitens.Remove(new Itenspedido(id,nome));
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
@@ -112,48 +114,67 @@ namespace Orders
         {
             if (FlpItens.Controls.Count > 0)
             {
-                DateTime data_hora = DateTime.Now;
-                ped.Id_cliente = 1;
-                ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
-                ped.Data_pedido = data_hora;
-                ped.Status = "Em aberto";
-                pedDao.Inserir(ped);
-                pedDao.Ultimopedido();
-
                 string teste = " produto \r\n";
                 foreach (Itenspedido aItenspedido in listaitens)
                 {
-                    teste += aItenspedido.Nome + "\r\n";
+                     teste += aItenspedido.Nome + "\r\n";
+                }
 
-                    if (listaitens.IndexOf(aItenspedido) == listaitens.Count - 1)
+
+                DialogResult op;
+                
+                op = MessageBox.Show("Você tem certeza dessas informações?\r\n" + teste,
+                    "Salvando!", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (op == DialogResult.Yes)
+                {
+
+                    try
                     {
-                        DialogResult op;
-
-                        op = MessageBox.Show("Você tem certeza dessas informações?\r\n" + teste,
-                            "Salvando!", MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Question);
-
-                        if (op == DialogResult.Yes)
+                        foreach (Itenspedido aItenspedido in listaitens)
                         {
 
-                            try
+                          
+
+                            if (listaitens.IndexOf(aItenspedido) == listaitens.Count - 1)
                             {
+                                DateTime data_hora = DateTime.Now;
+                                ped.Id_cliente = 1;
+                                ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
+                                ped.Data_pedido = data_hora;
+                                ped.Status = "Em aberto";
+                                pedDao.Inserir(ped);
+                                pedDao.Ultimopedido();
                                 Pedido();
                                 MessageBox.Show("Pedido confirmado com sucesso!!!");
                                 FlpItens.Controls.Clear();
                             }
-                            catch (FormatException)
-                            {
-                                MessageBox.Show("Favor verificar as informações digitadas !!!");
-                            }
                         }
+
+                        listaitens.Clear();
+
+
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Favor verificar as informações digitadas !!!");
                     }
                 }
+
+
+
+
+
+
+                
+                
             }
         }
 
         private void Pedido()
         {
+
             string teste = " produto \r\n";
             foreach (Itenspedido aItenspedido in listaitens)
             {
@@ -162,6 +183,7 @@ namespace Orders
                 teste += aItenspedido.Nome + "\r\n";
                 prodpedDAO.Inserir(prodped);
             }
+            
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)

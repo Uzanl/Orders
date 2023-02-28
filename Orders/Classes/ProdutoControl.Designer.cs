@@ -31,6 +31,7 @@
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.LblCategorias = new System.Windows.Forms.Label();
             this.Pctproduto = new System.Windows.Forms.PictureBox();
+            this.LblPreco = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Pctproduto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,10 +62,19 @@
             this.Pctproduto.TabIndex = 12;
             this.Pctproduto.TabStop = false;
             // 
+            // LblPreco
+            // 
+            this.LblPreco.AutoSize = true;
+            this.LblPreco.Location = new System.Drawing.Point(222, 61);
+            this.LblPreco.Name = "LblPreco";
+            this.LblPreco.Size = new System.Drawing.Size(0, 13);
+            this.LblPreco.TabIndex = 15;
+            // 
             // ProdutoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblPreco);
             this.Controls.Add(this.BtnExcluir);
             this.Controls.Add(this.LblCategorias);
             this.Controls.Add(this.Pctproduto);
@@ -81,5 +91,6 @@
         public System.Windows.Forms.Button BtnExcluir;
         public System.Windows.Forms.Label LblCategorias;
         public System.Windows.Forms.PictureBox Pctproduto;
+        public System.Windows.Forms.Label LblPreco;
     }
 }

@@ -63,7 +63,8 @@ namespace Orders.Classes
             {
                 ProdutoControl prod = new ProdutoControl();
                 prod.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
-               
+                prod.LblPreco.Text = Convert.ToDouble(lista.Rows[i]["preco"]).ToString("C2");
+
                 string caminho = lista.Rows[i]["imagem"].ToString();
                 if (File.Exists(caminho))
                  {
