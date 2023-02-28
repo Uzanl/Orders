@@ -2,12 +2,8 @@
 using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Orders
@@ -49,6 +45,7 @@ namespace Orders
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
                 listaitens.Add(new Itenspedido(Convert.ToInt32(id),nome));
+                
             }
         }
 
@@ -102,7 +99,7 @@ namespace Orders
             while (FlpCategorias.Controls.Count < lista.Rows.Count)
             {
                 ProdCatalogo pcatal = new ProdCatalogo();
-                pcatal.BtnProduto.Text = lista.Rows[i]["nome"].ToString();
+                pcatal.BtnProduto.Text =$"{lista.Rows[i]["nome"]} \r\n preço: {Convert.ToDouble(lista.Rows[i]["preco"]).ToString("C2")}" ;
                 pcatal.Tag = Convert.ToInt32(lista.Rows[i]["ID"].ToString());
                 FlpCategorias.Controls.Add(pcatal);
                 i++;
@@ -134,9 +131,6 @@ namespace Orders
                     {
                         foreach (Itenspedido aItenspedido in listaitens)
                         {
-
-                          
-
                             if (listaitens.IndexOf(aItenspedido) == listaitens.Count - 1)
                             {
                                 DateTime data_hora = DateTime.Now;
@@ -160,15 +154,7 @@ namespace Orders
                     {
                         MessageBox.Show("Favor verificar as informações digitadas !!!");
                     }
-                }
-
-
-
-
-
-
-                
-                
+                }              
             }
         }
 

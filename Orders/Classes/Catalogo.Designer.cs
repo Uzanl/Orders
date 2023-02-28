@@ -38,6 +38,7 @@
             this.Btncategoria.Size = new System.Drawing.Size(144, 144);
             this.Btncategoria.TabIndex = 0;
             this.Btncategoria.Text = "Teste";
+            this.Btncategoria.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btncategoria.UseVisualStyleBackColor = true;
             this.Btncategoria.Click += new System.EventHandler(this.Btncategoria_Click);
             // 

@@ -38,6 +38,7 @@
             this.BtnProduto.Size = new System.Drawing.Size(144, 144);
             this.BtnProduto.TabIndex = 0;
             this.BtnProduto.Text = "teste";
+            this.BtnProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnProduto.UseVisualStyleBackColor = true;
             this.BtnProduto.Click += new System.EventHandler(this.BtnProduto_Click);
             // 

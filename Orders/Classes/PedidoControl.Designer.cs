@@ -82,7 +82,7 @@
             this.FlpProdutos.AutoScroll = true;
             this.FlpProdutos.Location = new System.Drawing.Point(29, 125);
             this.FlpProdutos.Name = "FlpProdutos";
-            this.FlpProdutos.Size = new System.Drawing.Size(726, 216);
+            this.FlpProdutos.Size = new System.Drawing.Size(726, 369);
             this.FlpProdutos.TabIndex = 4;
             // 
             // LblStatus
