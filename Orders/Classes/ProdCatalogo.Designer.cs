@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.BtnProduto = new System.Windows.Forms.Button();
+            this.LblPreco = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnProduto
@@ -42,18 +43,30 @@
             this.BtnProduto.UseVisualStyleBackColor = true;
             this.BtnProduto.Click += new System.EventHandler(this.BtnProduto_Click);
             // 
+            // LblPreco
+            // 
+            this.LblPreco.AutoSize = true;
+            this.LblPreco.Location = new System.Drawing.Point(76, 63);
+            this.LblPreco.Name = "LblPreco";
+            this.LblPreco.Size = new System.Drawing.Size(0, 13);
+            this.LblPreco.TabIndex = 1;
+            this.LblPreco.Visible = false;
+            // 
             // ProdCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblPreco);
             this.Controls.Add(this.BtnProduto);
             this.Name = "ProdCatalogo";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         public System.Windows.Forms.Button BtnProduto;
+        public System.Windows.Forms.Label LblPreco;
     }
 }

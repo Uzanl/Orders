@@ -35,12 +35,13 @@ namespace Orders
             AcrescentarCategorias(catDAO.ListarCat(string.Empty, false));
         }
 
-        public void AcrescentarItens(int id, string nome)
+        public void AcrescentarItens(int id, string nome,string preco)
         {
             if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(id),nome)))
             {
                 Itens item = new Itens();
-                item.LblItem.Text = nome.ToString();
+                item.LblItem.Text = nome;
+                item.LblPreco.Text = preco; 
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
@@ -79,7 +80,6 @@ namespace Orders
 
         public void AcrescentarCategorias(DataTable lista)
         {
-            // testando nova forma de aparecer as categorias
             FlpCategorias.Controls.Clear();
             int j = 0;
             while (FlpCategorias.Controls.Count < lista.Rows.Count)
@@ -99,8 +99,9 @@ namespace Orders
             while (FlpCategorias.Controls.Count < lista.Rows.Count)
             {
                 ProdCatalogo pcatal = new ProdCatalogo();
-                pcatal.BtnProduto.Text =$"{lista.Rows[i]["nome"]} \r\n preço: {Convert.ToDouble(lista.Rows[i]["preco"]).ToString("C2")}" ;
+                pcatal.BtnProduto.Text =$"{lista.Rows[i]["nome"]} \r\n preço: {Convert.ToDouble(lista.Rows[i]["preco"]):C2}" ;
                 pcatal.Tag = Convert.ToInt32(lista.Rows[i]["ID"].ToString());
+                pcatal.LblPreco.Text = lista.Rows[i]["preco"].ToString();
                 FlpCategorias.Controls.Add(pcatal);
                 i++;
             }

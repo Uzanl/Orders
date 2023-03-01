@@ -31,6 +31,7 @@
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.LblItem = new System.Windows.Forms.Label();
+            this.LblPreco = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LblPreco);
             this.panel1.Controls.Add(this.LblItem);
             this.panel1.Location = new System.Drawing.Point(81, 3);
             this.panel1.Name = "panel1";
@@ -62,6 +64,15 @@
             this.LblItem.Size = new System.Drawing.Size(92, 13);
             this.LblItem.TabIndex = 0;
             this.LblItem.Text = "Suco de melancia";
+            // 
+            // LblPreco
+            // 
+            this.LblPreco.AutoSize = true;
+            this.LblPreco.Location = new System.Drawing.Point(138, 23);
+            this.LblPreco.Name = "LblPreco";
+            this.LblPreco.Size = new System.Drawing.Size(0, 13);
+            this.LblPreco.TabIndex = 1;
+            this.LblPreco.Visible = false;
             // 
             // Itens
             // 
@@ -82,5 +93,6 @@
         private System.Windows.Forms.Button BtnExcluir;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label LblItem;
+        public System.Windows.Forms.Label LblPreco;
     }
 }
