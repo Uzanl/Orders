@@ -142,6 +142,7 @@ namespace Orders
                                 pedDao.Inserir(ped);
                                 pedDao.Ultimopedido();
                                 Pedido();
+                                LblSubtotal.Text = string.Empty;
                                 MessageBox.Show("Pedido confirmado com sucesso!!!");
                                 FlpItens.Controls.Clear();
                             }
