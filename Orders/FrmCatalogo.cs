@@ -4,6 +4,10 @@ using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace Orders
@@ -35,9 +39,9 @@ namespace Orders
             AcrescentarCategorias(catDAO.ListarCat(string.Empty, false));
         }
 
-        public void AcrescentarItens(int id, string nome,string preco)
+        public void AcrescentarItens(int id, string nome,string preco, bool adicao)
         {
-            if (!listaitens.Contains(new Itenspedido(Convert.ToInt32(id),nome)))
+            if (!listaitens.Exists(x => x.Id_produto == id) && adicao == false)
             {
                 Itens item = new Itens();
                 item.LblItem.Text = nome;
@@ -46,13 +50,48 @@ namespace Orders
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
                 listaitens.Add(new Itenspedido(Convert.ToInt32(id),nome));
-                
+
+            }
+            else
+            {
+               // Itens item = new Itens();
+               
+               // item.LblPreco.Text = preco;
+               // item.Tag = id;
+                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+               // int quantidade = Quantidade(Convert.ToInt32(id));
+               // item.LblItem.Text =$"{quantidade}x {nome}";
+                // FlpItens.Controls.Add(item);
+                // BtnFinalizarpedido.Visible = true;
+
             }
         }
 
-        public void Excluiritem(int id, string nome)
+        public void Excluiritem(int id, string nome,bool removetodos)
         {
-            listaitens.Remove(new Itenspedido(id,nome));
+            //listaitens.Remove(new Itenspedido(id,nome));
+
+            var itemToRemove = listaitens.FirstOrDefault(u => u.Id_produto == id);
+
+            // if found, remove it
+            if (itemToRemove != null && removetodos == false)
+            {
+                listaitens.Remove(itemToRemove);
+            }
+            else
+            {
+                listaitens.RemoveAll(u => u.Id_produto == id);
+               // ProdCatalogo pc = new ProdCatalogo();
+               
+                //  LblSubtotal.Text = string.Empty;
+
+            }
+
+           
+              
+            
+          
+                
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
@@ -68,7 +107,7 @@ namespace Orders
         {
             if (FlpItens.Controls.Count == 0)
             {
-                BtnFinalizarpedido.Visible = false;
+               // BtnFinalizarpedido.Visible = false;
             }
         }
 
@@ -87,6 +126,12 @@ namespace Orders
                 Catalogo catal = new Catalogo();
                 catal.Btncategoria.Text = lista.Rows[j]["nome"].ToString();
                 catal.Tag = Convert.ToInt32(lista.Rows[j]["ID"].ToString());
+                string caminho = lista.Rows[j]["imagem"].ToString();
+                if (File.Exists(caminho))
+                {
+                    catal.Btncategoria.BackgroundImage = Image.FromFile(caminho);
+                    catal.Btncategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                }
                 FlpCategorias.Controls.Add(catal);
                 j++;
             }
@@ -102,6 +147,12 @@ namespace Orders
                 pcatal.BtnProduto.Text =$"{lista.Rows[i]["nome"]} \r\n preço: {Convert.ToDouble(lista.Rows[i]["preco"]):C2}" ;
                 pcatal.Tag = Convert.ToInt32(lista.Rows[i]["ID"].ToString());
                 pcatal.LblPreco.Text = lista.Rows[i]["preco"].ToString();
+                string caminho = lista.Rows[i]["imagem"].ToString();
+                if (File.Exists(caminho))
+                {
+                    pcatal.BtnProduto.BackgroundImage = Image.FromFile(caminho);
+                    pcatal.BtnProduto.BackgroundImageLayout = ImageLayout.Stretch;
+                }
                 FlpCategorias.Controls.Add(pcatal);
                 i++;
             }
@@ -132,6 +183,7 @@ namespace Orders
                     {
                         foreach (Itenspedido aItenspedido in listaitens)
                         {
+                            
                             if (listaitens.IndexOf(aItenspedido) == listaitens.Count - 1)
                             {
                                 DateTime data_hora = DateTime.Now;
@@ -143,11 +195,11 @@ namespace Orders
                                 pedDao.Ultimopedido();
                                 Pedido();
                                 LblSubtotal.Text = string.Empty;
-                                MessageBox.Show("Pedido confirmado com sucesso!!!");
-                                FlpItens.Controls.Clear();
-                            }
+                                
+                            }                           
                         }
-
+                        FlpItens.Controls.Clear();
+                        MessageBox.Show("Pedido confirmado com sucesso!!!");
                         listaitens.Clear();
 
 
@@ -174,7 +226,13 @@ namespace Orders
             
         }
 
-        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        public int Quantidade(int id)
+        {
+            int quantidade  = listaitens.Where( Itenspedido=> Itenspedido.Id_produto == id).Count(); ;
+            return quantidade;
+        }
+
+        private void PedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmPedido i = new FrmPedido();
             i.ShowDialog();

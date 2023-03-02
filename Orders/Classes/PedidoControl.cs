@@ -22,7 +22,7 @@ namespace Orders.Classes
             if (Height < 350)
             {
                 CarregarProd(ppDAO.ListaProdPed(Convert.ToInt32(Tag)));
-                Height = 350;
+                Height = 600;
             }
             else
             {

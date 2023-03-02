@@ -10,6 +10,7 @@ namespace Orders.ClassesDAO
         DateTime hora;
         string status;
         private static double subtotal;
+        
 
         public DateTime Data_pedido { get => data_pedido; set => data_pedido = value; }
         public DateTime Hora { get => hora; set => hora = value; }

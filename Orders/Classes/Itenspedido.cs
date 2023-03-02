@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Windows.Controls;
 
 namespace Orders.Classes
 {
-    public class Itenspedido : IEquatable<Itenspedido>
+    public class Itenspedido : UserControl 
     {
 
         int id_produto;
         string nome;
 
-        public Itenspedido(int p,string n)
+        public Itenspedido(int p, string n)
         {
             Id_produto = p;
             Nome = n;

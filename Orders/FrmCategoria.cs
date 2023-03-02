@@ -98,7 +98,6 @@ namespace Orders
                 txtCadNome.Text = string.Empty;
             }
         }
-
         private void CarregarCat(DataTable lista)
         {
             FlpCat.Controls.Clear();

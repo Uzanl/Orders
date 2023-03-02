@@ -23,7 +23,7 @@ namespace Orders.ClassesDAO
         #region INSERIR NOVO PEDIDO
         public void Inserir(Produtospedido prodped)
         {
-            ExecutarComando("INSERT INTO PRODUTOS_PEDIDO VALUES('" + prodped.Id_pedido + "','" + prodped.Id_produto + "');");
+            ExecutarComando("INSERT INTO PRODUTOS_PEDIDO VALUES(0,'" + prodped.Id_pedido + "','" + prodped.Id_produto + "');");
         }
         #endregion
 

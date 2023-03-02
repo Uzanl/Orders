@@ -100,7 +100,7 @@ namespace Orders.ClassesDAO
         public DataTable ListaProdCatLike(string categoria, string produto)
         {
             DataTable listaDescripto;
-            ExecutarComando("select p.id_produto as ID,p.nome as NOME, p.imagem as IMAGEM from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome ='" + categoria+"' AND p.nome LIKE'" + produto + "%';");
+            ExecutarComando("select p.id_produto as ID,p.nome as NOME, p.imagem as IMAGEM, p.preco as PRECO from produto p inner join categoria c ON c.id_categoria = p.id_categoria WHERE c.nome ='" + categoria+"' AND p.nome LIKE'" + produto + "%';");
             listaDescripto = tabela_memoria.Clone();
 
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)
@@ -109,6 +109,7 @@ namespace Orders.ClassesDAO
                 linha["ID"] = tabela_memoria.Rows[i]["ID"].ToString();
                 linha["NOME"] = tabela_memoria.Rows[i]["NOME"].ToString();
                 linha["IMAGEM"] = tabela_memoria.Rows[i]["IMAGEM"].ToString();
+                linha["PRECO"]= tabela_memoria.Rows[i]["PRECO"].ToString();
 
                 listaDescripto.Rows.Add(linha);
             }

@@ -22,10 +22,10 @@ namespace Orders
 
         private void FrmPedido_Load(object sender, EventArgs e)
         {
-            CarregarCat(pedDAO.ListaPedData(DateTime.Now));
+            CarregarPed(pedDAO.ListaPedData(DateTime.Now));
         }
 
-        private void CarregarCat(DataTable lista)
+        private void CarregarPed(DataTable lista)
         {
             FlpPedidos.Controls.Clear();
             int i = 0;

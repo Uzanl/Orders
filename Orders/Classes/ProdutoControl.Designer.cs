@@ -43,6 +43,7 @@
             this.BtnExcluir.TabIndex = 14;
             this.BtnExcluir.Text = "Remover";
             this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // LblCategorias
             // 

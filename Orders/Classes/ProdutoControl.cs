@@ -9,6 +9,9 @@ namespace Orders.Classes
             InitializeComponent();
         }
 
+        private void BtnExcluir_Click(object sender, System.EventArgs e)
+        {
 
+        }
     }
 }
