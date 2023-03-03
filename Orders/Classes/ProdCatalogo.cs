@@ -10,7 +10,7 @@ namespace Orders.Classes
         Pedido ped = new Pedido();
 
         public static double price;
-        int i = 0;
+       // int i = 0;
         public static double Price { get => price; set => price = value; }
 
         public ProdCatalogo()
@@ -25,7 +25,7 @@ namespace Orders.Classes
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
           
 
-            while (i < 1)
+            while (Pedido.I < 1)
             {
                 MAIN.AcrescentarItens(Convert.ToInt32(Tag), BtnProduto.Text, LblPreco.Text, false);
                   if (MAIN.LblSubtotal.Text == string.Empty)
@@ -42,10 +42,10 @@ namespace Orders.Classes
                      MAIN.LblSubtotal.Text = $"Subtotal:{sum:C2}";
                  ped.Subtotal = sum;    
                 }
-                i++;
+                Pedido.I++;
             }
 
-            
+            Pedido.I = 0;
             
 
          
