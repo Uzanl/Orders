@@ -21,6 +21,7 @@ namespace Orders
         readonly Produtospedido prodped = new Produtospedido();
         readonly ProdutospedidoDAO prodpedDAO = new ProdutospedidoDAO();
         readonly PedidoDAO pedDao = new PedidoDAO();
+     //   ProdCatalogo pca = new ProdCatalogo();
 
         public Dictionary<object, Tuple<int, string>> Params = new Dictionary<object, Tuple<int, string>>();
         public FrmCatalogo()
@@ -236,6 +237,13 @@ namespace Orders
         {
             FrmPedido i = new FrmPedido();
             i.ShowDialog();
+        }
+
+        private void FlpItens_ControlAdded(object sender, ControlEventArgs e)
+        {
+            //ProdCatalogo pc = new ProdCatalogo();
+      //      ped.Subtotal = Convert.ToDouble(pca.LblPreco.Text);
+            LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
         }
     }
 }

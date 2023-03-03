@@ -66,14 +66,14 @@
             // CategoriasToolStripMenuItem
             // 
             this.CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem";
-            this.CategoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CategoriasToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.CategoriasToolStripMenuItem.Text = "Catálogo";
             this.CategoriasToolStripMenuItem.Click += new System.EventHandler(this.CategoriasToolStripMenuItem_Click);
             // 
             // pedidosToolStripMenuItem
             // 
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.pedidosToolStripMenuItem.Text = "Pedidos";
             this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.PedidosToolStripMenuItem_Click);
             // 
@@ -108,6 +108,7 @@
             this.FlpItens.Name = "FlpItens";
             this.FlpItens.Size = new System.Drawing.Size(262, 756);
             this.FlpItens.TabIndex = 17;
+            this.FlpItens.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.FlpItens_ControlAdded);
             this.FlpItens.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FlpItens_ControlRemoved);
             // 
             // FlpCategorias

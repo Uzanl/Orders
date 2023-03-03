@@ -23,32 +23,34 @@ namespace Orders.Classes
            // BtnProduto.Tag = Tag;
            // BtnProduto.Enabled = false;
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
-          
+            //subtotal nem era para ser feito aqui. Deve ser feito ao adicionar ao painel. controladded
+            MAIN.AcrescentarItens(Convert.ToInt32(Tag), BtnProduto.Text, LblPreco.Text, false);
+         //  while (Pedido.I < 1)
+          //  {
+              
+                // if (MAIN.LblSubtotal.Text == string.Empty)
+                  //{
 
-            while (Pedido.I < 1)
-            {
-                MAIN.AcrescentarItens(Convert.ToInt32(Tag), BtnProduto.Text, LblPreco.Text, false);
-                  if (MAIN.LblSubtotal.Text == string.Empty)
-                   {
+                   //   ped.Subtotal = Convert.ToDouble(LblPreco.Text);
+              //       MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
+                  // }
+                 // else
+                 // {
+                   //double x = ped.Subtotal;
+                   //double y = Convert.ToDouble(LblPreco.Text);
+                 //   double sum = x + y;
+             //        MAIN.LblSubtotal.Text = $"Subtotal:{sum:C2}";
+               // ped.Subtotal = sum;    
+               //}
+              //  Pedido.I++;
+           // }
 
-                       ped.Subtotal = Convert.ToDouble(LblPreco.Text);
-                      MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
-                   }
-                  else
-                  {
-                    double x = ped.Subtotal;
-                    double y = Convert.ToDouble(LblPreco.Text);
-                    double sum = x + y;
-                     MAIN.LblSubtotal.Text = $"Subtotal:{sum:C2}";
-                 ped.Subtotal = sum;    
-                }
-                Pedido.I++;
-            }
-
-            Pedido.I = 0;
+           // Pedido.I = 0;
             
 
          
         }
+
+      
     }
 }

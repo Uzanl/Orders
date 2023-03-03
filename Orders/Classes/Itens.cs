@@ -46,6 +46,22 @@ namespace Orders.Classes
         private void Itens_Load(object sender, EventArgs e)
         {
             iteminicial = LblItem.Text;
+
+            FrmCatalogo MAIN = ParentForm as FrmCatalogo;
+            if (MAIN.LblSubtotal.Text == string.Empty)
+            {
+
+                ped.Subtotal = Convert.ToDouble(LblPreco.Text);
+                //       MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
+            }
+            else
+            {
+                double x = ped.Subtotal;
+                double y = Convert.ToDouble(LblPreco.Text);
+                double sum = x + y;
+                //        MAIN.LblSubtotal.Text = $"Subtotal:{sum:C2}";
+                ped.Subtotal = sum;
+            }
         }
 
         private void btnMenos_Click(object sender, EventArgs e)
