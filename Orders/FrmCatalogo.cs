@@ -53,19 +53,23 @@ namespace Orders
                 listaitens.Add(new Itenspedido(Convert.ToInt32(id),nome));
 
             }
-            else
+            else if (adicao == true)
             {
-               // Itens item = new Itens();
-               
-               // item.LblPreco.Text = preco;
-               // item.Tag = id;
                 listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
-               // int quantidade = Quantidade(Convert.ToInt32(id));
-               // item.LblItem.Text =$"{quantidade}x {nome}";
-                // FlpItens.Controls.Add(item);
-                // BtnFinalizarpedido.Visible = true;
-
             }
+
+
+            // Itens item = new Itens();
+
+            // item.LblPreco.Text = preco;
+            // item.Tag = id;
+            //listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+            // int quantidade = Quantidade(Convert.ToInt32(id));
+            // item.LblItem.Text =$"{quantidade}x {nome}";
+            // FlpItens.Controls.Add(item);
+            // BtnFinalizarpedido.Visible = true;
+
+
         }
 
         public void Excluiritem(int id, string nome,bool removetodos)

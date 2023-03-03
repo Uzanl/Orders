@@ -19,7 +19,6 @@ namespace Orders.Classes
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
             int quantidade = MAIN.Quantidade(Convert.ToInt32(Tag));
             ped.Subtotal -= Convert.ToDouble(LblPreco.Text) * quantidade;
-            Pedido.I = 0;
             MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
             MAIN.Excluiritem(Convert.ToInt32(Tag),iteminicial,true);
 
