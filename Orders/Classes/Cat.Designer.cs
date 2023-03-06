@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.BtnExpandir = new System.Windows.Forms.Button();
-            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.BtnRemover = new System.Windows.Forms.Button();
             this.LblCategorias = new System.Windows.Forms.Label();
             this.Pctcategoria = new System.Windows.Forms.PictureBox();
             this.FlpProduto = new System.Windows.Forms.FlowLayoutPanel();
@@ -59,14 +59,15 @@
             this.BtnExpandir.UseVisualStyleBackColor = true;
             this.BtnExpandir.Click += new System.EventHandler(this.BtnExpandir_Click);
             // 
-            // BtnExcluir
+            // BtnRemover
             // 
-            this.BtnExcluir.Location = new System.Drawing.Point(680, 50);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 12;
-            this.BtnExcluir.Text = "Remover";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnRemover.Location = new System.Drawing.Point(680, 50);
+            this.BtnRemover.Name = "BtnRemover";
+            this.BtnRemover.Size = new System.Drawing.Size(75, 23);
+            this.BtnRemover.TabIndex = 12;
+            this.BtnRemover.Text = "Remover";
+            this.BtnRemover.UseVisualStyleBackColor = true;
+            this.BtnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // LblCategorias
             // 
@@ -210,7 +211,7 @@
             this.Controls.Add(this.lblProduto);
             this.Controls.Add(this.TxtProduto);
             this.Controls.Add(this.BtnExpandir);
-            this.Controls.Add(this.BtnExcluir);
+            this.Controls.Add(this.BtnRemover);
             this.Controls.Add(this.LblCategorias);
             this.Controls.Add(this.Pctcategoria);
             this.Controls.Add(this.FlpProduto);
@@ -226,7 +227,7 @@
 
         #endregion
         public System.Windows.Forms.Button BtnExpandir;
-        public System.Windows.Forms.Button BtnExcluir;
+        public System.Windows.Forms.Button BtnRemover;
         public System.Windows.Forms.Label LblCategorias;
         public System.Windows.Forms.PictureBox Pctcategoria;
         private System.Windows.Forms.FlowLayoutPanel FlpProduto;

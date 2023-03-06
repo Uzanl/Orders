@@ -72,5 +72,12 @@ namespace Orders.ClassesDAO
             ExecutarComando("UPDATE PEDIDO SET STATUS='" + ped.Status + "' WHERE ID_PEDIDO='" + ped.Id_pedido + "';");
         }
         #endregion
+
+        #region EXCLUIR
+        public void Excluir(int id)
+        {
+            ExecutarComando("DELETE FROM PEDIDO WHERE id_pedido ='" + id + "';");
+        }
+        #endregion
     }
 }

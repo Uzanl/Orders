@@ -10,6 +10,7 @@ namespace Orders.Classes
     {
         ProdutoDAO prodDAO = new ProdutoDAO();
         Produto prod = new Produto();
+        CategoriaDAO catDAO = new CategoriaDAO();
         public Cat()
         {
             InitializeComponent();
@@ -62,8 +63,9 @@ namespace Orders.Classes
             while (FlpProduto.Controls.Count < lista.Rows.Count)
             {
                 ProdutoControl prod = new ProdutoControl();
-                prod.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
+                prod.LblProduto.Text = lista.Rows[i]["nome"].ToString();
                 prod.LblPreco.Text = Convert.ToDouble(lista.Rows[i]["preco"]).ToString("C2");
+                prod.Tag = Convert.ToInt32(lista.Rows[i]["id"]);
 
                 string caminho = lista.Rows[i]["imagem"].ToString();
                 if (File.Exists(caminho))
@@ -208,6 +210,22 @@ namespace Orders.Classes
         private void TxtPrecoProd_TextChanged(object sender, EventArgs e)
         {
             Moeda(ref TxtPrecoProd);
+        }
+
+        private void BtnRemover_Click(object sender, EventArgs e)
+        {
+            DialogResult op;
+
+            op = MessageBox.Show($"Deseja excluir {LblCategorias.Text} ?",
+                "Excluir?", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (op == DialogResult.Yes)
+            {
+                catDAO.Excluir(Convert.ToInt32(Tag));
+                MessageBox.Show("Excluído com sucesso !!!");
+                Dispose();
+            }
         }
     }
 }

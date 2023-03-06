@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.BtnExcluir = new System.Windows.Forms.Button();
-            this.LblCategorias = new System.Windows.Forms.Label();
+            this.LblProduto = new System.Windows.Forms.Label();
             this.Pctproduto = new System.Windows.Forms.PictureBox();
             this.LblPreco = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Pctproduto)).BeginInit();
@@ -45,14 +45,14 @@
             this.BtnExcluir.UseVisualStyleBackColor = true;
             this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
-            // LblCategorias
+            // LblProduto
             // 
-            this.LblCategorias.AutoSize = true;
-            this.LblCategorias.Location = new System.Drawing.Point(89, 61);
-            this.LblCategorias.Name = "LblCategorias";
-            this.LblCategorias.Size = new System.Drawing.Size(74, 13);
-            this.LblCategorias.TabIndex = 13;
-            this.LblCategorias.Text = "Nome produto";
+            this.LblProduto.AutoSize = true;
+            this.LblProduto.Location = new System.Drawing.Point(89, 61);
+            this.LblProduto.Name = "LblProduto";
+            this.LblProduto.Size = new System.Drawing.Size(74, 13);
+            this.LblProduto.TabIndex = 13;
+            this.LblProduto.Text = "Nome produto";
             // 
             // Pctproduto
             // 
@@ -77,7 +77,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.LblPreco);
             this.Controls.Add(this.BtnExcluir);
-            this.Controls.Add(this.LblCategorias);
+            this.Controls.Add(this.LblProduto);
             this.Controls.Add(this.Pctproduto);
             this.Name = "ProdutoControl";
             this.Size = new System.Drawing.Size(628, 122);
@@ -90,7 +90,7 @@
         #endregion
 
         public System.Windows.Forms.Button BtnExcluir;
-        public System.Windows.Forms.Label LblCategorias;
+        public System.Windows.Forms.Label LblProduto;
         public System.Windows.Forms.PictureBox Pctproduto;
         public System.Windows.Forms.Label LblPreco;
     }

@@ -81,5 +81,12 @@ namespace Orders.ClassesDAO
             ExecutarComando("INSERT INTO CATEGORIA VALUES(0,'" + cat.Nome + "','" + cat.Imagem.Replace("\\", "/") + "');");
         }
         #endregion
+
+        #region EXCLUIR
+        public void Excluir(int id)
+        {
+            ExecutarComando("DELETE FROM CATEGORIA WHERE id_categoria ='" + id + "';");
+        }
+        #endregion
     }
 }

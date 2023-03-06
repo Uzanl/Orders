@@ -39,7 +39,7 @@ namespace Orders.Classes
             {
 
                 ProdutoControl prod = new ProdutoControl();
-                prod.LblCategorias.Text = lista.Rows[i]["produto"].ToString();
+                prod.LblProduto.Text = lista.Rows[i]["produto"].ToString();
                 prod.Tag = lista.Rows[i]["ID"].ToString();
                 string caminho = lista.Rows[i]["imagem"].ToString();
                 if (File.Exists(caminho))
