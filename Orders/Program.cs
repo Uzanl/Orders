@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Orders.Classes;
+using Orders.ClassesDAO;
+using System;
 using System.Windows.Forms;
 
 namespace Orders
@@ -14,6 +16,25 @@ namespace Orders
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmCatalogo());
+
+
+          //  Conexao.Criar_Conexao();
+           // UsuarioDAO usuDAO = new UsuarioDAO();
+           // if (usuDAO.VerificaExiste() == true)
+          //  {
+          //      Application.EnableVisualStyles();
+          //      Application.SetCompatibleTextRenderingDefault(false);
+          //      UsuarioDAO.Existe = true;
+          //      Application.Run(new Login());
+          //  }
+         //   else
+         //   {
+         //       Application.EnableVisualStyles();
+          //      Application.SetCompatibleTextRenderingDefault(false);
+          //      UsuarioDAO.Existe = false;
+          //      Application.Run(new frmCadusu());
+          //  }
+
         }
     }
 }

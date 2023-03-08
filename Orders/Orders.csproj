@@ -98,6 +98,9 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
@@ -132,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassesDAO\PedidoDAO.cs" />
+    <Compile Include="ClassesDAO\UsuarioDAO.cs" />
     <Compile Include="Classes\Catalogo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -151,6 +155,13 @@
     </Compile>
     <Compile Include="Classes\ProdCatalogo.Designer.cs">
       <DependentUpon>ProdCatalogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Usuario.cs" />
+    <Compile Include="FrmCadUsu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadUsu.Designer.cs">
+      <DependentUpon>FrmCadUsu.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCategoria.cs">
       <SubType>Form</SubType>
@@ -197,6 +208,12 @@
     <Compile Include="Classes\Ingredienteprod.cs" />
     <Compile Include="Classes\Marca.cs" />
     <Compile Include="Classes\Produto.cs" />
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPedido.cs">
       <SubType>Form</SubType>
     </Compile>

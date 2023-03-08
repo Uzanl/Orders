@@ -3,10 +3,13 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
+//using System.Windows.Controls;
 using System.Windows.Forms;
 namespace Orders.Classes
 {
+
     public partial class Cat : UserControl
+
     {
         ProdutoDAO prodDAO = new ProdutoDAO();
         Produto prod = new Produto();
@@ -18,8 +21,8 @@ namespace Orders.Classes
 
         private void Catcontrol_Load(object sender, EventArgs e)
         {
-         
-            
+
+
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
@@ -30,7 +33,7 @@ namespace Orders.Classes
 
         private void BtnExpandir_Click(object sender, EventArgs e)
         {
-              
+
             if (Height < 410)
             {
                 Height = 500;
@@ -41,8 +44,8 @@ namespace Orders.Classes
                 BtnNovoProd.Visible = true;
                 lblProduto.Visible = true;
                 TxtProduto.Visible = true;
-              
-                
+
+
 
             }
             else
@@ -69,10 +72,10 @@ namespace Orders.Classes
 
                 string caminho = lista.Rows[i]["imagem"].ToString();
                 if (File.Exists(caminho))
-                 {
-                     prod.Pctproduto.BackgroundImage = Image.FromFile(caminho);
-                     prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
-                  }
+                {
+                    prod.Pctproduto.BackgroundImage = Image.FromFile(caminho);
+                    prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
+                }
                 FlpProduto.Controls.Add(prod);
                 i++;
             }
@@ -85,8 +88,6 @@ namespace Orders.Classes
             {
                 Carregarprodutos(prodDAO.ListaProdCatLike(LblCategorias.Text, TxtProduto.Text));
 
-                //prodDAO.ListaProdCatLike(LblCategorias.Text,TxtProduto.Text);
-
             }
             else
             {
@@ -97,8 +98,8 @@ namespace Orders.Classes
 
         private void BtnNovoProd_Click(object sender, EventArgs e)
         {
-            
-            if (LblNomeProd.Visible ==false && LblPreco.Visible ==false && txtCadProd.Visible ==false && TxtPrecoProd.Visible ==false && BtnCadProd.Visible==false && BtnImgProd.Visible == false && PctCadProd.Visible == false)
+
+            if (LblNomeProd.Visible == false && LblPreco.Visible == false && txtCadProd.Visible == false && TxtPrecoProd.Visible == false && BtnCadProd.Visible == false && BtnImgProd.Visible == false && PctCadProd.Visible == false)
             {
                 LblNomeProd.Visible = true;
                 LblPreco.Visible = true;
@@ -120,7 +121,7 @@ namespace Orders.Classes
                 BtnImgProd.Visible = false;
                 PctCadProd.Visible = false;
 
-            }     
+            }
         }
 
         private void BtnImgProd_Click(object sender, EventArgs e)
@@ -155,12 +156,9 @@ namespace Orders.Classes
                 {
                     prod.Nome = txtCadProd.Text;
                     prod.Preco = TxtPrecoProd.Text;
-                  //  prod.Id_marca = 0;
-                    prod.Id_categoria =Convert.ToInt32(Tag);
+                    prod.Id_categoria = Convert.ToInt32(Tag);
                     prodDAO.Inserir(prod);
-                    // FrmRefresh();
                     FlpProduto.Controls.Clear();
-                    //CarregarCat(catDAO.ListarCat(string.Empty, false));
                     Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
                     if (BtnExpandir.Enabled == false)
                     {
@@ -175,13 +173,19 @@ namespace Orders.Classes
                 {
                     MessageBox.Show("Favor verificar as informações digitadas !!!");
                 }
-
+                if (txtCadProd.CanFocus)
+                {
+                    txtCadProd.Focus();
+                }
                 PctCadProd.Image = null;
                 txtCadProd.Text = string.Empty;
                 TxtPrecoProd.Text = string.Empty;
+               
             }
         }
+
         public static void Moeda(ref TextBox txt)
+
         {
             #region MOEDA
             string n = string.Empty;

@@ -64,7 +64,7 @@
             this.BtnRemover.Location = new System.Drawing.Point(680, 50);
             this.BtnRemover.Name = "BtnRemover";
             this.BtnRemover.Size = new System.Drawing.Size(75, 23);
-            this.BtnRemover.TabIndex = 12;
+            this.BtnRemover.TabIndex = 3;
             this.BtnRemover.Text = "Remover";
             this.BtnRemover.UseVisualStyleBackColor = true;
             this.BtnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
@@ -100,7 +100,7 @@
             this.TxtProduto.Location = new System.Drawing.Point(189, 97);
             this.TxtProduto.Name = "TxtProduto";
             this.TxtProduto.Size = new System.Drawing.Size(210, 20);
-            this.TxtProduto.TabIndex = 14;
+            this.TxtProduto.TabIndex = 1;
             this.TxtProduto.Visible = false;
             this.TxtProduto.TextChanged += new System.EventHandler(this.TxtProduto_TextChanged);
             // 
@@ -119,7 +119,7 @@
             this.BtnNovoProd.Location = new System.Drawing.Point(405, 95);
             this.BtnNovoProd.Name = "BtnNovoProd";
             this.BtnNovoProd.Size = new System.Drawing.Size(75, 23);
-            this.BtnNovoProd.TabIndex = 16;
+            this.BtnNovoProd.TabIndex = 2;
             this.BtnNovoProd.Text = "Novo";
             this.BtnNovoProd.UseVisualStyleBackColor = true;
             this.BtnNovoProd.Visible = false;
@@ -141,7 +141,7 @@
             this.BtnCadProd.Location = new System.Drawing.Point(854, 95);
             this.BtnCadProd.Name = "BtnCadProd";
             this.BtnCadProd.Size = new System.Drawing.Size(75, 23);
-            this.BtnCadProd.TabIndex = 25;
+            this.BtnCadProd.TabIndex = 7;
             this.BtnCadProd.Text = "Salvar";
             this.BtnCadProd.UseVisualStyleBackColor = true;
             this.BtnCadProd.Visible = false;
@@ -162,7 +162,7 @@
             this.txtCadProd.Location = new System.Drawing.Point(854, 28);
             this.txtCadProd.Name = "txtCadProd";
             this.txtCadProd.Size = new System.Drawing.Size(100, 20);
-            this.txtCadProd.TabIndex = 23;
+            this.txtCadProd.TabIndex = 4;
             this.txtCadProd.Visible = false;
             // 
             // BtnImgProd
@@ -170,7 +170,7 @@
             this.BtnImgProd.Location = new System.Drawing.Point(931, 95);
             this.BtnImgProd.Name = "BtnImgProd";
             this.BtnImgProd.Size = new System.Drawing.Size(109, 23);
-            this.BtnImgProd.TabIndex = 22;
+            this.BtnImgProd.TabIndex = 6;
             this.BtnImgProd.Text = "Adicionar imagem";
             this.BtnImgProd.UseVisualStyleBackColor = true;
             this.BtnImgProd.Visible = false;
@@ -191,7 +191,7 @@
             this.TxtPrecoProd.Location = new System.Drawing.Point(854, 66);
             this.TxtPrecoProd.Name = "TxtPrecoProd";
             this.TxtPrecoProd.Size = new System.Drawing.Size(75, 20);
-            this.TxtPrecoProd.TabIndex = 28;
+            this.TxtPrecoProd.TabIndex = 5;
             this.TxtPrecoProd.Visible = false;
             this.TxtPrecoProd.TextChanged += new System.EventHandler(this.TxtPrecoProd_TextChanged);
             // 
