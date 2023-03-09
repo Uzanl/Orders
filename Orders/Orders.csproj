@@ -240,11 +240,17 @@
     <EmbeddedResource Include="Classes\ProdutoControl.resx">
       <DependentUpon>ProdutoControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadUsu.resx">
+      <DependentUpon>FrmCadUsu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCatalogo.resx">
       <DependentUpon>FrmCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedido.resx">
       <DependentUpon>FrmPedido.cs</DependentUpon>

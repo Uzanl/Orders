@@ -13,27 +13,27 @@ namespace Orders
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCatalogo());
+           // Application.EnableVisualStyles();
+           // Application.SetCompatibleTextRenderingDefault(false);
+           // Application.Run(new FrmCatalogo());
 
 
-          //  Conexao.Criar_Conexao();
-           // UsuarioDAO usuDAO = new UsuarioDAO();
-           // if (usuDAO.VerificaExiste() == true)
-          //  {
-          //      Application.EnableVisualStyles();
-          //      Application.SetCompatibleTextRenderingDefault(false);
-          //      UsuarioDAO.Existe = true;
-          //      Application.Run(new Login());
-          //  }
-         //   else
-         //   {
-         //       Application.EnableVisualStyles();
-          //      Application.SetCompatibleTextRenderingDefault(false);
-          //      UsuarioDAO.Existe = false;
-          //      Application.Run(new frmCadusu());
-          //  }
+            Conexao.Criar_Conexao();
+            UsuarioDAO usuDAO = new UsuarioDAO();
+            if (usuDAO.VerificaExiste() == true)
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                UsuarioDAO.Existe = true;
+                Application.Run(new FrmLogin());
+            }
+           else
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                UsuarioDAO.Existe = false;
+                Application.Run(new FrmCadUsu());
+            }
 
         }
     }
