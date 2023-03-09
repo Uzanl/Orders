@@ -11,7 +11,6 @@ namespace Orders.ClassesDAO
         Usuario usu = new Usuario();
 
         MySqlDataAdapter comando_sql;
-        MySqlCommandBuilder Executar_comando;
         DataTable tabela_memoria;
 
         internal Usuario Usu { get => usu; set => usu = value; }

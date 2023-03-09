@@ -30,6 +30,7 @@ namespace Orders
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
+            LblNome.Text = $"Olá, {UsuarioDAO.Login} !";
             Conexao.Criar_Conexao();
             CarregarCategorias();
         }

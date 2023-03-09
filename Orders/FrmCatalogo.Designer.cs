@@ -37,6 +37,7 @@
             this.FlpItens = new System.Windows.Forms.FlowLayoutPanel();
             this.FlpCategorias = new System.Windows.Forms.FlowLayoutPanel();
             this.LblSubtotal = new System.Windows.Forms.Label();
+            this.LblNome = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,11 +130,20 @@
             this.LblSubtotal.Size = new System.Drawing.Size(0, 13);
             this.LblSubtotal.TabIndex = 19;
             // 
+            // LblNome
+            // 
+            this.LblNome.AutoSize = true;
+            this.LblNome.Location = new System.Drawing.Point(288, 79);
+            this.LblNome.Name = "LblNome";
+            this.LblNome.Size = new System.Drawing.Size(0, 13);
+            this.LblNome.TabIndex = 20;
+            // 
             // FrmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.Controls.Add(this.LblNome);
             this.Controls.Add(this.LblSubtotal);
             this.Controls.Add(this.BtnFinalizarpedido);
             this.Controls.Add(this.BtnVoltar);
@@ -167,6 +177,7 @@
         private System.Windows.Forms.ToolStripMenuItem CategoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         public System.Windows.Forms.Label LblSubtotal;
+        private System.Windows.Forms.Label LblNome;
     }
 }
 
