@@ -96,8 +96,7 @@
             this.cmbCargo.FormattingEnabled = true;
             this.cmbCargo.Items.AddRange(new object[] {
             "Administrador",
-            "Operador",
-            "Editor"});
+            "Garçom"});
             this.cmbCargo.Location = new System.Drawing.Point(119, 112);
             this.cmbCargo.Name = "cmbCargo";
             this.cmbCargo.Size = new System.Drawing.Size(127, 21);
@@ -176,6 +175,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmCadUsu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadUsu";
             this.Load += new System.EventHandler(this.FrmCadUsu_Load);
             this.ResumeLayout(false);

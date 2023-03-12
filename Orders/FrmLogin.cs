@@ -23,12 +23,18 @@ namespace Orders
         {
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
-            if (usuDAO.VerificaAdm(login, senha) == true)
+            if (usuDAO.Verifica(login, senha) == true)
             {
-                UsuarioDAO.login = usuDAO.Usu.Login_usu;              
-                FrmCatalogo f = new FrmCatalogo();
-                f.ShowDialog();
-                Close();
+                if(usuDAO.Usu.Tipo == "Garçom" || usuDAO.Usu.Tipo == "Administrador")
+                {
+                    UsuarioDAO.login = usuDAO.Usu.Login_usu;
+                    UsuarioDAO.tipo = usuDAO.Usu.Tipo;
+                    FrmCatalogo f = new FrmCatalogo();
+                    f.ShowDialog();
+                    Close();
+                }
+
+               
                
             }
             else

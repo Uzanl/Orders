@@ -19,8 +19,11 @@ namespace Orders.ClassesDAO
 
         public static string Login { get => login; set => login = value; }
         public static bool Existe { get => existe; set => existe = value; }
+        public static string Tipo { get => tipo; set => tipo = value; }
 
         public static string login;
+
+        public static string tipo;
 
         private void ExecutarComando(string comando)
         {
@@ -29,15 +32,16 @@ namespace Orders.ClassesDAO
             comando_sql.Fill(tabela_memoria);
         }
 
-        #region VERIFICA ADMINISTRADOR
-        public Boolean VerificaAdm(string login, string senha)
+        #region VERIFICA LOGIN E SENHA
+        public bool Verifica(string login, string senha)
         {
 
-            ExecutarComando("select login_usu from usuario where login_usu='" + login + "' and senha_usu='" + senha + "' and status='Ativo';");
+            ExecutarComando("select login_usu, tipo from usuario where login_usu='" + login + "' and senha_usu='" + senha + "' and status='Ativo';");
             try
             {
 
                 usu.Login_usu = tabela_memoria.Rows[0]["login_usu"].ToString();
+                usu.Tipo = tabela_memoria.Rows[0]["tipo"].ToString();
                 return true;
             }
             catch

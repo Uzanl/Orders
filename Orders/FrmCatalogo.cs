@@ -30,8 +30,15 @@ namespace Orders
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
+            if (UsuarioDAO.tipo == "Garçom")
+            {
+                CategoriasToolStripMenuItem.Visible = false;
+                usuariosToolStripMenuItem.Visible = false;  
+
+            }
+
             LblNome.Text = $"Olá, {UsuarioDAO.Login} !";
-            Conexao.Criar_Conexao();
+           // Conexao.Criar_Conexao();
             CarregarCategorias();
         }
 
@@ -222,6 +229,12 @@ namespace Orders
         private void FlpItens_ControlAdded(object sender, ControlEventArgs e)
         {
             LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
+        }
+
+        private void UsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadUsu u = new FrmCadUsu();
+            u.ShowDialog();
         }
     }
 }
