@@ -114,7 +114,7 @@
             this.BtnFinalizar.Name = "BtnFinalizar";
             this.BtnFinalizar.Size = new System.Drawing.Size(101, 23);
             this.BtnFinalizar.TabIndex = 7;
-            this.BtnFinalizar.Text = "Finalizar Pedido";
+            this.BtnFinalizar.Text = "Encerrar Pedido";
             this.BtnFinalizar.UseVisualStyleBackColor = true;
             this.BtnFinalizar.Click += new System.EventHandler(this.BtnFinalizar_Click);
             // 

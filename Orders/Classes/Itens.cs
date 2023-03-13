@@ -10,6 +10,8 @@ namespace Orders.Classes
         //  CategoriaDAO catDAO = new CategoriaDAO();
         string iteminicial;
         Pedido ped = new Pedido();
+
+        //double totalqtd;
         public Itens()
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace Orders.Classes
             MAIN.LblSubtotal.Text = $"Subtotal:{sum:C2}";
             ped.Subtotal = sum;
             int quantidade = MAIN.Quantidade(Convert.ToInt32(Tag));
+
+           
             LblItem.Text = $"{quantidade}x {iteminicial}";
 
         }

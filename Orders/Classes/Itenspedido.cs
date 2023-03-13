@@ -9,11 +9,12 @@ namespace Orders.Classes
         int id_produto;
         string nome;
 
+
         public Itenspedido(int p, string n)
         {
             Id_produto = p;
             Nome = n;
-
+        
         }
 
         public int Id_produto { get => id_produto; set => id_produto = value; }

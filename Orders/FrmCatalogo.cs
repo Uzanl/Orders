@@ -151,16 +151,18 @@ namespace Orders
             if (FlpItens.Controls.Count > 0)
             {
                 string teste = " produto \r\n";
-
                 foreach (Itens item in FlpItens.Controls)
                 {
-                    teste += item.LblItem.Text + "\r\n";
+                    double preco = Convert.ToDouble(item.LblPreco.Text);
+                    int qtd = Quantidade(Convert.ToInt32(item.Tag));
+                    teste += item.LblItem.Text +"\r\n"+$"{Convert.ToDouble(preco*qtd):C2}\r\n";
+                  
                 }
 
 
                 DialogResult op;
 
-                op = MessageBox.Show("Você tem certeza dessas informações?\r\n" + teste,
+                op = MessageBox.Show("Você tem certeza dessas informações?\r\n" + teste+$"\r\n{LblSubtotal.Text}" ,
                     "Salvando!", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
