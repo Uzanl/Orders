@@ -49,7 +49,11 @@ namespace Orders
 
         public void AcrescentarItens(int id, string nome, string preco, bool adicao)
         {
-            if (!listaitens.Exists(x => x.Id_produto == id) && adicao == false)
+            if (adicao)
+            {
+                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+            }
+            else if (!listaitens.Exists(x => x.Id_produto == id))
             {
                 Itens item = new Itens();
                 item.LblItem.Text = nome;
@@ -57,11 +61,6 @@ namespace Orders
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
-                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
-
-            }
-            else if (adicao == true)
-            {
                 listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
             }
         }
@@ -107,91 +106,94 @@ namespace Orders
         public void AcrescentarCategorias(DataTable lista)
         {
             FlpCategorias.Controls.Clear();
-            int j = 0;
-            while (FlpCategorias.Controls.Count < lista.Rows.Count)
+            foreach (DataRow row in lista.Rows)
             {
-                Catalogo catal = new Catalogo();
-                catal.Btncategoria.Text = lista.Rows[j]["nome"].ToString();
-                catal.Tag = Convert.ToInt32(lista.Rows[j]["ID"].ToString());
-                string caminho = lista.Rows[j]["imagem"].ToString();
-                if (File.Exists(caminho))
-                {
-                    catal.Btncategoria.BackgroundImage = Image.FromFile(caminho);
-                    catal.Btncategoria.BackgroundImageLayout = ImageLayout.Stretch;
-                }
+                Catalogo catal = CriarCatalogoAPartirDeDadosDaLinha(row);
                 FlpCategorias.Controls.Add(catal);
-                j++;
             }
+        }
+
+        private Catalogo CriarCatalogoAPartirDeDadosDaLinha(DataRow row)
+        {
+            Catalogo catal = new Catalogo();
+            catal.Btncategoria.Text = row["nome"].ToString();
+            int id;
+            if (int.TryParse(row["ID"].ToString(), out id))
+            {
+                catal.Tag = id;
+            }
+            string caminho = row["imagem"].ToString();
+            if (File.Exists(caminho))
+            {
+                catal.Btncategoria.BackgroundImage = Image.FromFile(caminho);
+                catal.Btncategoria.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            return catal;
         }
 
         public void AcrescentarProdutos(DataTable lista)
         {
             FlpCategorias.Controls.Clear();
-            int i = 0;
-            while (FlpCategorias.Controls.Count < lista.Rows.Count)
+            foreach (DataRow row in lista.Rows)
             {
-                ProdCatalogo pcatal = new ProdCatalogo();
-                pcatal.BtnProduto.Text = $"{lista.Rows[i]["nome"]} \r\n preço: {Convert.ToDouble(lista.Rows[i]["preco"]):C2}";
-                pcatal.Tag = Convert.ToInt32(lista.Rows[i]["ID"].ToString());
-                pcatal.LblPreco.Text = lista.Rows[i]["preco"].ToString();
-                string caminho = lista.Rows[i]["imagem"].ToString();
-                if (File.Exists(caminho))
-                {
-                    pcatal.BtnProduto.BackgroundImage = Image.FromFile(caminho);
-                    pcatal.BtnProduto.BackgroundImageLayout = ImageLayout.Stretch;
-                }
+                ProdCatalogo pcatal = CriarProdCatalogoAPartirDeDadosDaLinha(row);
                 FlpCategorias.Controls.Add(pcatal);
-                i++;
             }
             BtnVoltar.Visible = true;
+        }
+
+        private ProdCatalogo CriarProdCatalogoAPartirDeDadosDaLinha(DataRow row)
+        {
+            ProdCatalogo pcatal = new ProdCatalogo();
+            pcatal.BtnProduto.Text = $"{row["nome"]} \r\n preço: {Convert.ToDouble(row["preco"]):C2}";
+            int id;
+            if (int.TryParse(row["ID"].ToString(), out id))
+            {
+                pcatal.Tag = id;
+            }
+            pcatal.LblPreco.Text = row["preco"].ToString();
+            string caminho = row["imagem"].ToString();
+            if (File.Exists(caminho))
+            {
+                pcatal.BtnProduto.BackgroundImage = Image.FromFile(caminho);
+                pcatal.BtnProduto.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            return pcatal;
         }
 
         private void BtnFinalizarpedido_Click(object sender, EventArgs e)
         {
             if (FlpItens.Controls.Count > 0)
             {
-                string teste = " produto \r\n";
+                string listaItens = "";
+                double subtotal = 0;
                 foreach (Itens item in FlpItens.Controls)
                 {
                     double preco = Convert.ToDouble(item.LblPreco.Text);
                     int qtd = Quantidade(Convert.ToInt32(item.Tag));
-                    teste += item.LblItem.Text +"\r\n"+$"{Convert.ToDouble(preco*qtd):C2}\r\n";
-                  
+                    subtotal += preco * qtd;
+                    listaItens += $"{item.LblItem.Text}\r\n{Convert.ToDouble(preco * qtd):C2}\r\n";
                 }
 
+                var dialogResult = MessageBox.Show($"Você tem certeza dessas informações?\r\n{listaItens}{LblSubtotal.Text}",
+                    "Salvando!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                DialogResult op;
-
-                op = MessageBox.Show("Você tem certeza dessas informações?\r\n" + teste+$"\r\n{LblSubtotal.Text}" ,
-                    "Salvando!", MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (op == DialogResult.Yes)
+                if (dialogResult == DialogResult.Yes)
                 {
-
                     try
                     {
-                        foreach (Itenspedido aItenspedido in listaitens)
-                        {
+                        DateTime data_hora = DateTime.Now;
+                        ped.Id_cliente = 1;
+                        ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
+                        ped.Data_pedido = data_hora;
+                        ped.Status = "Em aberto";
+                        pedDao.Inserir(ped);
+                        pedDao.Ultimopedido();
+                        Pedido();
+                        LblSubtotal.Text = string.Empty;
 
-                            if (listaitens.IndexOf(aItenspedido) == listaitens.Count - 1)
-                            {
-                                DateTime data_hora = DateTime.Now;
-                                ped.Id_cliente = 1;
-                                ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
-                                ped.Data_pedido = data_hora;
-                                ped.Status = "Em aberto";
-                                pedDao.Inserir(ped);
-                                pedDao.Ultimopedido();
-                                Pedido();
-                                LblSubtotal.Text = string.Empty;
-
-                            }
-                        }
-                        FlpItens.Controls.Clear();
+                        LimparListaItens();
                         MessageBox.Show("Pedido confirmado com sucesso!!!");
-                        listaitens.Clear();
-
 
                     }
                     catch (FormatException)
@@ -201,6 +203,14 @@ namespace Orders
                 }
             }
         }
+
+        private void LimparListaItens()
+        {
+            FlpItens.Controls.Clear();
+            BtnFinalizarpedido.Visible = false;
+            listaitens.Clear();
+        }
+
 
         private void Pedido()
         {

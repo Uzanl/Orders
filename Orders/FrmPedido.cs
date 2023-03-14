@@ -28,18 +28,14 @@ namespace Orders
         private void CarregarPed(DataTable lista)
         {
             FlpPedidos.Controls.Clear();
-            int i = 0;
-            while (FlpPedidos.Controls.Count < lista.Rows.Count)
+            foreach (DataRow row in lista.Rows)
             {
-                PedidoControl pc = new PedidoControl();
-                
-                pc.Tag = lista.Rows[i]["ID"].ToString();
-                pc.Lblid.Text = lista.Rows[i]["ID"].ToString();
-                pc.lblNome.Text = lista.Rows[i]["CLIENTE"].ToString();
-                pc.Lblhora.Text = lista.Rows[i]["HORA"].ToString();
-                pc.LblStatus.Text = lista.Rows[i]["STATUS"].ToString();
+                PedidoControl pc = new PedidoControl() { Tag = row["ID"].ToString()};              
+                pc.Lblid.Text = row["ID"].ToString();
+                pc.lblNome.Text = row["CLIENTE"].ToString();
+                pc.Lblhora.Text = row["HORA"].ToString();
+                pc.LblStatus.Text = row["STATUS"].ToString();
                 FlpPedidos.Controls.Add(pc);
-                i++;
             }
         }
     }

@@ -101,34 +101,36 @@ namespace Orders
         private void CarregarCat(DataTable lista)
         {
             FlpCat.Controls.Clear();
-            int i = 0;
-            while (FlpCat.Controls.Count < lista.Rows.Count)
+
+            foreach (DataRow row in lista.Rows)
             {
                 Cat cat = new Cat();
-                cat.LblCategorias.Text = lista.Rows[i]["nome"].ToString();
-                cat.Tag = lista.Rows[i]["ID"].ToString();
-                if (prodDAO.VerificaCategoria(cat.LblCategorias.Text) == true)
-                {
-                    cat.BtnExpandir.Enabled = true;
 
-                }
-                else
+                cat.LblCategorias.Text = row["nome"].ToString();
+                cat.Tag = row["ID"].ToString();
+
+                bool categoriaTemProdutos = prodDAO.VerificaCategoria(cat.LblCategorias.Text);
+
+                cat.BtnExpandir.Enabled = categoriaTemProdutos;
+
+                if (!categoriaTemProdutos)
                 {
                     cat.BtnNovoProd.Visible = true;
                     cat.BtnNovoProd.Text = "Adicione um produto";
                     cat.BtnNovoProd.Width = 200;
                     cat.BtnNovoProd.Location = new Point(405, 50);
-                    
-                }              
-                string caminho = lista.Rows[i]["imagem"].ToString();
+                }
+
+                string caminho = row["imagem"].ToString();
+
                 if (File.Exists(caminho))
                 {
                     cat.Pctcategoria.BackgroundImage = Image.FromFile(caminho);
                     cat.Pctcategoria.BackgroundImageLayout = ImageLayout.Stretch;
                 }
+
                 FlpCat.Controls.Add(cat);
-                i++;
-            }    
+            }
         }
     }
 }

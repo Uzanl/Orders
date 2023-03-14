@@ -23,7 +23,7 @@ namespace Orders
         {
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
-            if (usuDAO.Verifica(login, senha) == true)
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha) && usuDAO.Verifica(login, senha))
             {
                 if(usuDAO.Usu.Tipo == "Garçom" || usuDAO.Usu.Tipo == "Administrador")
                 {
