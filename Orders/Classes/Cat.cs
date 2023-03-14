@@ -185,7 +185,6 @@ namespace Orders.Classes
         }
 
         public static void Moeda(ref TextBox txt)
-
         {
             #region MOEDA
             string n = string.Empty;
@@ -193,20 +192,23 @@ namespace Orders.Classes
 
             try
             {
+                if (!double.TryParse(txt.Text, out v))
+                {
+                    txt.Text = "0,00";
+                    return;
+                }
+
                 n = txt.Text.Replace(",", "").Replace(".", "");
                 if (n.Equals(""))
-                    n = "";
-                n = n.PadLeft(3, '0');
-                if (n.Length > 3 & n.Substring(0, 1) == "0")
-                    n = n.Substring(1, n.Length - 1);
+                    n = "0";
                 v = Convert.ToDouble(n) / 100;
-                txt.Text = string.Format("{0:N}", v);
+                txt.Text = string.Format("{0:N2}", v);
                 txt.SelectionStart = txt.Text.Length;
 
             }
             catch (Exception)
             {
-
+                txt.Text = "0,00";
             }
             #endregion
         }
