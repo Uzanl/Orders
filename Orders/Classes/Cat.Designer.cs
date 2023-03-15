@@ -49,7 +49,7 @@
             // 
             // BtnExpandir
             // 
-            this.BtnExpandir.BackgroundImage = global::Orders.Properties.Resources.download;
+       
             this.BtnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnExpandir.Enabled = false;
             this.BtnExpandir.Location = new System.Drawing.Point(4, 42);

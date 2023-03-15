@@ -38,7 +38,7 @@ namespace Orders.Classes
             {
                 Height = 500;
                 FlpProduto.Height = 380;
-                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\mais.png");
+                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\mais.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
                 Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
                 BtnNovoProd.Visible = true;
@@ -55,29 +55,38 @@ namespace Orders.Classes
                 lblProduto.Visible = false;
                 TxtProduto.Visible = false;
                 BtnNovoProd.Visible = false;
-                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\Downloads\\menos.png");
+                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\menos.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
             }
         }
 
         private void Carregarprodutos(DataTable lista)
-        {
-            int i = 0;
-            while (FlpProduto.Controls.Count < lista.Rows.Count)
+        {       
+            foreach (DataRow row in lista.Rows)
             {
                 ProdutoControl prod = new ProdutoControl();
-                prod.LblProduto.Text = lista.Rows[i]["nome"].ToString();
-                prod.LblPreco.Text = Convert.ToDouble(lista.Rows[i]["preco"]).ToString("C2");
-                prod.Tag = Convert.ToInt32(lista.Rows[i]["id"]);
+                prod.LblProduto.Text = row["nome"].ToString();
+                prod.LblPreco.Text = Convert.ToDouble(row["preco"]).ToString("C2");
 
-                string caminho = lista.Rows[i]["imagem"].ToString();
-                if (File.Exists(caminho))
+                if (int.TryParse(row["id"].ToString(), out int id))
                 {
-                    prod.Pctproduto.BackgroundImage = Image.FromFile(caminho);
-                    prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
+                    prod.Tag = id;
+                }          
+                string caminhoImagem = row["imagem"]?.ToString();
+                if (!string.IsNullOrEmpty(caminhoImagem))
+                {
+                    try
+                    {
+                        prod.Pctproduto.BackgroundImage = Image.FromFile(caminhoImagem);
+                        prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
+                    }
+                    catch (Exception)
+                    {
+                        // Se ocorrer uma exceção ao carregar a imagem, exibir uma mensagem de erro ou registrar a exceção em um log de erro
+                    }
                 }
+
                 FlpProduto.Controls.Add(prod);
-                i++;
             }
         }
 

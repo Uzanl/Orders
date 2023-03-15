@@ -257,19 +257,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -294,8 +294,8 @@
   <ItemGroup>
     <None Include="Resources\40px-OOjs_UI_icon_expand.svg.png" />
     <Content Include="Resources\cafe.png" />
-    <None Include="Resources\download.png" />
-    <None Include="Resources\download %281%29.png" />
+    <None Include="Resources\mais.png" />
+    <None Include="Resources\menos.png" />
     <Content Include="Resources\hamburger2.png" />
     <None Include="Resources\kisspng-fizzy-drinks-computer-icons-meal-food-lunch-food-icon-5ac500dca48218.0420167015228602526738.png" />
     <Content Include="Resources\lixo.png" />
