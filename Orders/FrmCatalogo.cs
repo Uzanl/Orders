@@ -57,7 +57,8 @@ namespace Orders
             {
                 Itens item = new Itens();
                 item.LblItem.Text = nome;
-                item.LblPreco.Text = preco;
+               // item.LblPreco.Text = preco;
+                item.Price = Convert.ToDouble(preco);
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
@@ -169,7 +170,8 @@ namespace Orders
                 double subtotal = 0;
                 foreach (Itens item in FlpItens.Controls)
                 {
-                    double preco = Convert.ToDouble(item.LblPreco.Text);
+                    //double preco = Convert.ToDouble(item.LblPreco.Text);
+                    double preco = item.Price;
                     int qtd = Quantidade(Convert.ToInt32(item.Tag));
                     subtotal += preco * qtd;
                     listaItens += $"{item.LblItem.Text}\r\n{Convert.ToDouble(preco * qtd):C2}\r\n";

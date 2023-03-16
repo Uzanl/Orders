@@ -1,4 +1,5 @@
 ﻿using Orders.ClassesDAO;
+
 using System;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -12,6 +13,8 @@ namespace Orders.Classes
         Pedido ped = new Pedido();
 
         //double totalqtd;
+
+        public double Price { get; set; }
         public Itens()
         {
             InitializeComponent();
@@ -20,7 +23,8 @@ namespace Orders.Classes
         {
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
             int quantidade = MAIN.Quantidade(Convert.ToInt32(Tag));
-            ped.Subtotal -= Convert.ToDouble(LblPreco.Text) * quantidade;
+            // ped.Subtotal -= Convert.ToDouble(LblPreco.Text) * quantidade;
+            ped.Subtotal -= Price * quantidade;
             MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
             MAIN.Excluiritem(Convert.ToInt32(Tag), true);
             Controls.Clear();
@@ -31,9 +35,10 @@ namespace Orders.Classes
         {
            // btnMenos.Enabled = true;
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
-            MAIN.AcrescentarItens(Convert.ToInt32(Tag), LblItem.Text, LblPreco.Text, true);
+            MAIN.AcrescentarItens(Convert.ToInt32(Tag), LblItem.Text, /*LblPreco.Text*/ Price.ToString(), true);
             double x = ped.Subtotal;
-            double y = Convert.ToDouble(LblPreco.Text);
+            //double y = Convert.ToDouble(LblPreco.Text);
+            double y = Price;
             double sum = x + y;
             MAIN.LblSubtotal.Text = $"Subtotal:{sum:C2}";
             ped.Subtotal = sum;
@@ -51,12 +56,14 @@ namespace Orders.Classes
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
             if (MAIN.LblSubtotal.Text == string.Empty)
             {
-                ped.Subtotal = Convert.ToDouble(LblPreco.Text);
+                //ped.Subtotal = Convert.ToDouble(LblPreco.Text);
+                ped.Subtotal = Price;
             }
             else
             {
                 double x = ped.Subtotal;
-                double y = Convert.ToDouble(LblPreco.Text);
+                //double y = Convert.ToDouble(LblPreco.Text);
+                double y = Price;
                 double sum = x + y;
                 ped.Subtotal = sum;
             }
@@ -67,8 +74,9 @@ namespace Orders.Classes
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
             if (MAIN.Quantidade(Convert.ToInt32(Tag)) > 1)
             {
-               
-                ped.Subtotal -= Convert.ToDouble(LblPreco.Text);
+
+                //ped.Subtotal -= Convert.ToDouble(LblPreco.Text);
+                ped.Subtotal -= Price;
                 MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
                 MAIN.Excluiritem(Convert.ToInt32(Tag), false);
                 MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
