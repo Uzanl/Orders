@@ -1,5 +1,4 @@
 ﻿using Orders.ClassesDAO;
-
 using System;
 using System.Drawing.Text;
 using System.Windows.Forms;

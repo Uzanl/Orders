@@ -20,7 +20,6 @@ namespace Orders
         readonly Produtospedido prodped = new Produtospedido();
         readonly ProdutospedidoDAO prodpedDAO = new ProdutospedidoDAO();
         readonly PedidoDAO pedDao = new PedidoDAO();
-        //   ProdCatalogo pca = new ProdCatalogo();
 
         public Dictionary<object, Tuple<int, string>> Params = new Dictionary<object, Tuple<int, string>>();
         public FrmCatalogo()
@@ -33,12 +32,10 @@ namespace Orders
             if (UsuarioDAO.tipo == "Garçom")
             {
                 CategoriasToolStripMenuItem.Visible = false;
-                usuariosToolStripMenuItem.Visible = false;  
+                usuariosToolStripMenuItem.Visible = false;
 
             }
-
             LblNome.Text = $"Olá, {UsuarioDAO.Login} !";
-           // Conexao.Criar_Conexao();
             CarregarCategorias();
         }
 
@@ -57,7 +54,6 @@ namespace Orders
             {
                 Itens item = new Itens();
                 item.LblItem.Text = nome;
-               // item.LblPreco.Text = preco;
                 item.Price = Convert.ToDouble(preco);
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
@@ -126,8 +122,11 @@ namespace Orders
             string caminho = row["imagem"].ToString();
             if (File.Exists(caminho))
             {
-                catal.Btncategoria.BackgroundImage = Image.FromFile(caminho);
-                catal.Btncategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                using (var image = Image.FromFile(caminho))
+                {
+                    catal.Btncategoria.BackgroundImage = new Bitmap(image);
+                    catal.Btncategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                }
             }
             return catal;
         }
@@ -156,8 +155,11 @@ namespace Orders
             string caminho = row["imagem"].ToString();
             if (File.Exists(caminho))
             {
-                pcatal.BtnProduto.BackgroundImage = Image.FromFile(caminho);
-                pcatal.BtnProduto.BackgroundImageLayout = ImageLayout.Stretch;
+                using (var image = Image.FromFile(caminho))
+                {
+                    pcatal.BtnProduto.BackgroundImage = new Bitmap(image);
+                    pcatal.BtnProduto.BackgroundImageLayout = ImageLayout.Stretch;
+                }
             }
             return pcatal;
         }
@@ -170,11 +172,10 @@ namespace Orders
                 double subtotal = 0;
                 foreach (Itens item in FlpItens.Controls)
                 {
-                    //double preco = Convert.ToDouble(item.LblPreco.Text);
                     double preco = item.Price;
                     int qtd = Quantidade(Convert.ToInt32(item.Tag));
                     subtotal += preco * qtd;
-                    listaItens += $"{item.LblItem.Text}\r\n{Convert.ToDouble(preco * qtd):C2}\r\n";
+                    listaItens += $"{item.LblItem.Text}\r\n{preco * qtd:C2}\r\n";
                 }
 
                 var dialogResult = MessageBox.Show($"Você tem certeza dessas informações?\r\n{listaItens}{LblSubtotal.Text}",
