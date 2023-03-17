@@ -69,26 +69,27 @@
             // CategoriasToolStripMenuItem
             // 
             this.CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem";
-            this.CategoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CategoriasToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.CategoriasToolStripMenuItem.Text = "Catálogo";
             this.CategoriasToolStripMenuItem.Click += new System.EventHandler(this.CategoriasToolStripMenuItem_Click);
             // 
             // pedidosToolStripMenuItem
             // 
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.pedidosToolStripMenuItem.Text = "Pedidos";
             this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.PedidosToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.usuariosToolStripMenuItem.Text = "Usuários";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.UsuariosToolStripMenuItem_Click);
             // 
             // BtnFinalizarpedido
             // 
+            this.BtnFinalizarpedido.AutoEllipsis = true;
             this.BtnFinalizarpedido.Location = new System.Drawing.Point(1638, 899);
             this.BtnFinalizarpedido.Name = "BtnFinalizarpedido";
             this.BtnFinalizarpedido.Size = new System.Drawing.Size(262, 63);
@@ -100,6 +101,7 @@
             // 
             // BtnVoltar
             // 
+            this.BtnVoltar.AutoSize = true;
             this.BtnVoltar.Location = new System.Drawing.Point(288, 98);
             this.BtnVoltar.Name = "BtnVoltar";
             this.BtnVoltar.Size = new System.Drawing.Size(94, 33);
@@ -111,7 +113,6 @@
             // 
             // FlpItens
             // 
-            this.FlpItens.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FlpItens.AutoScroll = true;
             this.FlpItens.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlpItens.Location = new System.Drawing.Point(1638, 137);
@@ -123,8 +124,8 @@
             // 
             // FlpCategorias
             // 
-            this.FlpCategorias.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FlpCategorias.AutoScroll = true;
+            this.FlpCategorias.AutoSize = true;
             this.FlpCategorias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlpCategorias.Location = new System.Drawing.Point(288, 137);
             this.FlpCategorias.Name = "FlpCategorias";

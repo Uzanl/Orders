@@ -31,26 +31,35 @@ namespace Orders.Classes
             }
         }
 
-        private void CarregarProd(DataTable lista)
+        public void CarregarProd(DataTable lista)
         {
             FlpProdutos.Controls.Clear();
-            int i = 0;
-            while (FlpProdutos.Controls.Count < lista.Rows.Count)
+            foreach (DataRow row in lista.Rows)
             {
+                ProdutoControl prod = CriarProdutoAPartirDeDadosDaLinha(row);
+                FlpProdutos.Controls.Add(prod);
+            }
+        }
 
-                ProdutoControl prod = new ProdutoControl();
-                prod.LblProduto.Text = lista.Rows[i]["produto"].ToString();
-                prod.Tag = lista.Rows[i]["ID"].ToString();
-                string caminho = lista.Rows[i]["imagem"].ToString();
-                if (File.Exists(caminho))
+        private ProdutoControl CriarProdutoAPartirDeDadosDaLinha(DataRow row)
+        {
+            ProdutoControl prod = new ProdutoControl();
+            prod.LblProduto.Text = row["produto"].ToString();
+            int id;
+            if (int.TryParse(row["ID"].ToString(), out id))
+            {
+                prod.Tag = id;
+            }
+            string caminho = row["imagem"].ToString();
+            if (File.Exists(caminho))
+            {
+                using (var image = Image.FromFile(caminho))
                 {
-                    prod.Pctproduto.BackgroundImage = Image.FromFile(caminho);
+                    prod.Pctproduto.BackgroundImage = new Bitmap(image);
                     prod.Pctproduto.BackgroundImageLayout = ImageLayout.Stretch;
                 }
-
-                FlpProdutos.Controls.Add(prod);
-                i++;
             }
+            return prod;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

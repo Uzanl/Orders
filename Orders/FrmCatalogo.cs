@@ -1,5 +1,4 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Orders.Classes;
+﻿using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,6 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace Orders
@@ -25,10 +23,12 @@ namespace Orders
         public FrmCatalogo()
         {
             InitializeComponent();
+           // Resize += new EventHandler(FrmCatalogo_Resize);
         }
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
+            CheckScreenResolution();
             if (UsuarioDAO.tipo == "Garçom")
             {
                 CategoriasToolStripMenuItem.Visible = false;
@@ -250,6 +250,27 @@ namespace Orders
         {
             FrmCadUsu u = new FrmCadUsu();
             u.ShowDialog();
+        }
+
+        private void ResizeControl(Control control)
+        {
+            float ratioX = (float)Screen.PrimaryScreen.Bounds.Width / 1920;
+            float ratioY = (float)Screen.PrimaryScreen.Bounds.Height / 1080;
+            control.Left = (int)(control.Left * ratioX);
+            control.Top = (int)(control.Top * ratioY);
+            control.Width = (int)(control.Width * ratioX);
+            control.Height = (int)(control.Height * ratioY);
+        }
+
+        private void CheckScreenResolution()
+        {
+            if (Screen.PrimaryScreen.Bounds.Width != 1920 || Screen.PrimaryScreen.Bounds.Height != 1080)
+            {
+                foreach (Control control in this.Controls)
+                {
+                    ResizeControl(control);
+                }
+            }
         }
     }
 }
