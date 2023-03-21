@@ -7,9 +7,11 @@ namespace Orders.Classes
     public partial class ProdutoControl : UserControl
     {
         ProdutoDAO prodDAO = new ProdutoDAO();
+        public int Quantidade { get; set; }
         public ProdutoControl()
         {
             InitializeComponent();
+            Quantidade = 1;
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
