@@ -37,31 +37,8 @@ namespace Orders.Classes
             foreach (DataRow row in lista.Rows)
             {
                 ProdutoControl prod = CriarProdutoAPartirDeDadosDaLinha(row);
-
-                // Verifica se o produto já existe no pedido
-                bool produtoExiste = false;
-               // int i = 1;
-                foreach (Control control in FlpProdutos.Controls)
-                {
-                    if (control is ProdutoControl produtoControl)
-                    {
-                    
-                        if (produtoControl.Tag.ToString() == prod.Tag.ToString())
-                        {
-                            produtoControl.Quantidade++;                         
-                            produtoControl.LblProduto.Text = $"{produtoControl.Quantidade} {row["produto"]}";
-                            produtoExiste = true;
-                            
-                            break;
-                        }
-                    }
-                }
-
-                // Adiciona o produto somente se ele não existir
-                if (!produtoExiste)
-                {
-                    FlpProdutos.Controls.Add(prod);
-                }
+                FlpProdutos.Controls.Add(prod);
+              
             }
         }
 
@@ -69,7 +46,7 @@ namespace Orders.Classes
         {
             ProdutoControl prod = new ProdutoControl();
 
-            prod.LblProduto.Text = row["produto"].ToString();
+            prod.LblProduto.Text = $"{row["quantidade"]}x {row["produto"]}" ;
             int id;
             if (int.TryParse(row["ID"].ToString(), out id))
             {
