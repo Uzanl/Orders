@@ -23,7 +23,7 @@ namespace Orders
         public FrmCatalogo()
         {
             InitializeComponent();
-           // Resize += new EventHandler(FrmCatalogo_Resize);
+            // Resize += new EventHandler(FrmCatalogo_Resize);
         }
 
         private void Catalogo_Load(object sender, EventArgs e)
@@ -44,23 +44,66 @@ namespace Orders
             AcrescentarCategorias(catDAO.ListarCat(string.Empty, false));
         }
 
+        // public void AcrescentarItens(int id, string nome, string preco, bool adicao)
+        // {
+        //    if (adicao)
+        //    {
+        //        listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+        //    }
+        //     else if (!listaitens.Exists(x => x.Id_produto == id))
+        //     {
+        //        Itens item = new Itens();
+        //         item.LblItem.Text = nome;
+        //          item.Price = Convert.ToDouble(preco);
+        //         item.Tag = id;
+        //         FlpItens.Controls.Add(item);
+        //         BtnFinalizarpedido.Visible = true;
+        //        listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+        //  }
+
         public void AcrescentarItens(int id, string nome, string preco, bool adicao)
         {
             if (adicao)
             {
-                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+                
+               // Itens.Quantidade++;
+
+                Itenspedido item_alterar = listaitens.FirstOrDefault(item => item.Id_produto == id);
+
+                if (item_alterar != null)
+                {
+                    // Altere a quantidade do objeto encontrado
+                    item_alterar.Quantidade++;
+                }
+
+                // listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
             }
             else if (!listaitens.Exists(x => x.Id_produto == id))
             {
+                //Itens.Quantidade = 1;
                 Itens item = new Itens();
                 item.LblItem.Text = nome;
                 item.Price = Convert.ToDouble(preco);
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
-                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome));
+                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome,1));
+            }
+        
+
+        }
+        public void DecrescerQtd(int id)
+        {
+            Itenspedido item_alterar = listaitens.FirstOrDefault(item => item.Id_produto == id);
+
+            if (item_alterar != null)
+            {
+                // Altere a quantidade do objeto encontrado
+                item_alterar.Quantidade--;
             }
         }
+
+        
 
         public void Excluiritem(int id, bool removetodos)
         {
@@ -221,8 +264,10 @@ namespace Orders
             string teste = " produto \r\n";
             foreach (Itenspedido aItenspedido in listaitens)
             {
+                
                 prodped.Id_pedido = pedDao.Ped.Id_pedido;
                 prodped.Id_produto = aItenspedido.Id_produto;
+                prodped.Quantidade = aItenspedido.Quantidade;
                 teste += aItenspedido.Nome + "\r\n";
                 prodpedDAO.Inserir(prodped);
             }
@@ -231,9 +276,13 @@ namespace Orders
 
         public int Quantidade(int id)
         {
-            int quantidade = listaitens.Where(Itenspedido => Itenspedido.Id_produto == id).Count(); ;
+            Itenspedido item_pesquisa = listaitens.FirstOrDefault(item => item.Id_produto == id);
+            int quantidade;
+            quantidade = item_pesquisa.Quantidade; 
             return quantidade;
         }
+
+        
 
         private void PedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -271,6 +320,11 @@ namespace Orders
                     ResizeControl(control);
                 }
             }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

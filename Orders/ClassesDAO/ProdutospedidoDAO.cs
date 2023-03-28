@@ -23,7 +23,7 @@ namespace Orders.ClassesDAO
         #region INSERIR NOVO PEDIDO
         public void Inserir(Produtospedido prodped)
         {
-            ExecutarComando("INSERT INTO PRODUTOS_PEDIDO VALUES(0,'" + prodped.Id_pedido + "','" + prodped.Id_produto + "');");
+            ExecutarComando("INSERT INTO PRODUTOS_PEDIDO VALUES(0,'" + prodped.Id_pedido + "','" + prodped.Id_produto + "','"+prodped.Quantidade+"');");
         }
         #endregion
 
@@ -31,7 +31,7 @@ namespace Orders.ClassesDAO
         public DataTable ListaProdPed(int id)
         {
             DataTable listaDescripto;
-            ExecutarComando("select p.id_produto as ID,p.nome AS PRODUTO,P.imagem as IMAGEM, count(*) as quantidade from produtos_pedido pp inner join produto p  on p.id_produto = pp.id_produto inner join pedido pe on pe.id_pedido = pp.id_pedido WHERE pp.id_pedido ='" + id + "'group by pp.id_produto;");
+            ExecutarComando("select p.id_produto as ID,p.nome AS PRODUTO,P.imagem as IMAGEM, quantidade as QUANTIDADE from produtos_pedido pp inner join produto p  on p.id_produto = pp.id_produto inner join pedido pe on pe.id_pedido = pp.id_pedido WHERE pp.id_pedido ='" + id + "';");
             listaDescripto = tabela_memoria.Clone();
 
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)

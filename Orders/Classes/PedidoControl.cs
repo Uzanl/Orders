@@ -78,9 +78,7 @@ namespace Orders.Classes
             ped.Status = "Fechado";
             ped.Id_pedido = Convert.ToInt32(Tag);
             pedDAO.UpdateStatus(ped);
-            Dispose();
-            
-
+            Dispose();           
         }
     }
 }

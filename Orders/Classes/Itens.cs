@@ -14,6 +14,8 @@ namespace Orders.Classes
         //double totalqtd;
 
         public double Price { get; set; }
+        public static int Quantidade{ get; set; }
+
         public Itens()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace Orders.Classes
         {
             FrmCatalogo MAIN = ParentForm as FrmCatalogo;
             int quantidade = MAIN.Quantidade(Convert.ToInt32(Tag));
+            //int quantidade = Quantidade;
             // ped.Subtotal -= Convert.ToDouble(LblPreco.Text) * quantidade;
             ped.Subtotal -= Price * quantidade;
             MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
@@ -42,6 +45,7 @@ namespace Orders.Classes
             MAIN.LblSubtotal.Text = $"Subtotal:{sum:C2}";
             ped.Subtotal = sum;
             int quantidade = MAIN.Quantidade(Convert.ToInt32(Tag));
+            //int quantidade = Quantidade;
 
            
             LblItem.Text = $"{quantidade}x {iteminicial}";
@@ -77,9 +81,14 @@ namespace Orders.Classes
                 //ped.Subtotal -= Convert.ToDouble(LblPreco.Text);
                 ped.Subtotal -= Price;
                 MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
-                MAIN.Excluiritem(Convert.ToInt32(Tag), false);
+                // MAIN.Excluiritem(Convert.ToInt32(Tag), false);
+                // Quantidade--;
+                MAIN.DecrescerQtd(Convert.ToInt32(Tag));
+            
+
                 MAIN.LblSubtotal.Text = $"Subtotal:{ped.Subtotal:C2}";
                 int quantidade = MAIN.Quantidade(Convert.ToInt32(Tag));
+                //int quantidade = Quantidade;
                 LblItem.Text = $"{quantidade}x {iteminicial}";
             }
         }

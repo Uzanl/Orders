@@ -8,17 +8,19 @@ namespace Orders.Classes
 
         int id_produto;
         string nome;
+        int quantidade;
+   
 
-
-        public Itenspedido(int p, string n)
+        public Itenspedido(int p, string n, int q)
         {
             Id_produto = p;
             Nome = n;
-        
+            Quantidade = q;
         }
 
         public int Id_produto { get => id_produto; set => id_produto = value; }
         public string Nome { get => nome; set => nome = value; }
+        public int Quantidade { get => quantidade; set => quantidade = value; }
 
         public bool Equals(Itenspedido other)
         {
