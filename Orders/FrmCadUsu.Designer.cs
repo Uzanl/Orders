@@ -96,7 +96,8 @@
             this.cmbCargo.FormattingEnabled = true;
             this.cmbCargo.Items.AddRange(new object[] {
             "Administrador",
-            "Garçom"});
+            "Garçom",
+            "Chefe"});
             this.cmbCargo.Location = new System.Drawing.Point(119, 112);
             this.cmbCargo.Name = "cmbCargo";
             this.cmbCargo.Size = new System.Drawing.Size(127, 21);

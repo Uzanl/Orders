@@ -39,6 +39,7 @@
             this.FlpCategorias = new System.Windows.Forms.FlowLayoutPanel();
             this.LblSubtotal = new System.Windows.Forms.Label();
             this.LblNome = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1920, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // toolStripMenuItem1
             // 
@@ -126,7 +126,6 @@
             // FlpCategorias
             // 
             this.FlpCategorias.AutoScroll = true;
-            this.FlpCategorias.AutoSize = true;
             this.FlpCategorias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlpCategorias.Location = new System.Drawing.Point(288, 137);
             this.FlpCategorias.Name = "FlpCategorias";
@@ -149,11 +148,21 @@
             this.LblNome.Size = new System.Drawing.Size(0, 13);
             this.LblNome.TabIndex = 20;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 137);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(270, 147);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Chamar Atendente";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.LblNome);
             this.Controls.Add(this.LblSubtotal);
             this.Controls.Add(this.BtnFinalizarpedido);
@@ -190,6 +199,7 @@
         private System.Windows.Forms.Label LblNome;
         public System.Windows.Forms.ToolStripMenuItem CategoriasToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
 

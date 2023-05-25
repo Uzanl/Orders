@@ -208,6 +208,12 @@
     <Compile Include="Classes\Ingredienteprod.cs" />
     <Compile Include="Classes\Marca.cs" />
     <Compile Include="Classes\Produto.cs" />
+    <Compile Include="FrmDash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDash.Designer.cs">
+      <DependentUpon>FrmDash.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

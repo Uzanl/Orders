@@ -22,7 +22,7 @@ namespace Orders.Classes
         private void Catcontrol_Load(object sender, EventArgs e)
         {
 
-
+            BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\mais.png");
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Orders.Classes
             {
                 Height = 500;
                 FlpProduto.Height = 380;
-                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\mais.png");
+                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\menos.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
                 Carregarprodutos(prodDAO.ListaProdCat(LblCategorias.Text));
                 BtnNovoProd.Visible = true;
@@ -55,7 +55,7 @@ namespace Orders.Classes
                 lblProduto.Visible = false;
                 TxtProduto.Visible = false;
                 BtnNovoProd.Visible = false;
-                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\menos.png");
+                BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\mais.png");
                 BtnExpandir.BackgroundImageLayout = ImageLayout.Stretch;
             }
         }

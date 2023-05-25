@@ -32,6 +32,13 @@ namespace Orders
                     FrmCatalogo f = new FrmCatalogo();
                     f.ShowDialog();
                     Close();
+                }else if (usuDAO.Usu.Tipo == "Chefe")
+                {
+                    UsuarioDAO.login = usuDAO.Usu.Login_usu;
+                    UsuarioDAO.tipo = usuDAO.Usu.Tipo;
+                    FrmPedido f = new FrmPedido();
+                    f.ShowDialog();
+                    Close();
                 }
 
                

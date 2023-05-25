@@ -81,6 +81,7 @@
             this.Controls.Add(this.Pctproduto);
             this.Name = "ProdutoControl";
             this.Size = new System.Drawing.Size(628, 122);
+            this.Load += new System.EventHandler(this.ProdutoControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Pctproduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

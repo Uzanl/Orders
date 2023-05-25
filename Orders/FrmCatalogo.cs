@@ -28,7 +28,7 @@ namespace Orders
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
-            CheckScreenResolution();
+      
             if (UsuarioDAO.tipo == "Garçom")
             {
                 CategoriasToolStripMenuItem.Visible = false;
@@ -309,22 +309,6 @@ namespace Orders
             control.Top = (int)(control.Top * ratioY);
             control.Width = (int)(control.Width * ratioX);
             control.Height = (int)(control.Height * ratioY);
-        }
-
-        private void CheckScreenResolution()
-        {
-            if (Screen.PrimaryScreen.Bounds.Width != 1920 || Screen.PrimaryScreen.Bounds.Height != 1080)
-            {
-                foreach (Control control in this.Controls)
-                {
-                    ResizeControl(control);
-                }
-            }
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
     }
 }

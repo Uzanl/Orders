@@ -29,5 +29,10 @@ namespace Orders.Classes
                 Dispose();
             }
         }
+
+        private void ProdutoControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
