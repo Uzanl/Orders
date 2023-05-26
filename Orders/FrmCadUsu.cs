@@ -1,4 +1,5 @@
-﻿using Orders.Classes;
+﻿using Google.Protobuf.WellKnownTypes;
+using Orders.Classes;
 using Orders.ClassesDAO;
 using System;
 using System.Collections.Generic;
@@ -122,7 +123,7 @@ namespace Orders
                     usu.Tipo = cmbCargo.Text;
                     usuDAO.Inserir(usu);
                     MessageBox.Show("Usuário cadastrado com sucesso !!!");
-                 //   Limpar();
+                    Limpar();
 
                     if (UsuarioDAO.Existe == false)
                     {
@@ -144,6 +145,15 @@ namespace Orders
                     MessageBox.Show("Favor verificar as informações digitadas !!!");
                 }
             }
+        }
+
+        public void Limpar()
+        {
+            txtLogin.Clear();
+            txtSenha.Clear();
+            txtConfirma.Clear();
+            cmbCargo.Items.Clear();
+            chkSenha.Checked = false;
         }
     }
 }

@@ -157,6 +157,12 @@
       <DependentUpon>ProdCatalogo.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Usuario.cs" />
+    <Compile Include="FrmCadCatusu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadCatusu.Designer.cs">
+      <DependentUpon>FrmCadCatusu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCadUsu.cs">
       <SubType>Form</SubType>
     </Compile>
