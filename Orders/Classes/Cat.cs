@@ -23,6 +23,7 @@ namespace Orders.Classes
         {
 
             BtnExpandir.BackgroundImage = Image.FromFile("C:\\Users\\Uzann\\source\\repos\\Orders\\Orders\\Resources\\mais.png");
+            Moeda(ref TxtPrecoProd);
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)

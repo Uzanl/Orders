@@ -24,6 +24,13 @@ namespace Orders
 
         private void FrmCadUsu_Load(object sender, EventArgs e)
         {
+            lbl1Num.ForeColor = Color.FromArgb(182, 53, 40);
+            lbl8Caracteres.ForeColor = Color.FromArgb(182, 53, 40);
+            lbl1Minuscula.ForeColor = Color.FromArgb(182, 53, 40);
+            lblMaiuscula.ForeColor = Color.FromArgb(182, 53, 40);
+            lbl1Especial.ForeColor = Color.FromArgb(182, 53, 40);
+            lbl8Caracteres.ForeColor = Color.FromArgb(182, 53, 40);
+
             if (UsuarioDAO.Existe == false)
             {
                 cmbCargo.Enabled = false;
@@ -53,9 +60,81 @@ namespace Orders
             }
         }
 
+        bool IsNumber(TextBox text)
+        {
+            foreach (var item in text.Text.Reverse())
+                if (char.IsNumber(item)) { return true; }
+            return false;
+        }
+
+        bool IsLower(TextBox text)
+        {
+            foreach (var item in text.Text.Reverse())
+                if (char.IsLower(item)) { return true; }
+            return false;
+        }
+
+        bool IsUpper(TextBox text)
+        {
+            foreach (var item in text.Text.Reverse())
+                if (char.IsUpper(item)) { return true; }
+            return false;
+        }
+
+        bool IsSymbol(TextBox text)
+        {
+            foreach (var item in text.Text.Reverse())
+                if (char.IsSymbol(item)) { return true; }
+            return false;
+        }
+
         private void txtSenha_TextChanged(object sender, EventArgs e)
         {
-            txtSenha.BackColor = Color.Empty;
+            if(txtSenha.Text.Length> 8)
+            {
+                lbl8Caracteres.ForeColor = Color.FromArgb(0, 189, 83);
+            }
+            else
+            {
+                lbl8Caracteres.ForeColor = Color.FromArgb(182, 53, 40);
+            }
+
+            if (IsNumber(txtSenha))
+            {
+                lbl1Num.ForeColor = Color.FromArgb(0,189,83);
+            }
+            else
+            {
+                lbl1Num.ForeColor = Color.FromArgb(182, 53, 40);
+            }
+
+            if (IsLower(txtSenha))
+            {
+                lbl1Minuscula.ForeColor = Color.FromArgb(0, 189, 83);
+            }
+            else
+            {
+                lbl1Minuscula.ForeColor = Color.FromArgb(182, 53, 40);
+            }
+
+            if (IsUpper(txtSenha))
+            {
+                lblMaiuscula.ForeColor = Color.FromArgb(0, 189, 83);
+            }
+            else
+            {
+                lblMaiuscula.ForeColor = Color.FromArgb(182, 53, 40);
+            }
+
+            if (IsSymbol(txtSenha))
+            {
+                lbl1Especial.ForeColor = Color.FromArgb(0, 189, 83);
+            }
+            else
+            {
+                lbl1Especial.ForeColor = Color.FromArgb(182, 53, 40);
+            }
+
         }
 
         private void chkSenha_CheckedChanged(object sender, EventArgs e)

@@ -23,12 +23,11 @@ namespace Orders
         public FrmCatalogo()
         {
             InitializeComponent();
-            // Resize += new EventHandler(FrmCatalogo_Resize);
         }
 
         private void Catalogo_Load(object sender, EventArgs e)
         {
-      
+
             if (UsuarioDAO.tipo == "Garçom")
             {
                 CategoriasToolStripMenuItem.Visible = false;
@@ -65,8 +64,8 @@ namespace Orders
         {
             if (adicao)
             {
-                
-               // Itens.Quantidade++;
+
+                // Itens.Quantidade++;
 
                 Itenspedido item_alterar = listaitens.FirstOrDefault(item => item.Id_produto == id);
 
@@ -87,9 +86,9 @@ namespace Orders
                 item.Tag = id;
                 FlpItens.Controls.Add(item);
                 BtnFinalizarpedido.Visible = true;
-                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome,1));
+                listaitens.Add(new Itenspedido(Convert.ToInt32(id), nome, 1));
             }
-        
+
 
         }
         public void DecrescerQtd(int id)
@@ -103,7 +102,7 @@ namespace Orders
             }
         }
 
-        
+
 
         public void Excluiritem(int id, bool removetodos)
         {
@@ -264,7 +263,7 @@ namespace Orders
             string teste = " produto \r\n";
             foreach (Itenspedido aItenspedido in listaitens)
             {
-                
+
                 prodped.Id_pedido = pedDao.Ped.Id_pedido;
                 prodped.Id_produto = aItenspedido.Id_produto;
                 prodped.Quantidade = aItenspedido.Quantidade;
@@ -278,11 +277,11 @@ namespace Orders
         {
             Itenspedido item_pesquisa = listaitens.FirstOrDefault(item => item.Id_produto == id);
             int quantidade;
-            quantidade = item_pesquisa.Quantidade; 
+            quantidade = item_pesquisa.Quantidade;
             return quantidade;
         }
 
-        
+
 
         private void PedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -299,16 +298,6 @@ namespace Orders
         {
             FrmCadUsu u = new FrmCadUsu();
             u.ShowDialog();
-        }
-
-        private void ResizeControl(Control control)
-        {
-            float ratioX = (float)Screen.PrimaryScreen.Bounds.Width / 1920;
-            float ratioY = (float)Screen.PrimaryScreen.Bounds.Height / 1080;
-            control.Left = (int)(control.Left * ratioX);
-            control.Top = (int)(control.Top * ratioY);
-            control.Width = (int)(control.Width * ratioX);
-            control.Height = (int)(control.Height * ratioY);
         }
     }
 }
