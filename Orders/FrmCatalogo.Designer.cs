@@ -40,7 +40,6 @@
             this.LblSubtotal = new System.Windows.Forms.Label();
             this.LblNome = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.categoriasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,8 +83,6 @@
             // 
             // usuariosToolStripMenuItem
             // 
-            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.categoriasToolStripMenuItem1});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuários";
@@ -155,16 +152,10 @@
             // 
             this.button1.Location = new System.Drawing.Point(12, 137);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(270, 147);
+            this.button1.Size = new System.Drawing.Size(270, 64);
             this.button1.TabIndex = 21;
             this.button1.Text = "Chamar Atendente";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // categoriasToolStripMenuItem1
-            // 
-            this.categoriasToolStripMenuItem1.Name = "categoriasToolStripMenuItem1";
-            this.categoriasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.categoriasToolStripMenuItem1.Text = "Categorias";
             // 
             // FrmCatalogo
             // 
@@ -209,7 +200,6 @@
         public System.Windows.Forms.ToolStripMenuItem CategoriasToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem1;
     }
 }
 

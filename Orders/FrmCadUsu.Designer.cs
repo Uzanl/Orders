@@ -48,7 +48,7 @@
             // chkSenha
             // 
             this.chkSenha.AutoSize = true;
-            this.chkSenha.Location = new System.Drawing.Point(227, 53);
+            this.chkSenha.Location = new System.Drawing.Point(231, 167);
             this.chkSenha.Name = "chkSenha";
             this.chkSenha.Size = new System.Drawing.Size(15, 14);
             this.chkSenha.TabIndex = 21;
@@ -102,8 +102,9 @@
             this.cmbCargo.Items.AddRange(new object[] {
             "Administrador",
             "Garçom",
-            "Chefe"});
-            this.cmbCargo.Location = new System.Drawing.Point(119, 166);
+            "Chefe",
+            "Mesa"});
+            this.cmbCargo.Location = new System.Drawing.Point(119, 11);
             this.cmbCargo.Name = "cmbCargo";
             this.cmbCargo.Size = new System.Drawing.Size(127, 21);
             this.cmbCargo.TabIndex = 17;
@@ -113,7 +114,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 164);
+            this.label3.Location = new System.Drawing.Point(13, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 20);
@@ -123,7 +124,7 @@
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(119, 46);
+            this.txtSenha.Location = new System.Drawing.Point(120, 159);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSenha.MaxLength = 15;
             this.txtSenha.Name = "txtSenha";
@@ -135,7 +136,7 @@
             // txtLogin
             // 
             this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogin.Location = new System.Drawing.Point(119, 6);
+            this.txtLogin.Location = new System.Drawing.Point(120, 40);
             this.txtLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLogin.MaxLength = 15;
             this.txtLogin.Name = "txtLogin";
@@ -147,7 +148,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 49);
+            this.label2.Location = new System.Drawing.Point(13, 162);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 20);
@@ -158,7 +159,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Location = new System.Drawing.Point(13, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 20);

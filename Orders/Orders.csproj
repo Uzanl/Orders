@@ -157,12 +157,6 @@
       <DependentUpon>ProdCatalogo.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Usuario.cs" />
-    <Compile Include="FrmCadCatusu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmCadCatusu.Designer.cs">
-      <DependentUpon>FrmCadCatusu.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmCadUsu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +220,12 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLoginMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLoginMesa.Designer.cs">
+      <DependentUpon>FrmLoginMesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLoginMesa.resx">
+      <DependentUpon>FrmLoginMesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedido.resx">
       <DependentUpon>FrmPedido.cs</DependentUpon>

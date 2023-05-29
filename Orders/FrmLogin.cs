@@ -25,7 +25,7 @@ namespace Orders
             string senha = txtSenha.Text;
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha) && usuDAO.Verifica(login, senha))
             {
-                if(usuDAO.Usu.Tipo == "Garçom" || usuDAO.Usu.Tipo == "Administrador")
+                if(usuDAO.Usu.Tipo == "Garçom" || usuDAO.Usu.Tipo == "Administrador"||usuDAO.Usu.Tipo =="Mesa")
                 {
                     UsuarioDAO.login = usuDAO.Usu.Login_usu;
                     UsuarioDAO.tipo = usuDAO.Usu.Tipo;
@@ -49,6 +49,18 @@ namespace Orders
                 MessageBox.Show("Usuário incorreto ou senha incorreta!");
                 txtSenha.Clear();
             }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+           
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmLoginMesa m = new FrmLoginMesa();
+            m.ShowDialog();
+            Close();
         }
     }
 }

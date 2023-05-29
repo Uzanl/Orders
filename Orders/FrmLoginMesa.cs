@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Orders
 {
-    public partial class FrmCadCatusu : Form
+    public partial class FrmLoginMesa : Form
     {
-        public FrmCadCatusu()
+        public FrmLoginMesa()
         {
             InitializeComponent();
         }

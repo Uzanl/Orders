@@ -33,6 +33,9 @@ namespace Orders
                 CategoriasToolStripMenuItem.Visible = false;
                 usuariosToolStripMenuItem.Visible = false;
 
+            }else if (UsuarioDAO.tipo == "Mesa")
+            {
+                menuStrip1.Visible = false;
             }
             LblNome.Text = $"Olá, {UsuarioDAO.Login} !";
             CarregarCategorias();
