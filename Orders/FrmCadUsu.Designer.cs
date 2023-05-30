@@ -43,11 +43,13 @@
             this.lbl1Minuscula = new System.Windows.Forms.Label();
             this.lbl1Especial = new System.Windows.Forms.Label();
             this.lblMaiuscula = new System.Windows.Forms.Label();
+            this.lbl4Num = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chkSenha
             // 
             this.chkSenha.AutoSize = true;
+            this.chkSenha.Enabled = false;
             this.chkSenha.Location = new System.Drawing.Point(231, 167);
             this.chkSenha.Name = "chkSenha";
             this.chkSenha.Size = new System.Drawing.Size(15, 14);
@@ -57,6 +59,7 @@
             // 
             // txtConfirma
             // 
+            this.txtConfirma.Enabled = false;
             this.txtConfirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirma.Location = new System.Drawing.Point(119, 195);
             this.txtConfirma.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -123,6 +126,7 @@
             // 
             // txtSenha
             // 
+            this.txtSenha.Enabled = false;
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.Location = new System.Drawing.Point(120, 159);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -132,6 +136,7 @@
             this.txtSenha.TabIndex = 14;
             this.txtSenha.UseSystemPasswordChar = true;
             this.txtSenha.TextChanged += new System.EventHandler(this.txtSenha_TextChanged);
+            this.txtSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSenha_KeyPress);
             // 
             // txtLogin
             // 
@@ -174,6 +179,7 @@
             this.lbl8Caracteres.Size = new System.Drawing.Size(124, 13);
             this.lbl8Caracteres.TabIndex = 23;
             this.lbl8Caracteres.Text = "Pelo menos 8 caracteres";
+            this.lbl8Caracteres.Visible = false;
             // 
             // lbl1Num
             // 
@@ -183,6 +189,7 @@
             this.lbl1Num.Size = new System.Drawing.Size(142, 13);
             this.lbl1Num.TabIndex = 24;
             this.lbl1Num.Text = "Pelo Menos 1 Número (0...9)";
+            this.lbl1Num.Visible = false;
             // 
             // lbl1Minuscula
             // 
@@ -192,6 +199,7 @@
             this.lbl1Minuscula.Size = new System.Drawing.Size(170, 13);
             this.lbl1Minuscula.TabIndex = 25;
             this.lbl1Minuscula.Text = "Pelo menos 1 letra minúscula(a...z)";
+            this.lbl1Minuscula.Visible = false;
             // 
             // lbl1Especial
             // 
@@ -201,6 +209,7 @@
             this.lbl1Especial.Size = new System.Drawing.Size(183, 13);
             this.lbl1Especial.TabIndex = 26;
             this.lbl1Especial.Text = "Pelo menos 1 símbolo especial (^...$)";
+            this.lbl1Especial.Visible = false;
             // 
             // lblMaiuscula
             // 
@@ -210,12 +219,24 @@
             this.lblMaiuscula.Size = new System.Drawing.Size(176, 13);
             this.lblMaiuscula.TabIndex = 27;
             this.lblMaiuscula.Text = "Pelo menos 1 letra maiúscula (A...Z)";
+            this.lblMaiuscula.Visible = false;
+            // 
+            // lbl4Num
+            // 
+            this.lbl4Num.AutoSize = true;
+            this.lbl4Num.Location = new System.Drawing.Point(14, 75);
+            this.lbl4Num.Name = "lbl4Num";
+            this.lbl4Num.Size = new System.Drawing.Size(144, 13);
+            this.lbl4Num.TabIndex = 28;
+            this.lbl4Num.Text = "Pelo menos 4 números (0...9)";
+            this.lbl4Num.Visible = false;
             // 
             // FrmCadUsu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(260, 302);
+            this.Controls.Add(this.lbl4Num);
             this.Controls.Add(this.lblMaiuscula);
             this.Controls.Add(this.lbl1Especial);
             this.Controls.Add(this.lbl1Minuscula);
@@ -257,5 +278,6 @@
         private System.Windows.Forms.Label lbl1Minuscula;
         private System.Windows.Forms.Label lbl1Especial;
         private System.Windows.Forms.Label lblMaiuscula;
+        private System.Windows.Forms.Label lbl4Num;
     }
 }

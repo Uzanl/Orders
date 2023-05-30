@@ -20,6 +20,7 @@ namespace Orders
         public FrmCadUsu()
         {
             InitializeComponent();
+            txtSenha.KeyPress += new KeyPressEventHandler(txtSenha_KeyPress);
         }
 
         private void FrmCadUsu_Load(object sender, EventArgs e)
@@ -90,7 +91,10 @@ namespace Orders
 
         private void txtSenha_TextChanged(object sender, EventArgs e)
         {
-            if(txtSenha.Text.Length> 8)
+         
+           
+
+            if (txtSenha.Text.Length> 8)
             {
                 lbl8Caracteres.ForeColor = Color.FromArgb(0, 189, 83);
             }
@@ -169,7 +173,44 @@ namespace Orders
 
         private void cmbCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtSenha.Enabled = true;
+            txtConfirma.Enabled = true;
+            chkSenha.Enabled = true;
+
+
             cmbCargo.BackColor = Color.Empty;
+
+            if (cmbCargo.Text == "Mesa")
+            {
+                lbl4Num.Visible = true;
+                lbl1Num.Visible = false;
+                lbl8Caracteres.Visible = false;
+                lbl1Minuscula.Visible = false;
+                lblMaiuscula.Visible = false;
+                lbl1Especial.Visible = false;
+                lbl8Caracteres.Visible = false;
+                txtSenha.Clear();
+                txtSenha.MaxLength = 4;
+                txtConfirma.Clear();
+                txtConfirma.MaxLength = 4;
+            }
+            else
+            {
+                lbl4Num.Visible = false;
+                lbl1Num.Visible = true;
+                lbl8Caracteres.Visible = true;
+                lbl1Minuscula.Visible = true;
+                lblMaiuscula.Visible = true;
+                lbl1Especial.Visible = true;
+                lbl8Caracteres.Visible = true;
+
+
+                txtSenha.Clear();
+                txtSenha.MaxLength = 15;
+                txtConfirma.Clear();
+                txtConfirma.MaxLength = 15;
+            }
+
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -233,6 +274,15 @@ namespace Orders
             txtConfirma.Clear();
             cmbCargo.Items.Clear();
             chkSenha.Checked = false;
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && cmbCargo.Text == "Mesa")
+            {
+                e.Handled = true;
+            }
+           
         }
     }
 }
