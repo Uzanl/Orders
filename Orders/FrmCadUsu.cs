@@ -272,7 +272,7 @@ namespace Orders
             txtLogin.Clear();
             txtSenha.Clear();
             txtConfirma.Clear();
-            cmbCargo.Items.Clear();
+           // cmbCargo.Items.Clear();
             chkSenha.Checked = false;
         }
 

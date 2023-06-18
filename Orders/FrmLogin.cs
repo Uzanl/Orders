@@ -21,6 +21,8 @@ namespace Orders
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            
+            //fazer um tratamento caso não tenha nenhuma mesa cadastrada.
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha) && usuDAO.Verifica(login, senha))
@@ -29,6 +31,7 @@ namespace Orders
                 {
                     UsuarioDAO.login = usuDAO.Usu.Login_usu;
                     UsuarioDAO.tipo = usuDAO.Usu.Tipo;
+                    UsuarioDAO.Id = usuDAO.Usu.Id_usu;
                     FrmCatalogo f = new FrmCatalogo();
                     f.ShowDialog();
                     Close();
@@ -36,6 +39,7 @@ namespace Orders
                 {
                     UsuarioDAO.login = usuDAO.Usu.Login_usu;
                     UsuarioDAO.tipo = usuDAO.Usu.Tipo;
+                    UsuarioDAO.Id = usuDAO.Usu.Id_usu;
                     FrmPedido f = new FrmPedido();
                     f.ShowDialog();
                     Close();

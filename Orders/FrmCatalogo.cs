@@ -231,11 +231,11 @@ namespace Orders
                     try
                     {
                         DateTime data_hora = DateTime.Now;
-                        ped.Id_cliente = 1; // arrumar isso depois
+                        ped.Id_cliente = UsuarioDAO.Id; // arrumar isso depois
                         ped.Hora = Convert.ToDateTime(data_hora.ToLongTimeString());
                         ped.Data_pedido = data_hora;
                         ped.Status = "Em aberto";
-                        pedDao.Inserir(ped);
+                        pedDao.Inserir(ped); // ERRO ACONTECE, POIS ESTOU USANDO ID_USU AO INVÉS DO ID_CLIENTE.
                         pedDao.Ultimopedido();
                         Pedido();
                         LblSubtotal.Text = string.Empty;

@@ -49,7 +49,7 @@ namespace Orders.ClassesDAO
         public DataTable ListaPedData(DateTime data)
         {
             DataTable listaDescripto;
-            ExecutarComando("select p.id_pedido as ID, c.nome as CLIENTE, p.hora as HORA, p.hora as HORA,p.status as STATUS from pedido p inner join cliente c on c.id_cliente = p .id_cliente WHERE p.status='Em aberto' AND p.data_pedido ='" + data.ToString("yyyy/MM/dd") + "';");
+            ExecutarComando("select p.id_pedido as ID, c.login_usu as CLIENTE, p.hora as HORA, p.hora as HORA,p.status as STATUS from pedido p inner join usuario c on c.id_usu = p .id_usu WHERE p.status='Em aberto' AND p.data_pedido ='" + data.ToString("yyyy/MM/dd") + "';");
             listaDescripto = tabela_memoria.Clone();
 
             for (int i = 0; i < tabela_memoria.Rows.Count; i++)

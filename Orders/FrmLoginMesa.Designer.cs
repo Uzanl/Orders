@@ -30,9 +30,9 @@
         {
             this.btnEntrar = new System.Windows.Forms.Button();
             this.txtSenha = new System.Windows.Forms.TextBox();
-            this.txtLogin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbLogin = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnEntrar
@@ -51,6 +51,7 @@
             this.btnEntrar.TabIndex = 16;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = false;
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // txtSenha
             // 
@@ -61,15 +62,7 @@
             this.txtSenha.Size = new System.Drawing.Size(138, 26);
             this.txtSenha.TabIndex = 15;
             this.txtSenha.UseSystemPasswordChar = true;
-            // 
-            // txtLogin
-            // 
-            this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogin.Location = new System.Drawing.Point(86, 7);
-            this.txtLogin.MaxLength = 15;
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(138, 26);
-            this.txtLogin.TabIndex = 13;
+            this.txtSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSenha_KeyPress);
             // 
             // label2
             // 
@@ -91,18 +84,28 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Mesa:";
             // 
+            // cmbLogin
+            // 
+            this.cmbLogin.FormattingEnabled = true;
+            this.cmbLogin.Location = new System.Drawing.Point(86, 9);
+            this.cmbLogin.Name = "cmbLogin";
+            this.cmbLogin.Size = new System.Drawing.Size(138, 21);
+            this.cmbLogin.TabIndex = 17;
+            // 
             // FrmLoginMesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(241, 148);
+            this.Controls.Add(this.cmbLogin);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.txtSenha);
-            this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmLoginMesa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLoginMesa";
+            this.Load += new System.EventHandler(this.FrmLoginMesa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,8 +115,8 @@
 
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.TextBox txtSenha;
-        private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbLogin;
     }
 }
